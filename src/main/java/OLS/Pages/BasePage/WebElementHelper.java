@@ -1,4 +1,4 @@
-package OLS.Common;
+package OLS.Pages.BasePage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,10 +11,32 @@ import java.time.Duration;
 
 public class WebElementHelper
 {
+
+    /**
+     * Wait Methods
+     * */
     public static WebElement WaitUntilElementWillBePresentOnPage(WebDriver driver, By locator)
     {
         WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(10))).until(ExpectedConditions.visibilityOfElementLocated(locator));
         return element;
     }
+
+    public static WebElement WaitUntilElementWillBeClickableOnPage(WebDriver driver, By locator)
+    {
+        WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(10))).until(ExpectedConditions.elementToBeClickable(locator));
+        return element;
+    }
+
+    /**
+     * Actions Methods
+     */
+    public static WebElement FindAndClickByLocator(WebDriver driver, By locator)
+    {
+        WebElement element =driver.findElement(locator);
+        element.click();
+        return element;
+    }
+
+
 
 }

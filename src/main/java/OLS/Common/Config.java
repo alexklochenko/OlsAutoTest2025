@@ -19,6 +19,11 @@ public class Config
      */
     public static final boolean NEED_TO_CLOSE_BROWSER_AFTER_TEST=false;
 
+    /**
+     * Дані про ключ та сертифікат користувача, контекст якого викорисовується при авторизації
+     */
+    public static final String PSSS_TO_KEY="1qaz2wsx";
+
 
 
 }

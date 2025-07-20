@@ -1,5 +1,6 @@
 package OLS.Common;
 
+import OLS.Pages.BasePage.WebElementHelper;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -34,28 +35,5 @@ public class CommonActions extends WebElementHelper
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         return driver;
     }
-
-    public static void getUrl(WebDriver driver)
-    {
-        driver.get(MAIN_URL);
-    }
-
-
-    /**
-     * Закрити модальне вікно прийняти Кукі
-     */
-
-    static By closeCookiesButton=By.cssSelector("div.popup__btns>button.popup__btn");
-    public static void closeCookiesModal(WebDriver driver)
-    {
-            WebElement element=WaitUntilElementWillBePresentOnPage(driver, closeCookiesButton);
-            element.click();
-    }
-
-
-
-
-
-
 
 }
