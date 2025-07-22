@@ -6,10 +6,10 @@ import org.openqa.selenium.WebElement;
 
 import static OLS.Common.Config.MAIN_URL;
 
-public class BasePage extends WebElementHelper
+public class BasePageClass extends WebElementHelper
 {
     WebDriver driver;
-    public BasePage (WebDriver driver)
+    public BasePageClass(WebDriver driver)
     {
         this.driver=driver;
     }

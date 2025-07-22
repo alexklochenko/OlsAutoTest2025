@@ -38,5 +38,14 @@ public class WebElementHelper
     }
 
 
+    /**
+     * Check meth
+     */
+
+    public static void checkActivateCheckbox(WebDriver driver, By locator)
+    {
+        (new WebDriverWait (driver, Duration.ofSeconds(5))).until(ExpectedConditions.elementToBeSelected(locator));
+    }
+
 
 }

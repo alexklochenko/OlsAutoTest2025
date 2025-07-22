@@ -1,7 +1,7 @@
 package Base;
 
 import OLS.Pages.AuthPage.AuthPage;
-import OLS.Pages.BasePage.BasePage;
+import OLS.Pages.BasePage.BasePageClass;
 import OLS.Pages.MainPage.MainPageClass;
 import OLS.Pages.Step11Page.Step11PageClass;
 import org.junit.jupiter.api.AfterAll;
@@ -15,7 +15,7 @@ import static OLS.Common.Config.NEED_TO_CLOSE_BROWSER_AFTER_TEST;
 public class BaseTest
 {
     WebDriver driver=CommonActions.createDriver();
-    public BasePage basePage=new BasePage(driver);
+    public BasePageClass basePage=new BasePageClass(driver);
     public AuthPage authPage=new AuthPage(driver);
     public MainPageClass mainPage=new MainPageClass(driver);
     public Step11PageClass step11Page = new Step11PageClass(driver);

@@ -23,6 +23,38 @@ public class Config
      * Дані про ключ та сертифікат користувача, контекст якого викорисовується при авторизації
      */
     public static final String PSSS_TO_KEY="1qaz2wsx";
+    public static final String WAY_TO_PASS="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\TEST_KEY\\Key-6.dat";
+
+/**
+ * Вибір ідентифікатору потрібного КНЕДП
+ * <option data-index-id="30">Адміністратор ІТС ЦЗО (CA TEST)</option>
+ * <option data-index-id="0">КНЕДП ДПС України</option>
+ * <option data-index-id="2">КНЕДП "MASTERKEY" ТОВ "АРТ-МАСТЕР"</option>
+ * <option data-index-id="3">КНЕДП ТОВ "Центр сертифікації ключів "Україна"</option>
+ * <option data-index-id="5">КНЕДП ПАТ КБ «ПРИВАТБАНК»</option>
+ * <option data-index-id="6">КНЕДП "Дія"</option>
+ * <option data-index-id="7">КНЕДП Публічного акціонерного товариства "УкрСиббанк"</option>
+ * <option data-index-id="8">КНЕДП ринку електричної енергії</option>
+ * <option data-index-id="9">КНЕДП Укрзалізниці</option>
+ * <option data-index-id="10">КНЕДП АТ "Ощадбанк"</option>
+ * <option data-index-id="11">КНЕДП ДП "УСС"</option>
+ * <option data-index-id="12">КНЕДП ТОВ "ДЕПОЗИТ САЙН"</option>
+ * <option data-index-id="14">КНЕДП Національного банку України</option>
+ * <option data-index-id="15">Кваліфікований надавач ЕДП "Казначейство"</option>
+ * <option data-index-id="16">КНЕДП АБ "УКРГАЗБАНК"</option>
+ * <option data-index-id="17">КНЕДП АЦСК АТ "СЕНС-БАНК"</option>
+ * <option data-index-id="18">КНЕДП Акціонерного товариства “КРЕДІ АГРІКОЛЬ БАНК”</option>
+ * <option data-index-id="19">КНЕДП АТ "БАНК АЛЬЯНС"</option>
+ * <option data-index-id="20">КНЕДП АТ "ПУМБ"</option>
+ * <option data-index-id="21">КНЕДП "eSign" ТОВ "Ілайф"</option>
+ * <option data-index-id="23">КНЕДП АТ "ПРАВЕКС БАНК"</option>
+ * <option data-index-id="24">КНЕДП ТОВ "Вчасно Сервіс"</option>
+ * <option data-index-id="25">КНЕДП ТОВ "АМО ФІНТЕХ"</option>
+ * <option data-index-id="26">КНЕДП monobank | Universal Bank</option>
+ * <option data-index-id="13">Інший КНЕДП</option>
+ */
+public static final int ID_OF_KNDP=30;
+
 
 
 

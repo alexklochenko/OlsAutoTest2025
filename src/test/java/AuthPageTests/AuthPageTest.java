@@ -9,5 +9,6 @@ public class AuthPageTest extends BaseTest
     public void LoginFileKey()
     {
         authPage.getLoginPage();
+        authPage.loginUsingFileKey();
     }
 }
