@@ -37,6 +37,13 @@ public class WebElementHelper
         return element;
     }
 
+    public static WebElement FindAndClickByLocatorByXpath(WebDriver driver, By locator)
+    {
+        WebElement element =driver.findElement(locator);
+        element.click();
+        return element;
+    }
+
 
 
 }
