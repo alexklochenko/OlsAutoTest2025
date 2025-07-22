@@ -2,7 +2,7 @@ package Base;
 
 import OLS.Pages.AuthPage.AuthPage;
 import OLS.Pages.BasePage.BasePage;
-import OLS.Pages.MainPage.MainPageClass;
+import OLS.Pages.MainPage.SalesPageClass;
 import OLS.Pages.Step11Page.Step11PageClass;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.TestInstance;
@@ -17,7 +17,7 @@ public class BaseTest
     WebDriver driver=CommonActions.createDriver();
     public BasePage basePage=new BasePage(driver);
     public AuthPage authPage=new AuthPage(driver);
-    public MainPageClass mainPage=new MainPageClass(driver);
+    public SalesPageClass salesPage=new SalesPageClass(driver);
     public Step11PageClass step11Page = new Step11PageClass(driver);
 
     @AfterAll
