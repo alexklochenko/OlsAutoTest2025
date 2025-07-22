@@ -2,6 +2,7 @@ package Base;
 
 import OLS.Pages.AuthPage.AuthPage;
 import OLS.Pages.BasePage.BasePage;
+import OLS.Pages.MainPage.HomePageClass;
 import OLS.Pages.MainPage.SalesPageClass;
 import OLS.Pages.Step11Page.Step11PageClass;
 import org.junit.jupiter.api.AfterAll;
@@ -18,6 +19,7 @@ public class BaseTest
     public BasePage basePage=new BasePage(driver);
     public AuthPage authPage=new AuthPage(driver);
     public SalesPageClass salesPage=new SalesPageClass(driver);
+    public HomePageClass homePage=new HomePageClass(driver);
     public Step11PageClass step11Page = new Step11PageClass(driver);
 
     @AfterAll
