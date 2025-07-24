@@ -10,5 +10,7 @@ public class AuthPageTest extends BaseTest
     {
         authPage.getLoginPage();
         authPage.loginUsingFileKey();
+        System.out.println( basePage.authCookie());;
     }
+
 }

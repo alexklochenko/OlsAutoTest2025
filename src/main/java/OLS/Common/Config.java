@@ -57,7 +57,7 @@ public class Config
  */
 public static final int ID_OF_KNDP=30;
 
-
+public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
 
 
 }
