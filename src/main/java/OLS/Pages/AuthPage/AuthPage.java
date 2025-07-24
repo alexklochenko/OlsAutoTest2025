@@ -3,6 +3,7 @@ package OLS.Pages.AuthPage;
 import OLS.Common.CommonActions;
 import OLS.Pages.BasePage.BasePageClass;
 import OLS.Pages.BasePage.WebElementHelper;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -12,9 +13,7 @@ import java.awt.*;
 
 import static OLS.Common.Config.*;
 import static OLS.Pages.BasePage.BasePageClass.getUrl;
-import static OLS.Pages.BasePage.WindowsHelper.ChooseFileFromPC;
-
-
+import static OLS.Pages.BasePage.WindowsHelper.PressEsc;
 
 
 public class AuthPage extends CommonActions
@@ -33,7 +32,10 @@ public class AuthPage extends CommonActions
     By chooseFileButton=By.cssSelector("span.group-span-filestyle.input-group-btn");
     By chooseKNDPDropDownList=By.cssSelector("select#CAsServersSelect");
     By chooseKNDPFromList=By.cssSelector("select#CAsServersSelect>option[data-index-id='"+ID_OF_KNDP+"']");
-    By checkboxToSaveLogAndPass=By.cssSelector("div.checkbox.text-left input#cbNeedSaveKeyAndPwd");
+    By checkboxToSaveLogAndPass=By.cssSelector("label.i-checks");
+    By checkboxCheck=By.cssSelector("input#cbNeedSaveKeyAndPwd");
+    By enterBuuton=By.cssSelector("button#btnLogon");
+    By orgNameAtSideBar=By.cssSelector("strong.font-bold.text-lt.ng-binding");
 
     public void getLoginPage()
     {
@@ -48,10 +50,10 @@ public class AuthPage extends CommonActions
             e.getStackTrace();
         }
 
-        WebElement element=WaitUntilElementWillBePresentOnPage(driver, enterButtonToAuthPage);
+        WebElement element= WaitUntilElementWillBePresentOnPage10(driver, enterButtonToAuthPage);
         element.click();
 
-        element=WaitUntilElementWillBePresentOnPage(driver, chooseFileTypeOfKeyToAuth);
+        element= WaitUntilElementWillBePresentOnPage10(driver, chooseFileTypeOfKeyToAuth);
         element.click();
 
         try
@@ -74,8 +76,7 @@ public class AuthPage extends CommonActions
     }
     public void loginUsingFileKey()
     {
-        WebElement element=WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
-        element.sendKeys(PSSS_TO_KEY);
+        WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
 
         FindAndClickByLocator(driver,chooseFileButton);
         try
@@ -87,8 +88,30 @@ public class AuthPage extends CommonActions
             e.getStackTrace();
         }
 
+        WebElement element=WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
+        element.sendKeys(PSSS_TO_KEY);
+
         FindAndClickByLocator(driver, chooseKNDPDropDownList);
         FindAndClickByLocator(driver, chooseKNDPFromList);
+
+        try
+        {
+            PressEsc();
+        }
+        catch(AWTException e)
+        {
+            String errorMessage = "Error during choosing KNEDP from drop-down list";
+            throw new RuntimeException(errorMessage, e);
+        }
+
+        FindAndClickByLocator(driver, checkboxToSaveLogAndPass);
+        element =driver.findElement(checkboxCheck);
+        Assertions.assertTrue(element.isSelected());
+
+        FindAndClickByLocator(driver, enterBuuton);
+
+        WebElementHelper.WaitUntilElementWillBePresentOnPage90(driver, orgNameAtSideBar);
+        Assertions.assertEquals(TEST_ORG_NAME,gatTextFromElement(driver,orgNameAtSideBar));
 
     }
 

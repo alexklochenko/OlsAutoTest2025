@@ -3,7 +3,6 @@ package OLS.Pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,12 +14,17 @@ public class WebElementHelper
     /**
      * Wait Methods
      * */
-    public static WebElement WaitUntilElementWillBePresentOnPage(WebDriver driver, By locator)
+    public static WebElement WaitUntilElementWillBePresentOnPage10(WebDriver driver, By locator)
     {
         WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(10))).until(ExpectedConditions.visibilityOfElementLocated(locator));
         return element;
     }
 
+    public static WebElement WaitUntilElementWillBePresentOnPage90(WebDriver driver, By locator)
+    {
+        WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(90))).until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return element;
+    }
     public static WebElement WaitUntilElementWillBeClickableOnPage(WebDriver driver, By locator)
     {
         WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(10))).until(ExpectedConditions.elementToBeClickable(locator));
@@ -52,6 +56,12 @@ public class WebElementHelper
     public static void checkActivateCheckbox(WebDriver driver, By locator)
     {
         (new WebDriverWait (driver, Duration.ofSeconds(5))).until(ExpectedConditions.elementToBeSelected(locator));
+    }
+
+    public static String gatTextFromElement(WebDriver driver, By locator)
+    {
+        WebElement element=driver.findElement(locator);
+        return element.getText();
     }
 
 

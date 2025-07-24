@@ -24,6 +24,8 @@ public class Config
      */
     public static final String PSSS_TO_KEY="1qaz2wsx";
     public static final String WAY_TO_PASS="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\TEST_KEY\\Key-6.dat";
+    public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
+
 
 /**
  * Вибір ідентифікатору потрібного КНЕДП

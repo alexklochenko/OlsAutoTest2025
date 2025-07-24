@@ -17,10 +17,10 @@ public class CommonActionsAfterAuth
     {
         try
         {
-            WebElement element=WaitUntilElementWillBePresentOnPage(driver, clickOnDropDownList);
+            WebElement element= WaitUntilElementWillBePresentOnPage10(driver, clickOnDropDownList);
             element.click();
             FindAndClickByLocatorByXpath(driver, chooseClientRoleFromDropDownList);
-            WaitUntilElementWillBePresentOnPage(driver, ShoppingCartButton);
+            WaitUntilElementWillBePresentOnPage10(driver, ShoppingCartButton);
         }
         catch(TimeoutException e)
         {

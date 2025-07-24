@@ -34,7 +34,7 @@ public class BasePageClass extends WebElementHelper
      */
     public static void closeCookiesModal(WebDriver driver)
     {
-        WebElement element=WaitUntilElementWillBePresentOnPage(driver, closeCookiesButton);
+        WebElement element= WaitUntilElementWillBePresentOnPage10(driver, closeCookiesButton);
         element.click();
     }
 

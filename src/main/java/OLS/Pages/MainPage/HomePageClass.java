@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static OLS.Common.Config.MAIN_URL;
-import static OLS.Pages.BasePage.WebElementHelper.WaitUntilElementWillBePresentOnPage;
+import static OLS.Pages.BasePage.WebElementHelper.WaitUntilElementWillBePresentOnPage10;
 
 public class HomePageClass
 {
@@ -29,14 +29,14 @@ public class HomePageClass
     public void openAndCheckHeaderOnSalesPage()
     {
         driver.get(MAIN_URL+"info/sale");
-        WebElement element=WaitUntilElementWillBePresentOnPage(driver, headerTitle);
+        WebElement element= WaitUntilElementWillBePresentOnPage10(driver, headerTitle);
         String headerSalesPageText=element.getText();
         Assertions.assertEquals("Акції", headerSalesPageText);
     }
 
     public void openAndCheckLandlinePhoneNumber()
     {
-        WebElement element=WaitUntilElementWillBePresentOnPage(driver, landlinePhoneNumber);
+        WebElement element= WaitUntilElementWillBePresentOnPage10(driver, landlinePhoneNumber);
         String landlinePhoneNumberText=element.getText();
         Assertions.assertEquals("+38 044 206 13 78", landlinePhoneNumberText);
 
@@ -44,35 +44,35 @@ public class HomePageClass
 
     public void openAndCheckLifelinePhoneNumber()
     {
-        WebElement element=WaitUntilElementWillBePresentOnPage(driver, lifelinePhoneNumber);
+        WebElement element= WaitUntilElementWillBePresentOnPage10(driver, lifelinePhoneNumber);
         String lfelinePhoneNumberText=element.getText();
         Assertions.assertEquals("+38 063 799 78 68", lfelinePhoneNumberText);
     }
 
     public void openAndCheckVodafonePhoneNumber()
     {
-        WebElement element=WaitUntilElementWillBePresentOnPage(driver, vodafonePhoneNumber);
+        WebElement element= WaitUntilElementWillBePresentOnPage10(driver, vodafonePhoneNumber);
         String vodafonePhoneNumberText=element.getText();
         Assertions.assertEquals("+38 066 522 40 38", vodafonePhoneNumberText);
     }
 
     public void openAndCheckKyivstarPhoneNumber()
     {
-        WebElement element=WaitUntilElementWillBePresentOnPage(driver, kyivstarPhoneNumber);
+        WebElement element= WaitUntilElementWillBePresentOnPage10(driver, kyivstarPhoneNumber);
         String kyivstarPhoneNumberText=element.getText();
         Assertions.assertEquals("+38 068 073 91 70", kyivstarPhoneNumberText);
     }
 
     public void openAndCheckEmailFooter()
     {
-        WebElement element=WaitUntilElementWillBePresentOnPage(driver, emailFooter);
+        WebElement element= WaitUntilElementWillBePresentOnPage10(driver, emailFooter);
         String EmailFooterText=element.getText();
         Assertions.assertEquals("help@am-soft.ua", EmailFooterText);
     }
 
     public void openAndCheckLinkToYoutubeFooter()
     {
-        WebElement element=WaitUntilElementWillBePresentOnPage(driver, linkToToutubeFooter);
+        WebElement element= WaitUntilElementWillBePresentOnPage10(driver, linkToToutubeFooter);
         String linkToToutubeText=element.getAttribute("href");
         Assertions.assertEquals("https://www.youtube.com/playlist?list=PLv2RJ-mKv4O-aM2ez5KHLf7-cV4CLSyTq", linkToToutubeText);
     }
