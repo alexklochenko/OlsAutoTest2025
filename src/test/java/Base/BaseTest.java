@@ -2,6 +2,7 @@ package Base;
 
 import OLS.Pages.AuthPage.AuthPage;
 import OLS.Pages.BasePage.BasePageClass;
+import OLS.Pages.BasePage.CommonActionsAfterAuth;
 import OLS.Pages.MainPage.HomePageClass;
 import OLS.Pages.Step11Page.Step11PageClass;
 import org.junit.jupiter.api.AfterAll;
@@ -19,6 +20,7 @@ public class BaseTest
     public AuthPage authPage=new AuthPage(driver);
     public HomePageClass homePage =new HomePageClass(driver);
     public Step11PageClass step11Page = new Step11PageClass(driver);
+    public CommonActionsAfterAuth commonActionsAfterAuth=new CommonActionsAfterAuth(driver);
 
     @AfterAll
     public void closeBrowser()

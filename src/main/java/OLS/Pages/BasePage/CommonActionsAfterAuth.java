@@ -9,17 +9,33 @@ import static OLS.Pages.BasePage.WebElementHelper.*;
 
 public class CommonActionsAfterAuth
 {
+    WebDriver driver;
+
+    public CommonActionsAfterAuth (WebDriver driver)
+    {
+        this.driver=driver;
+    }
+
      By clickOnDropDownList=By.cssSelector("li.dropdown.ng-scope");
      By chooseClientRoleFromDropDownList=By.xpath("//li[@ng-repeat='role in app.user.UserRoles']//a[text()='Клієнт']");
      By ShoppingCartButton=By.cssSelector("a.btn.cart-link[data-ui-sref='app.cart']:not([style='margin-right: 50px;'])");
+     By WarningModatToSignPrimaryDoc=By.cssSelector("div.modal-content");
+     By RefusalAtWarningModatToSignPrimaryDoc=By.cssSelector("button.btn.btn.btn-danger.ng-binding");
 
-    public void changeUserRole(WebDriver driver)
+
+    /**
+     * Заміна авторизаційної ролі на роль Клієнт
+     */
+    public void changeUserRole()
     {
         try
         {
             WebElement element= WaitUntilElementWillBePresentOnPage10(driver, clickOnDropDownList);
             element.click();
-            FindAndClickByLocatorByXpath(driver, chooseClientRoleFromDropDownList);
+            WebElement element1=driver.findElement(chooseClientRoleFromDropDownList);
+            element1.click();
+//            FindAndClickByLocatorByXpath(driver, chooseClientRoleFromDropDownList);
+            closeSignPrimaryDocModal(driver);
             WaitUntilElementWillBePresentOnPage10(driver, ShoppingCartButton);
         }
         catch(TimeoutException e)
@@ -27,6 +43,26 @@ public class CommonActionsAfterAuth
             e.getStackTrace();
             System.out.println("Role dropDown is not exist. Only one role at this cabinet");
         }
+    }
+
+    /**
+     * Перевірка наявності модального вікна підписання первинних документів відсутнє
+     */
+
+    public boolean closeSignPrimaryDocModal (WebDriver driver)
+    {
+        boolean isModalPresent=false;
+        try
+        {
+            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, WarningModatToSignPrimaryDoc);
+            WebElementHelper.FindAndClickByLocator(driver,RefusalAtWarningModatToSignPrimaryDoc );
+            isModalPresent=true;
+        }
+        catch(TimeoutException e)
+        {
+            throw new TimeoutException("The modal window for signing primary documents is missing.");
+        }
+        return isModalPresent;
     }
 
 }

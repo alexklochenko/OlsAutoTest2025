@@ -16,9 +16,7 @@ public class BasePageClass extends WebElementHelper
 
 
     static By closeCookiesButton=By.cssSelector("div.popup__btns>button.popup__btn");
-    static By snoutPassForKey=By.cssSelector("input#PKeyPassword");
-    static By roleDropDownToggle=By.cssSelector("a.dropdown-toggle.ng-binding:not([ng-style])");
-    static By clientRoleAtDropDownToggle=By.cssSelector("li.dropdown.ng-scope.open>ul.dropdown-menu.animated.fadeInRight>li:last-child");
+
 
 
     /**
@@ -40,30 +38,7 @@ public class BasePageClass extends WebElementHelper
         element.click();
     }
 
-    /**
-     * Отримати авторизаційні кукі
-     */
-    public String authCookie()
-    {
-        Cookie cookie=driver.manage().getCookieNamed(KEY_NAME_OF_AUTH_COOKIE);
-        return authCookieValue= cookie.getValue();
-    }
 
-    /**
-     * Заміна авторизаційної ролі на роль Клієнт
-     */
-    public void changeRoleOnClient()
-    {
-        try
-        {
-            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, roleDropDownToggle).click();
-            FindAndClickByLocator(driver, clientRoleAtDropDownToggle);
-        }
-        catch(TimeoutException e)
-        {
-            throw new TimeoutException("test");
-        }
-    }
 
 
 }
