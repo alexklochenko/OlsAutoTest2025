@@ -26,7 +26,6 @@ public class Config
     public static final String WAY_TO_PASS="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\TEST_KEY\\Key-6.dat";
     public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
 
-
 /**
  * Вибір ідентифікатору потрібного КНЕДП
  * <option data-index-id="30">Адміністратор ІТС ЦЗО (CA TEST)</option>
@@ -57,7 +56,7 @@ public class Config
  */
 public static final int ID_OF_KNDP=30;
 
-public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
+
 
 
 }
