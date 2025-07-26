@@ -17,7 +17,7 @@ public class AuthPageTest extends BaseTest
     @Test
     public void makePaymentByMonoCase()
     {
-        basePage.mackeAPaymentByMono();
+        basePage.makeAPaymentByMono();
     }
 
 }

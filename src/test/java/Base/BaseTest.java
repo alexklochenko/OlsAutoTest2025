@@ -3,8 +3,9 @@ package Base;
 import OLS.Pages.AuthPage.AuthPage;
 import OLS.Pages.BasePage.BasePageClass;
 import OLS.Pages.BasePage.CommonActionsAfterAuth;
+import OLS.Pages.ClientRolePages.ChooseTypeOfLicensingPage;
 import OLS.Pages.MainPage.HomePageClass;
-import OLS.Pages.Step11Page.Step11PageClass;
+import OLS.Pages.ClientRolePages.Step11PageClass;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,8 @@ public class BaseTest
     public HomePageClass homePage =new HomePageClass(driver);
     public Step11PageClass step11Page = new Step11PageClass(driver);
     public CommonActionsAfterAuth commonActionsAfterAuth=new CommonActionsAfterAuth(driver);
+    public ChooseTypeOfLicensingPage chooseTypeOfLicensingPage=new ChooseTypeOfLicensingPage(driver);
+
 
     @AfterAll
     public void closeBrowser()

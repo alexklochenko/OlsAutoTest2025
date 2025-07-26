@@ -36,4 +36,16 @@ public class CommonActions extends WebElementHelper
         return driver;
     }
 
+    public static boolean isElementInArray (int[] array, int id )
+    {
+        for(int i=0; i<array.length; i++)
+        {
+            if (array[i]==id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

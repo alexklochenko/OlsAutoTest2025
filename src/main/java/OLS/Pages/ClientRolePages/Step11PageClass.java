@@ -1,4 +1,4 @@
-package OLS.Pages.Step11Page;
+package OLS.Pages.ClientRolePages;
 
 import org.openqa.selenium.WebDriver;
 

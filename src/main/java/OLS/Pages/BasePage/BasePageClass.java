@@ -64,7 +64,7 @@ public class BasePageClass extends WebElementHelper
     By checkTextAfterPayment=By.cssSelector("h2.m-n.font-thin.h2.text-black.ng-scope");
 
 
-    public void mackeAPaymentByMono()
+    public void makeAPaymentByMono()
     {
         authCookieValue="ED394DE2853DC5B92E14941AD820BBA4A1E291967DD86664F5DFE9B04E2289F2A8574A5B1E0EA3BC7B81E3FD155508604284EDB9EFBBCE02EFE022B927F787A9DE85D6CA238CBF4749B0DEA60316234DFECEBD86654F3E55E13DAAEEC97D9D5BF10ED63D8D2ED25581DD282C0643B175DABC75BB44E468EE4D1BD553E2F6353A6F78F1BDFC5C55479762A76DAE228F2207306D2F1958A29F5C70C1A8DE23F598C2A0DFA7D3FFAAAA612EC89562200C2429536226501C1C9DBD3E3C25F3B6A2B71FF9F9A2F2C02851835D43C7C23EF52A1A18607FBD5BABB103A8B8E81295FBBB";
         driver.get("https://olstest.am-soft.ua/ols.test");
@@ -72,10 +72,8 @@ public class BasePageClass extends WebElementHelper
         driver.manage().addCookie(new Cookie(KEY_NAME_OF_AUTH_COOKIE,authCookieValue));
         driver.get("https://olstest.am-soft.ua/ols.test/home/order#/app/step41/view/207528/0");
 
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, payByMonoButton).click();
-//        ArrayList<String> array=new ArrayList<>(driver.getWindowHandles());
-//        String handle=array.get(array.size()-1);
-//        driver.get(handle);
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, payByMonoButton)
+                .click();
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, cardNumberOnMonoPage)
                 .sendKeys("4111 1111 1111 1111");
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, expirationDateOnMonoPage)
@@ -95,7 +93,11 @@ public class BasePageClass extends WebElementHelper
         element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver,checkTextAfterPayment);
         Assertions.assertEquals("Крок 4: Замовлення очікує обробки Реєстратором", element.getText());
 
+    }
 
+
+    public void checkLicensingForOrgSubjectType()
+    {
 
     }
 
