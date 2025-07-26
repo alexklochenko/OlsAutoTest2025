@@ -59,7 +59,6 @@ public class AuthPage extends CommonActions
         try
         {
             WaitUntilElementWillBeClickableOnPage(driver, inputPassTpKey);
-            System.out.println("Check succes");
         }
         catch(TimeoutException  e)
         {

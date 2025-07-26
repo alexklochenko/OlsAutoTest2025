@@ -28,6 +28,7 @@ public class WindowsHelper
     public static void PressEsc () throws AWTException
     {
         Robot robot=new Robot();
+        robot.delay(2000);
         robot.keyPress(KeyEvent.VK_ESCAPE);
         robot.keyRelease(KeyEvent.VK_ESCAPE);
     }

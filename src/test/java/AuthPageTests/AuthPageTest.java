@@ -10,8 +10,14 @@ public class AuthPageTest extends BaseTest
     {
         authPage.getLoginPage();
         authPage.loginUsingFileKey();
-//        System.out.println( basePage.authCookie());;
+        basePage.authCookie();
         commonActionsAfterAuth.changeUserRole();
+    }
+
+    @Test
+    public void makePaymentByMonoCase()
+    {
+        basePage.mackeAPaymentByMono();
     }
 
 }
