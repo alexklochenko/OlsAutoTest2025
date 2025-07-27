@@ -20,4 +20,10 @@ public class AuthPageTest extends BaseTest
         basePage.makeAPaymentByMono();
     }
 
+    @Test
+    public void justTest()
+    {
+        basePage.checkLicensingForOrgSubjectType();
+
+    }
 }

@@ -1,7 +1,16 @@
 package OLS.Pages.ClientRolePages;
 
+import OLS.Pages.BasePage.BasePageClass;
+import OLS.Pages.BasePage.WebElementHelper;
+import org.apache.commons.io.TaggedIOException;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import static OLS.Common.Config.LICENSE_ID_USING_IN_REQEST;
+import static OLS.Common.Config.ORG_SUBJECT_TYPE_FOR_REQEST;
 
 public class ChooseTypeOfLicensingPage
 {
@@ -11,6 +20,21 @@ public class ChooseTypeOfLicensingPage
     {
         this.driver=driver;
     }
+
+    /**
+     * Типи замовлення
+     */
+    By AzReqestList=By.cssSelector("div.wrapper-sm.row.bg-light.m-l-none.m-r-none.m-t-n-sm.sm_screen>div.ng-scope:nth-of-type(1)>div.col-lg-3.col-md-3.col-sm-6.col-xs-12.left a.ng-scope");
+    By ArtOfficeReqestList=By.cssSelector("div.wrapper-sm.row.bg-light.m-l-none.m-r-none.m-t-n-sm.sm_screen>div.ng-scope:nth-of-type(2)>div.col-lg-3.col-md-3.col-sm-6.col-xs-12.left a.ng-scope");
+    By ArtCryptoReqestList=By.cssSelector("div.wrapper-sm.row.bg-light.m-l-none.m-r-none.m-t-n-sm.sm_screen>div.ng-scope:nth-of-type(3)>div.col-lg-3.col-md-3.col-sm-6.col-xs-12.left a.ng-scope");
+    By KEPReqestList=By.cssSelector("div.wrapper-sm.row.bg-light.m-l-none.m-r-none.m-t-n-sm.sm_screen>div.ng-scope:nth-of-type(4)>div.col-lg-3.col-md-3.col-sm-6.col-xs-12.left a.ng-scope");
+
+    /**
+     * Группи ліцензій для Арт Звввіт Про
+     */
+    By AzReqestListReporting=By.cssSelector("div.wrapper-md.row.m-t-xs.animated.fadeIn>div.productBlock.ng-scope:nth-of-type(10)");
+    By AzReqestListSoftwareRRO=By.cssSelector("div.wrapper-md.row.m-t-xs.animated.fadeIn>div.productBlock.ng-scope:nth-of-type(11)");
+    By AzReqestListTerminalVersion=By.cssSelector("div.wrapper-md.row.m-t-xs.animated.fadeIn>div.productBlock.ng-scope:nth-of-type(12)");
 
     /**
      * ліцензії для замовлення (ФОП)
@@ -44,8 +68,87 @@ public class ChooseTypeOfLicensingPage
     By YoArtZvitProRROModule=By.cssSelector("div.productBlock.ng-scope:nth-child(11)>div:nth-child(2)>div.product__items.ng-scope:nth-child(1) a.btn.btn-success.btn-teal-dk.create-order-btn.ng-scope");
     By YoArtZvitProTerminalLegalEntities=By.cssSelector("div.productBlock.ng-scope:nth-child(12)>div:nth-child(2)>div.product__items.ng-scope:nth-child(1) a.btn.btn-success.btn-teal-dk.create-order-btn.ng-scope");
 
+    /**
+     * Обробка модального вікна зміни обслуговуючої компанії
+     */
+    By changeVPRModal=By.cssSelector("div.modal-content>div.ng-scope");
+    By continueAtСhangeVPRModal=By.cssSelector("button.btn.btn-primary.ng-scope");
 
-//    $$("div.productBlock.ng-scope:nth-child(11)>div:nth-child(2)>div.product__items.ng-scope:nth-child(6) a.btn.btn-success.btn-teal-dk.create-order-btn.ng-scope")
+    /**
+     * Контрольні елементи на кроці1
+     */
+    By textOnStep1=By.cssSelector("div.col-sm-12.col-xs-12>h2");
+
+    public void stratNewReqest()
+    {
+        BasePageClass.checkLicensingForOrgSubjectType();
+
+        if (ORG_SUBJECT_TYPE_FOR_REQEST==1)
+        {
+            switch(LICENSE_ID_USING_IN_REQEST)
+            {
+                case 1:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProFopIndividualBasic);
+                    break;
+
+                case 2:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProExciseTaxReportingLegalEntities);
+                    break;
+
+                case 3:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProVATAccountingLegalEntities);
+                    break;
+
+                case 4:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProBankReporting);
+                    break;
+
+                case 5:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProNBUReportingModule);
+                    break;
+
+                case 6:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProRROModule);
+                    break;
+
+                case 7:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProTerminalLegalEntities);
+                    break;
+
+                default :
+                    throw new UnsupportedOperationException("The specified license type in the LICENSE_ID_USING_IN_REQEST parameter is not valid");
+
+
+
+            }
+
+        }
+    }
+
+    public void checkInfoAboutChangeVPR ()
+    {
+        try
+        {
+            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, changeVPRModal);
+            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, continueAtСhangeVPRModal).click();
+        }
+        catch(TimeoutException e)
+        {
+            throw new TimeoutException("Кліент не привязаний до жодного ВПР");
+        }
+    }
+
+
+    private void choseTypeOfReqestAntGetToStep1(By ReqestList, By ReqestListGroupeOfLicense, By TypeOfLicense )
+    {
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestListGroupeOfLicense).click();
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, TypeOfLicense).click();
+        checkInfoAboutChangeVPR();
+        String checkText=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1).getText();
+        Assertions.assertEquals("Крок 1: Внесіть відомості про послуги", checkText);
+    }
+
 
 
 }

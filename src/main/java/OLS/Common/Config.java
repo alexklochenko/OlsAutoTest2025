@@ -99,7 +99,9 @@ public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
 * 19 - Ліцензія комп’ютерної програми «Арт-Звіт Pro» «Модуль РРО» на 1 рік
 * 20 - Ліцензія комп'ютерної програми "Арт-Звіт Pro" "Термінальна" для ФОП на 1 рік
 */
-public static final int LICENSING_ID=2;
+public static final int LICENSE_ID_USING_IN_REQEST=3;
+public static final int[]   LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7};
+public static final int[]   LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20};
 
 //    /**
 //     * ТТип ViewTypeId який застосовується

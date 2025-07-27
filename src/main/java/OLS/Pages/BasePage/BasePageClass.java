@@ -6,8 +6,8 @@ import org.openqa.selenium.*;
 
 import java.util.ArrayList;
 
-import static OLS.Common.Config.KEY_NAME_OF_AUTH_COOKIE;
-import static OLS.Common.Config.MAIN_URL;
+import static OLS.Common.CommonActions.isElementInArray;
+import static OLS.Common.Config.*;
 
 public class BasePageClass extends WebElementHelper
 {
@@ -96,9 +96,23 @@ public class BasePageClass extends WebElementHelper
     }
 
 
-    public void checkLicensingForOrgSubjectType()
+    public static void checkLicensingForOrgSubjectType()
     {
+        if(ORG_SUBJECT_TYPE_FOR_REQEST==1)
+        {
+            if (!isElementInArray(LICENSE_IDS_FOR_YO_ONLY, LICENSE_ID_USING_IN_REQEST))
+            {
+                throw new UnsupportedOperationException ("Type of licensing is not supported for used Org subject type");
+            }
+        }
 
+        if(ORG_SUBJECT_TYPE_FOR_REQEST==2 || ORG_SUBJECT_TYPE_FOR_REQEST==3)
+        {
+            if (!isElementInArray(LICENSE_IDS_FOR_FOP_FO_ONLY, LICENSE_ID_USING_IN_REQEST))
+            {
+                throw new UnsupportedOperationException ("Type of licensing is not supported for used Org subject type");
+            }
+        }
     }
 
 
