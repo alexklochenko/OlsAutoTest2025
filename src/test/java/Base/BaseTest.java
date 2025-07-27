@@ -31,6 +31,7 @@ public class BaseTest
         if (NEED_TO_CLOSE_BROWSER_AFTER_TEST)
         {
             driver.close();
+            driver.quit();
         }
     }
 

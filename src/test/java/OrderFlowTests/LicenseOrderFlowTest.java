@@ -14,6 +14,7 @@ public class LicenseOrderFlowTest extends BaseTest
         basePage.authCookie();
         commonActionsAfterAuth.changeUserRole();
         chooseTypeOfLicensingPage.stratNewReqest();
+        step11Page.determinateTypeOfFillingDependendingOnSubjectType();
 
     }
 }

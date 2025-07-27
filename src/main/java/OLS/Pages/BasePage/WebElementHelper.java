@@ -58,6 +58,7 @@ public class WebElementHelper
         (new WebDriverWait (driver, Duration.ofSeconds(5))).until(ExpectedConditions.elementToBeSelected(locator));
     }
 
+
     public static String gatTextFromElement(WebDriver driver, By locator)
     {
         WebElement element=driver.findElement(locator);

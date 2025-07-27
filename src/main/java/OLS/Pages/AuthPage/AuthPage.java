@@ -29,7 +29,7 @@ public class AuthPage extends CommonActions
     By enterButtonToAuthPage=By.cssSelector("div.btn-group");
     By chooseFileTypeOfKeyToAuth=By.cssSelector("div.btn-group.open ul.dropdown-menu>li:nth-child(1)");
     By inputPassTpKey=By.cssSelector("input#PKeyPassword");
-    By chooseFileButton=By.cssSelector("span.group-span-filestyle.input-group-btn");
+    By chooseFileButton=By.cssSelector("label#lPKeyFileInput");
     By chooseKNDPDropDownList=By.cssSelector("select#CAsServersSelect");
     By chooseKNDPFromList=By.cssSelector("select#CAsServersSelect>option[data-index-id='"+ID_OF_KNDP+"']");
     By checkboxToSaveLogAndPass=By.cssSelector("label.i-checks");
@@ -77,7 +77,7 @@ public class AuthPage extends CommonActions
     {
         WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
 
-        FindAndClickByLocator(driver,chooseFileButton);
+        WebElementHelper.FindAndClickByLocator(driver,chooseFileButton);
         try
         {
             OLS.Pages.BasePage.WindowsHelper.ChooseFileFromPC(WAY_TO_PASS);
@@ -86,6 +86,7 @@ public class AuthPage extends CommonActions
         {
             e.getStackTrace();
         }
+
 
         WebElement element=WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
         element.sendKeys(PSSS_TO_KEY);
@@ -107,11 +108,12 @@ public class AuthPage extends CommonActions
         element =driver.findElement(checkboxCheck);
         Assertions.assertTrue(element.isSelected());
 
+
+
         FindAndClickByLocator(driver, enterBuuton);
 
         WebElementHelper.WaitUntilElementWillBePresentOnPage90(driver, orgNameAtSideBar);
         Assertions.assertEquals(TEST_ORG_NAME,gatTextFromElement(driver,orgNameAtSideBar));
-
     }
 
 

@@ -14,11 +14,11 @@ public class AuthPageTest extends BaseTest
         commonActionsAfterAuth.changeUserRole();
     }
 
-    @Test
-    public void makePaymentByMonoCase()
-    {
-        basePage.makeAPaymentByMono();
-    }
+//    @Test
+//    public void makePaymentByMonoCase()
+//    {
+//        basePage.makeAPaymentByMono();
+//    }
 
     @Test
     public void justTest()

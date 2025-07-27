@@ -36,6 +36,7 @@ public static final String PSSS_TO_KEY="1qaz2wsx";
 public static final String WAY_TO_PASS="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\TEST_KEY\\Key-6.dat";
 //    public static final String WAY_TO_PASS="C:\\Users\\o_klochenko\\Documents\\test\\KEYS _test\\Для тестового КНЕДП\\ДСНС\\Для ДСНС_2024_2025\\ТОВ Дванадцять\\Директор Іван Васильович\\Key-6.dat";
 public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
+public static final String TEST_ORG_EDRPOU="22443355";
 
 /**
 * Вибір ідентифікатору потрібного КНЕДП
@@ -99,9 +100,9 @@ public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
 * 19 - Ліцензія комп’ютерної програми «Арт-Звіт Pro» «Модуль РРО» на 1 рік
 * 20 - Ліцензія комп'ютерної програми "Арт-Звіт Pro" "Термінальна" для ФОП на 1 рік
 */
-public static final int LICENSE_ID_USING_IN_REQEST=3;
-public static final int[]   LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7};
-public static final int[]   LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20};
+public static final int LICENSE_ID_USING_IN_REQEST=1;
+public static final int[]   LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+public static final int[]   LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20,8,9,10,11,12,13,14,15};
 
 //    /**
 //     * ТТип ViewTypeId який застосовується

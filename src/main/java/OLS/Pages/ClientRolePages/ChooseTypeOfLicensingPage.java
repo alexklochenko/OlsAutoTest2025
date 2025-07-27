@@ -20,7 +20,7 @@ public class ChooseTypeOfLicensingPage
     {
         this.driver=driver;
     }
-
+    public static String VPRName;
     /**
      * Типи замовлення
      */
@@ -35,6 +35,7 @@ public class ChooseTypeOfLicensingPage
     By AzReqestListReporting=By.cssSelector("div.wrapper-md.row.m-t-xs.animated.fadeIn>div.productBlock.ng-scope:nth-of-type(10)");
     By AzReqestListSoftwareRRO=By.cssSelector("div.wrapper-md.row.m-t-xs.animated.fadeIn>div.productBlock.ng-scope:nth-of-type(11)");
     By AzReqestListTerminalVersion=By.cssSelector("div.wrapper-md.row.m-t-xs.animated.fadeIn>div.productBlock.ng-scope:nth-of-type(12)");
+    By AzReqestListAdditionalServices=By.cssSelector("div.wrapper-md.row.m-t-xs.animated.fadeIn>div.productBlock.ng-scope:nth-of-type(14)");
 
     /**
      * ліцензії для замовлення (ФОП)
@@ -74,6 +75,8 @@ public class ChooseTypeOfLicensingPage
     By changeVPRModal=By.cssSelector("div.modal-content>div.ng-scope");
     By continueAtСhangeVPRModal=By.cssSelector("button.btn.btn-primary.ng-scope");
 
+    By infoAboutVPR=By.cssSelector("div.alert.alert-info strong");
+
     /**
      * Контрольні елементи на кроці1
      */
@@ -108,24 +111,108 @@ public class ChooseTypeOfLicensingPage
                     break;
 
                 case 6:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProRROModule);
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListSoftwareRRO,YoArtZvitProRROModule);
                     break;
 
                 case 7:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProTerminalLegalEntities);
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListTerminalVersion,YoArtZvitProTerminalLegalEntities);
+                    break;
+
+                case 8:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocModule);
+                    break;
+                case 9:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocTransaction1);
+                    break;
+
+                case 10:
+                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,ArtOfficeModule1C);
+                    break;
+
+                case 11:
+                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,ArtOfficeWidgetModule);
+                    break;
+
+                case 12:
+                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,MyArtDocumentCreationSigning1Transaction);
+                    break;
+
+                case 13:
+                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,MyArtOfficeConnectorEDOVchasno);
+                    break;
+
+                case 14:
+                    choseTypeOfReqestAntGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBasic);
+                    break;
+
+                case 15:
+                    choseTypeOfReqestAntGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBatchSign);
                     break;
 
                 default :
                     throw new UnsupportedOperationException("The specified license type in the LICENSE_ID_USING_IN_REQEST parameter is not valid");
-
-
-
             }
+        }
 
+        if (ORG_SUBJECT_TYPE_FOR_REQEST==2 || ORG_SUBJECT_TYPE_FOR_REQEST==3 )
+        {
+            switch(LICENSE_ID_USING_IN_REQEST)
+            {
+                case 16:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitProFopIndividualBasic);
+                    break;
+                case 17:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitLiteFopWithoutEmployees);
+                    break;
+                case 18:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,FopRightToSwitchToIndividualBasicLicense);
+                    break;
+                case 19:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitProModuleRro);
+                    break;
+                case 20:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitProTerminal);
+                    break;
+                case 8:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocModule);
+                    break;
+                case 9:
+                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocTransaction1);
+                    break;
+
+                case 10:
+                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,ArtOfficeModule1C);
+                    break;
+
+                case 11:
+                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,ArtOfficeWidgetModule);
+                    break;
+
+                case 12:
+                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,MyArtDocumentCreationSigning1Transaction);
+                    break;
+
+                case 13:
+                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,MyArtOfficeConnectorEDOVchasno);
+                    break;
+
+                case 14:
+                    choseTypeOfReqestAntGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBasic);
+                    break;
+
+                case 15:
+                    choseTypeOfReqestAntGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBatchSign);
+                    break;
+
+                default :
+                    throw new UnsupportedOperationException("The specified license type in the LICENSE_ID_USING_IN_REQEST parameter is not valid");
+            }
         }
     }
 
-    public void checkInfoAboutChangeVPR ()
+
+
+    public void   checkInfoAboutChangeVPR ()
     {
         try
         {
@@ -139,10 +226,21 @@ public class ChooseTypeOfLicensingPage
     }
 
 
+
+
     private void choseTypeOfReqestAntGetToStep1(By ReqestList, By ReqestListGroupeOfLicense, By TypeOfLicense )
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestListGroupeOfLicense).click();
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, TypeOfLicense).click();
+        checkInfoAboutChangeVPR();
+        String checkText=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1).getText();
+        Assertions.assertEquals("Крок 1: Внесіть відомості про послуги", checkText);
+    }
+
+    private void choseTypeOfReqestAntGetToStep1(By ReqestList, By TypeOfLicense )
+    {
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, TypeOfLicense).click();
         checkInfoAboutChangeVPR();
         String checkText=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1).getText();
