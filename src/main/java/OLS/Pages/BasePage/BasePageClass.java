@@ -115,18 +115,15 @@ public class BasePageClass extends WebElementHelper
         }
     }
 
-    public static String getVPRNameFromModalBeforeStep1(WebDriver driver, By locator)
+    public static String getValueFromText(WebDriver driver, By locator,  String startText,  String endText)
     {
         String fullText=driver.findElement(locator).getText();
-        String startText="Вас обслуговує";
-        String endText="тел.";
-
         int startIndex=fullText.indexOf(startText)+fullText.length();
         int endIndex=fullText.indexOf(endText);
-        String nameOfVPR=fullText.substring(startIndex, endIndex).trim();
-
-        return nameOfVPR;
+        String ValueFromText=fullText.substring(startIndex, endIndex).trim();
+        return ValueFromText;
     }
+
 
 
 

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import static OLS.Common.Config.*;
+import static OLS.Pages.BasePage.BasePageClass.getValueFromText;
 import static OLS.Pages.BasePage.WebElementHelper.gatTextFromElement;
 
 public class Step11PageClass
@@ -39,7 +40,8 @@ public class Step11PageClass
      */
     By licDateStartInput=By.cssSelector("input#orderCreateModel_Nomenclatures_0_StartDate");
     By addNewLicButton=By.cssSelector("input[value='Додати модулі']");
-    By goToStep2Button=By.cssSelector("button.btn.btn-success.btn-next.ng-binding");
+    By LicPriceAtFootor=By.cssSelector("div.text-right.m-t-xs.ng-binding");
+
 
     public void determinateTypeOfFillingDependendingOnSubjectType ()
     {
@@ -63,8 +65,8 @@ public class Step11PageClass
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1);
         Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpou);
         Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpou));
-
         WebElement element=WebElementHelper.FindAndClickByLocator(driver,orgNameInput);
         element.clear();
         element.sendKeys(TEST_ORG_NAME);
@@ -79,10 +81,10 @@ public class Step11PageClass
             String getDate=LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
             element.sendKeys(getDate);
 
+            Assertions.assertEquals(PRICE_OF_CHOOSEN_LICENSE, getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн"));
+
             element=driver.findElement(addNewLicButton);
             Assertions.assertTrue(element.isDisplayed());
-
-            WebElementHelper.FindAndClickByLocator(driver, goToStep2Button);
         }
 
         if(LicensingType ==9 || LicensingType ==12)
@@ -92,10 +94,10 @@ public class Step11PageClass
             String getDate=LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
             element.sendKeys(getDate);
 
+            Assertions.assertEquals(PRICE_OF_CHOOSEN_LICENSE, getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн"));
+
             element=driver.findElement(addNewLicButton);
             Assertions.assertTrue(element.isDisplayed());
-
-            WebElementHelper.FindAndClickByLocator(driver, goToStep2Button);
         }
 
     }
