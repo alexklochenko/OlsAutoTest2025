@@ -102,8 +102,16 @@ public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
 */
 public static final int LICENSE_ID_USING_IN_REQEST=1;
 public static final String PRICE_OF_CHOOSEN_LICENSE="2028";
+public static final Integer COUNT_FOR_TRNSACTIONS_IN_REQEST=100;
 public static final int[]   LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 public static final int[]   LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20,8,9,10,11,12,13,14,15};
+
+/**
+ * Додаткові налаштування для замовлення на ЛІцензію
+ */
+public static final double COST_ONE_TRANSACTION_IN_MAO=5.4;
+public static final double COST_ONE_TRANSACTION_IN_AZ=2.7;
+
 
 //    /**
 //     * ТТип ViewTypeId який застосовується

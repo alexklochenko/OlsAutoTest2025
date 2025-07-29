@@ -76,24 +76,11 @@ public class AuthPage extends CommonActions
     public void loginUsingFileKey()
     {
         WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
-
-        WebElementHelper.FindAndClickByLocator(driver,chooseFileButton);
-        try
-        {
-            OLS.Pages.BasePage.WindowsHelper.ChooseFileFromPC(WAY_TO_PASS);
-        }
-        catch(AWTException e)
-        {
-            e.getStackTrace();
-        }
-
-
         WebElement element=WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
         element.sendKeys(PSSS_TO_KEY);
 
         FindAndClickByLocator(driver, chooseKNDPDropDownList);
         FindAndClickByLocator(driver, chooseKNDPFromList);
-
         try
         {
             PressEsc();
@@ -104,11 +91,19 @@ public class AuthPage extends CommonActions
             throw new RuntimeException(errorMessage, e);
         }
 
+        element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver,chooseFileButton);
+        element.click();
+        try
+        {
+            OLS.Pages.BasePage.WindowsHelper.ChooseFileFromPC(WAY_TO_PASS);
+        }
+        catch(AWTException e)
+        {
+            e.getStackTrace();
+        }
         FindAndClickByLocator(driver, checkboxToSaveLogAndPass);
         element =driver.findElement(checkboxCheck);
         Assertions.assertTrue(element.isSelected());
-
-
 
         FindAndClickByLocator(driver, enterBuuton);
 

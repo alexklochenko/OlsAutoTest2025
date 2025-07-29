@@ -227,7 +227,6 @@ public class ChooseTypeOfLicensingPage
 
 
 
-
     private void choseTypeOfReqestAntGetToStep1(By ReqestList, By ReqestListGroupeOfLicense, By TypeOfLicense )
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();

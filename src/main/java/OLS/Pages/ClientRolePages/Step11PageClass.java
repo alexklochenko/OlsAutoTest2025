@@ -1,6 +1,7 @@
 package OLS.Pages.ClientRolePages;
 
 import OLS.Pages.BasePage.BasePageClass;
+import OLS.Pages.BasePage.TestContext;
 import OLS.Pages.BasePage.WebElementHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.AssertionsKt;
@@ -13,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 
 import static OLS.Common.Config.*;
 import static OLS.Pages.BasePage.BasePageClass.getValueFromText;
+import static OLS.Pages.BasePage.TestContext.priceOfLicOnInReqest;
 import static OLS.Pages.BasePage.WebElementHelper.gatTextFromElement;
 
 public class Step11PageClass
@@ -41,6 +43,7 @@ public class Step11PageClass
     By licDateStartInput=By.cssSelector("input#orderCreateModel_Nomenclatures_0_StartDate");
     By addNewLicButton=By.cssSelector("input[value='Додати модулі']");
     By LicPriceAtFootor=By.cssSelector("div.text-right.m-t-xs.ng-binding");
+    By licTransactionCountStartInput =By.cssSelector("input#orderCreateModel_Nomenclatures_0_MaoDocsCount");
 
 
     public void determinateTypeOfFillingDependendingOnSubjectType ()
@@ -49,7 +52,7 @@ public class Step11PageClass
         {
             String TypeOfSubjectName="Юридична особа";
             fillHeaderForYoReqest(TypeOfSubjectName);
-            fillFootorForYoReqest(LICENSE_ID_USING_IN_REQEST);
+            fillFooterForYoRequest (LICENSE_ID_USING_IN_REQEST);
         }
 //        if(ORG_SUBJECT_TYPE_FOR_REQEST==2)
 //        {}
@@ -72,29 +75,43 @@ public class Step11PageClass
         element.sendKeys(TEST_ORG_NAME);
     }
 
-    public void fillFootorForYoReqest (int  LicensingType)
+    public void fillFooterForYoRequest  (int  licensingType)
     {
-        if(LicensingType !=9 || LicensingType !=12)
+        if (licensingType != 9 && licensingType != 12)
         {
             WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, licDateStartInput);
-            element.clear();;
-            String getDate=LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-            element.sendKeys(getDate);
+            element.clear();
 
-            Assertions.assertEquals(PRICE_OF_CHOOSEN_LICENSE, getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн"));
+            String currentDate=LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+            element.sendKeys(currentDate);
+
+            String valueFromText=getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн");
+            Assertions.assertEquals(PRICE_OF_CHOOSEN_LICENSE, valueFromText);
+            priceOfLicOnInReqest=valueFromText;
 
             element=driver.findElement(addNewLicButton);
             Assertions.assertTrue(element.isDisplayed());
         }
-
-        if(LicensingType ==9 || LicensingType ==12)
+        else
         {
-            WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, licDateStartInput);
-            element.clear();;
-            String getDate=LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-            element.sendKeys(getDate);
+            WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, licTransactionCountStartInput);
+            element.clear();
+            element.sendKeys(String.valueOf(COUNT_FOR_TRNSACTIONS_IN_REQEST));
 
-            Assertions.assertEquals(PRICE_OF_CHOOSEN_LICENSE, getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн"));
+            if(LICENSE_ID_USING_IN_REQEST==12)
+            {
+                String valueFromText=getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн");
+                Assertions.assertEquals(COST_ONE_TRANSACTION_IN_MAO*COUNT_FOR_TRNSACTIONS_IN_REQEST, valueFromText);
+                priceOfLicOnInReqest=valueFromText;
+                System.out.println(priceOfLicOnInReqest);
+            }
+            else
+            {
+                String valueFromText=getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн");
+                Assertions.assertEquals(COST_ONE_TRANSACTION_IN_AZ*COUNT_FOR_TRNSACTIONS_IN_REQEST, valueFromText);
+                priceOfLicOnInReqest=valueFromText;
+                System.out.println(priceOfLicOnInReqest);
+            }
 
             element=driver.findElement(addNewLicButton);
             Assertions.assertTrue(element.isDisplayed());
