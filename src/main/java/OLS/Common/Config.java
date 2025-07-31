@@ -5,21 +5,32 @@ import org.openqa.selenium.By;
 public class Config
 {
 /**
+* Назва авторизаційного кукі
+*/
+public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
+
+
+/**
 *Вибір браузера для ініціалізації драйвера
 *     CHROME_DRIVER=1;
 *     MOZILLA_DRIVER=2;
 */
 protected static final int DRIVER_INDEX=1;
 
+
 /**
 *Змінюючи параметр MAIN_URL можна виконувати тести для тест/реліз та прод оточення
 */
 public static final String MAIN_URL="https://ols-test.am-soft.ua/ols.test/";
 
+
+
 /**
 * Закривати браузер після виконання всіх тестів
 */
 public static final boolean NEED_TO_CLOSE_BROWSER_AFTER_TEST=false;
+
+
 
 /**
 * Визначення типу субєкта організації, ключі якої використовуються в тестах
@@ -29,14 +40,18 @@ public static final boolean NEED_TO_CLOSE_BROWSER_AFTER_TEST=false;
 */
 public static final int ORG_SUBJECT_TYPE_FOR_REQEST=1;
 
+
+
 /**
 * Дані про ключ та сертифікат користувача, контекст якого викорисовується при авторизації
 */
 public static final String PSSS_TO_KEY="1qaz2wsx";
-public static final String WAY_TO_PASS="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\TEST_KEY\\Key-6.dat";
-//    public static final String WAY_TO_PASS="C:\\Users\\o_klochenko\\Documents\\test\\KEYS _test\\Для тестового КНЕДП\\ДСНС\\Для ДСНС_2024_2025\\ТОВ Дванадцять\\Директор Іван Васильович\\Key-6.dat";
+//public static final String WAY_TO_PASS="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\TEST_KEY\\Key-6.dat";
+public static final String WAY_TO_PASS="C:\\Users\\o_klochenko\\Documents\\test\\KEYS _test\\Для тестового КНЕДП\\ДСНС\\Для ДСНС_2024_2025\\ТОВ Дванадцять\\Директор Іван Васильович\\Key-6.dat";
 public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
 public static final String TEST_ORG_EDRPOU="22443355";
+
+
 
 /**
 * Вибір ідентифікатору потрібного КНЕДП
@@ -69,11 +84,6 @@ public static final String TEST_ORG_EDRPOU="22443355";
 public static final int ID_OF_KNDP=30;
 
 /**
-* Назва авторизаційного кукі
-*/
-public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
-
-/**
 * Вибір ліцензії для замовлення (ЮО)
 * 1 - Ліцензія комп’ютерної програми «Арт-Звіт Pro» для юридичних осіб «Індивідуальна - Базова» «Звітність» на 1 рік
 * 2 - Ліцензія комп’ютерної програми «Арт-Звіт Pro» «Звітність з акцизного податку» для юридичних осіб на 1 рік
@@ -100,22 +110,21 @@ public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
 * 19 - Ліцензія комп’ютерної програми «Арт-Звіт Pro» «Модуль РРО» на 1 рік
 * 20 - Ліцензія комп'ютерної програми "Арт-Звіт Pro" "Термінальна" для ФОП на 1 рік
 */
-public static final int LICENSE_ID_USING_IN_REQEST=1;
-public static final String PRICE_OF_CHOOSEN_LICENSE="2028";
-public static final Integer COUNT_FOR_TRNSACTIONS_IN_REQEST=100;
+public static final int LICENSE_ID_USING_IN_REQEST=12;
+public static final String PRICE_OF_CHOOSEN_LICENSE="540.00";
+
+/**
+* Дані про замовлення в якому є потреба визначення кількості транзакцій
+*/
+public static final int COUNT_FOR_TRNSACTIONS_IN_REQEST=100;
+public static final double COST_ONE_TRANSACTION_IN_MAO=5.40;
+public static final double COST_ONE_TRANSACTION_IN_AZ=2.70;
+
+/**
+* Додаткові налаштування
+*/
 public static final int[]   LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 public static final int[]   LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20,8,9,10,11,12,13,14,15};
 
-/**
- * Додаткові налаштування для замовлення на ЛІцензію
- */
-public static final double COST_ONE_TRANSACTION_IN_MAO=5.4;
-public static final double COST_ONE_TRANSACTION_IN_AZ=2.7;
-
-
-//    /**
-//     * ТТип ViewTypeId який застосовується
-//     */
-//    public static final int VIEW_TYPE_ON_STEP11=2;
 
 }

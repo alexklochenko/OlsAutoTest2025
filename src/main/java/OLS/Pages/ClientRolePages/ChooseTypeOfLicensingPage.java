@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import static OLS.Common.Config.LICENSE_ID_USING_IN_REQEST;
 import static OLS.Common.Config.ORG_SUBJECT_TYPE_FOR_REQEST;
+import static OLS.Pages.BasePage.WebElementHelper.checkDiactivateCheckbox;
 
 public class ChooseTypeOfLicensingPage
 {
@@ -74,13 +75,15 @@ public class ChooseTypeOfLicensingPage
      */
     By changeVPRModal=By.cssSelector("div.modal-content>div.ng-scope");
     By continueAtСhangeVPRModal=By.cssSelector("button.btn.btn-primary.ng-scope");
-
     By infoAboutVPR=By.cssSelector("div.alert.alert-info strong");
+    By checkBoxNeedToChangeVpr=By.cssSelector("input[data-ng-model='dealerInfoModel.IsChange']");
 
     /**
      * Контрольні елементи на кроці1
      */
     By textOnStep1=By.cssSelector("div.col-sm-12.col-xs-12>h2");
+
+
 
     public void stratNewReqest()
     {
@@ -216,12 +219,14 @@ public class ChooseTypeOfLicensingPage
     {
         try
         {
-            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, changeVPRModal);
-            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, continueAtСhangeVPRModal).click();
+            WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, changeVPRModal);
+            Assertions.assertTrue(checkDiactivateCheckbox(driver, checkBoxNeedToChangeVpr));
+            WebElement element=WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver, continueAtСhangeVPRModal);
+            element.click();
         }
         catch(TimeoutException e)
         {
-            throw new TimeoutException("Кліент не привязаний до жодного ВПР");
+            System.out.println("Кліент не привязаний до жодного ВПР");
         }
     }
 
@@ -240,7 +245,7 @@ public class ChooseTypeOfLicensingPage
     private void choseTypeOfReqestAntGetToStep1(By ReqestList, By TypeOfLicense )
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, TypeOfLicense).click();
+        WebElementHelper.WaitUntilElementWillBeClickable10(driver, TypeOfLicense).click();
         checkInfoAboutChangeVPR();
         String checkText=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1).getText();
         Assertions.assertEquals("Крок 1: Внесіть відомості про послуги", checkText);

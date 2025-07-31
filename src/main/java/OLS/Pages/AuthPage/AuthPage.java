@@ -75,9 +75,8 @@ public class AuthPage extends CommonActions
     }
     public void loginUsingFileKey()
     {
-        WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
-        WebElement element=WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
-        element.sendKeys(PSSS_TO_KEY);
+        WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,enterBuuton);
+
 
         FindAndClickByLocator(driver, chooseKNDPDropDownList);
         FindAndClickByLocator(driver, chooseKNDPFromList);
@@ -91,7 +90,8 @@ public class AuthPage extends CommonActions
             throw new RuntimeException(errorMessage, e);
         }
 
-        element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver,chooseFileButton);
+        // вибір файлового ключа на ПК
+        WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver,chooseFileButton);
         element.click();
         try
         {
@@ -101,12 +101,20 @@ public class AuthPage extends CommonActions
         {
             e.getStackTrace();
         }
+
+        // введення пароля
+        element=WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
+        element.sendKeys(PSSS_TO_KEY);
+
+        // активація чекбокса збереження пароля
         FindAndClickByLocator(driver, checkboxToSaveLogAndPass);
         element =driver.findElement(checkboxCheck);
         Assertions.assertTrue(element.isSelected());
 
+        // вхід у кабінет
         FindAndClickByLocator(driver, enterBuuton);
 
+        // перевірка успішної авторизації
         WebElementHelper.WaitUntilElementWillBePresentOnPage90(driver, orgNameAtSideBar);
         Assertions.assertEquals(TEST_ORG_NAME,gatTextFromElement(driver,orgNameAtSideBar));
     }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import static OLS.Common.CommonActions.isElementInArray;
 import static OLS.Common.Config.*;
 
+
 public class BasePageClass extends WebElementHelper
 {
     WebDriver driver;
@@ -118,8 +119,8 @@ public class BasePageClass extends WebElementHelper
     public static String getValueFromText(WebDriver driver, By locator,  String startText,  String endText)
     {
         String fullText=driver.findElement(locator).getText();
-        int startIndex=fullText.indexOf(startText)+fullText.length();
-        int endIndex=fullText.indexOf(endText);
+        int startIndex=fullText.indexOf(startText)+startText.length();
+        int endIndex=fullText.indexOf(endText, startIndex);
         String ValueFromText=fullText.substring(startIndex, endIndex).trim();
         return ValueFromText;
     }

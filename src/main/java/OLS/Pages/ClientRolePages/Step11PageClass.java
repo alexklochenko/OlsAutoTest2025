@@ -67,12 +67,13 @@ public class Step11PageClass
     public void fillHeaderForYoReqest(String SubjectTypeName)
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1);
-        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpou);
-        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpou));
         WebElement element=WebElementHelper.FindAndClickByLocator(driver,orgNameInput);
         element.clear();
         element.sendKeys(TEST_ORG_NAME);
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
+        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpou);
+        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpou));
     }
 
     public void fillFooterForYoRequest  (int  licensingType)
@@ -88,6 +89,7 @@ public class Step11PageClass
             String valueFromText=getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн");
             Assertions.assertEquals(PRICE_OF_CHOOSEN_LICENSE, valueFromText);
             priceOfLicOnInReqest=valueFromText;
+            System.out.println(valueFromText);
 
             element=driver.findElement(addNewLicButton);
             Assertions.assertTrue(element.isDisplayed());
@@ -101,7 +103,9 @@ public class Step11PageClass
             if(LICENSE_ID_USING_IN_REQEST==12)
             {
                 String valueFromText=getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн");
-                Assertions.assertEquals(COST_ONE_TRANSACTION_IN_MAO*COUNT_FOR_TRNSACTIONS_IN_REQEST, valueFromText);
+                String totalStr = String.format("%.2f", COST_ONE_TRANSACTION_IN_MAO*COUNT_FOR_TRNSACTIONS_IN_REQEST);
+                totalStr = totalStr.replace(",", ".");
+                Assertions.assertEquals(totalStr, valueFromText);
                 priceOfLicOnInReqest=valueFromText;
                 System.out.println(priceOfLicOnInReqest);
             }

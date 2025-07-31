@@ -14,18 +14,33 @@ public class WebElementHelper
     /**
      * Wait Methods
      * */
+    public static WebElement WaitUntilElementWillBePresentOnPage2(WebDriver driver, By locator)
+    {
+        WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(2))).until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return element;
+    }
     public static WebElement WaitUntilElementWillBePresentOnPage10(WebDriver driver, By locator)
     {
         WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(10))).until(ExpectedConditions.visibilityOfElementLocated(locator));
         return element;
     }
 
+
     public static WebElement WaitUntilElementWillBePresentOnPage90(WebDriver driver, By locator)
     {
         WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(90))).until(ExpectedConditions.visibilityOfElementLocated(locator));
         return element;
     }
+
+
     public static WebElement WaitUntilElementWillBeClickableOnPage(WebDriver driver, By locator)
+    {
+        WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(10))).until(ExpectedConditions.elementToBeClickable(locator));
+        return element;
+    }
+
+
+    public static WebElement WaitUntilElementWillBeClickable10(WebDriver driver, By locator)
     {
         WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(10))).until(ExpectedConditions.elementToBeClickable(locator));
         return element;
@@ -56,6 +71,11 @@ public class WebElementHelper
     public static void checkActivateCheckbox(WebDriver driver, By locator)
     {
         (new WebDriverWait (driver, Duration.ofSeconds(5))).until(ExpectedConditions.elementToBeSelected(locator));
+    }
+
+    public static boolean checkDiactivateCheckbox(WebDriver driver, By locator)
+    {
+        return (new WebDriverWait (driver, Duration.ofSeconds(5))).until(ExpectedConditions.elementSelectionStateToBe(locator, false));
     }
 
 

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 public class LicenseOrderFlowTest extends BaseTest
 {
 
+
     @Test
     public void creatAndFinishLicReqest()
     {
@@ -15,6 +16,5 @@ public class LicenseOrderFlowTest extends BaseTest
         commonActionsAfterAuth.changeUserRole();
         chooseTypeOfLicensingPage.stratNewReqest();
         step11Page.determinateTypeOfFillingDependendingOnSubjectType();
-
     }
 }
