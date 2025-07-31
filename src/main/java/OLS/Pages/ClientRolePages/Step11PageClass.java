@@ -46,7 +46,7 @@ public class Step11PageClass
     By licTransactionCountStartInput =By.cssSelector("input#orderCreateModel_Nomenclatures_0_MaoDocsCount");
 
 
-    public void determinateTypeOfFillingDependendingOnSubjectType ()
+    public void determinateTypeOfFillingDependendingOnSubjectTypeForStep1 ()
     {
         if(ORG_SUBJECT_TYPE_FOR_REQEST==1)
         {
@@ -109,10 +109,12 @@ public class Step11PageClass
                 priceOfLicOnInReqest=valueFromText;
                 System.out.println(priceOfLicOnInReqest);
             }
-            else
+            if(LICENSE_ID_USING_IN_REQEST==9)
             {
                 String valueFromText=getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн");
-                Assertions.assertEquals(COST_ONE_TRANSACTION_IN_AZ*COUNT_FOR_TRNSACTIONS_IN_REQEST, valueFromText);
+                String totalStr = String.format("%.2f", COST_ONE_TRANSACTION_IN_AZ*COUNT_FOR_TRNSACTIONS_IN_REQEST);
+                totalStr = totalStr.replace(",", ".");
+                Assertions.assertEquals(totalStr, valueFromText);
                 priceOfLicOnInReqest=valueFromText;
                 System.out.println(priceOfLicOnInReqest);
             }

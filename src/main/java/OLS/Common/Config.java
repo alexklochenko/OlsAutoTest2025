@@ -110,8 +110,8 @@ public static final int ID_OF_KNDP=30;
 * 19 - Ліцензія комп’ютерної програми «Арт-Звіт Pro» «Модуль РРО» на 1 рік
 * 20 - Ліцензія комп'ютерної програми "Арт-Звіт Pro" "Термінальна" для ФОП на 1 рік
 */
-public static final int LICENSE_ID_USING_IN_REQEST=12;
-public static final String PRICE_OF_CHOOSEN_LICENSE="540.00";
+public static final int LICENSE_ID_USING_IN_REQEST=9;
+public static final String PRICE_OF_CHOOSEN_LICENSE="270.00";
 
 /**
 * Дані про замовлення в якому є потреба визначення кількості транзакцій

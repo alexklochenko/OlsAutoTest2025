@@ -4,6 +4,7 @@ import OLS.Pages.AuthPage.AuthPage;
 import OLS.Pages.BasePage.BasePageClass;
 import OLS.Pages.BasePage.CommonActionsAfterAuth;
 import OLS.Pages.ClientRolePages.ChooseTypeOfLicensingPage;
+import OLS.Pages.ClientRolePages.Step21PageClass;
 import OLS.Pages.MainPage.HomePageClass;
 import OLS.Pages.ClientRolePages.Step11PageClass;
 import org.junit.jupiter.api.AfterAll;
@@ -21,6 +22,7 @@ public class BaseTest
     public AuthPage authPage=new AuthPage(driver);
     public HomePageClass homePage =new HomePageClass(driver);
     public Step11PageClass step11Page = new Step11PageClass(driver);
+    public Step21PageClass step21Page = new Step21PageClass(driver);
     public CommonActionsAfterAuth commonActionsAfterAuth=new CommonActionsAfterAuth(driver);
     public ChooseTypeOfLicensingPage chooseTypeOfLicensingPage=new ChooseTypeOfLicensingPage(driver);
 

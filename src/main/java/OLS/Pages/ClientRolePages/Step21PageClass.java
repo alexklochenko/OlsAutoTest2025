@@ -19,5 +19,9 @@ public class Step21PageClass
     By goToStep2Button=By.cssSelector("button.btn.btn-success.btn-next.ng-binding");
 
 
-//            WebElementHelper.FindAndClickByLocator(driver, goToStep2Button);
+    public void determinateTypeOfFillingDependendingOnSubjectTypeForStep2 ()
+    {
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, goToStep2Button).click();
+    }
+
 }
