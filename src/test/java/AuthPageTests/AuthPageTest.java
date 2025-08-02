@@ -11,6 +11,7 @@ public class AuthPageTest extends BaseTest
         authPage.getLoginPage();
         authPage.loginUsingFileKey();
         basePage.authCookie();
+        commonActionsAfterAuth.closeModalInfoForPaymentRequestRoleVpr();
         commonActionsAfterAuth.changeUserRole();
     }
 
@@ -20,10 +21,4 @@ public class AuthPageTest extends BaseTest
 //        basePage.makeAPaymentByMono();
 //    }
 
-    @Test
-    public void justTest()
-    {
-        basePage.checkLicensingForOrgSubjectType();
-
-    }
 }

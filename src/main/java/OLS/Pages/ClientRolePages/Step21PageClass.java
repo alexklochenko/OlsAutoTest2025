@@ -5,6 +5,8 @@ import OLS.Pages.BasePage.WebElementHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static OLS.Common.CommonActions.logger;
+
 public class Step21PageClass
 {
     WebDriver  driver;
@@ -22,6 +24,7 @@ public class Step21PageClass
     public void determinateTypeOfFillingDependendingOnSubjectTypeForStep2 ()
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, goToStep2Button).click();
+        logger.info("----Start of 2-nt Step----");
     }
 
 }

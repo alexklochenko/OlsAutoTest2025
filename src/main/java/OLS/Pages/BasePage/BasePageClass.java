@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import java.util.ArrayList;
 
 import static OLS.Common.CommonActions.isElementInArray;
+import static OLS.Common.CommonActions.logger;
 import static OLS.Common.Config.*;
 
 
@@ -21,6 +22,15 @@ public class BasePageClass extends WebElementHelper
 
 
     static By closeCookiesButton=By.cssSelector("div.popup__btns>button.popup__btn");
+    By payByMonoButton=By.cssSelector("div.payment_items.ng-scope:nth-of-type(2) button.btn.btn-default.monopay-submit");
+    By cardNumberOnMonoPage=By.cssSelector("input[autocomplete='cc-number']");
+    By expirationDateOnMonoPage=By.cssSelector("input[autocomplete='cc-exp']");
+    By cvvOnMonoPage=By.cssSelector("input[autocomplete='cc-csc']");
+    By enterOnMonoPage=By.cssSelector("button#payWithCardButton");
+    By confirmOnMonoPage=By.cssSelector("button.main-layout--button.m-button-primary");
+    By receiptButtonOnMonoPage=By.cssSelector("p.centered-text.text-bold");
+    By BackToSiteButtonOnMonoPage=By.cssSelector("button#back_to_store_btn");
+    By checkTextAfterPayment=By.cssSelector("h2.m-n.font-thin.h2.text-black.ng-scope");
 
 
 
@@ -43,6 +53,7 @@ public class BasePageClass extends WebElementHelper
         element.click();
     }
 
+
     /**
      * Отримати та зберегти авторизаційні кукі
      */
@@ -54,17 +65,10 @@ public class BasePageClass extends WebElementHelper
         System.out.println(authCookieValue);
     }
 
-    By payByMonoButton=By.cssSelector("div.payment_items.ng-scope:nth-of-type(2) button.btn.btn-default.monopay-submit");
-    By cardNumberOnMonoPage=By.cssSelector("input[autocomplete='cc-number']");
-    By expirationDateOnMonoPage=By.cssSelector("input[autocomplete='cc-exp']");
-    By cvvOnMonoPage=By.cssSelector("input[autocomplete='cc-csc']");
-    By enterOnMonoPage=By.cssSelector("button#payWithCardButton");
-    By confirmOnMonoPage=By.cssSelector("button.main-layout--button.m-button-primary");
-    By receiptButtonOnMonoPage=By.cssSelector("p.centered-text.text-bold");
-    By BackToSiteButtonOnMonoPage=By.cssSelector("button#back_to_store_btn");
-    By checkTextAfterPayment=By.cssSelector("h2.m-n.font-thin.h2.text-black.ng-scope");
 
-
+    /**
+     * Оплата Моно Пей
+     */
     public void makeAPaymentByMono()
     {
         authCookieValue="ED394DE2853DC5B92E14941AD820BBA4A1E291967DD86664F5DFE9B04E2289F2A8574A5B1E0EA3BC7B81E3FD155508604284EDB9EFBBCE02EFE022B927F787A9DE85D6CA238CBF4749B0DEA60316234DFECEBD86654F3E55E13DAAEEC97D9D5BF10ED63D8D2ED25581DD282C0643B175DABC75BB44E468EE4D1BD553E2F6353A6F78F1BDFC5C55479762A76DAE228F2207306D2F1958A29F5C70C1A8DE23F598C2A0DFA7D3FFAAAA612EC89562200C2429536226501C1C9DBD3E3C25F3B6A2B71FF9F9A2F2C02851835D43C7C23EF52A1A18607FBD5BABB103A8B8E81295FBBB";
@@ -97,6 +101,9 @@ public class BasePageClass extends WebElementHelper
     }
 
 
+    /**
+     * Перевірка відповідності типу лыцензії до типу субекта
+     */
     public static void checkLicensingForOrgSubjectType()
     {
         if(ORG_SUBJECT_TYPE_FOR_REQEST==1)
@@ -111,11 +118,16 @@ public class BasePageClass extends WebElementHelper
         {
             if (!isElementInArray(LICENSE_IDS_FOR_FOP_FO_ONLY, LICENSE_ID_USING_IN_REQEST))
             {
+                logger.error("Type of licensing is not supported for used Org subject type");
                 throw new UnsupportedOperationException ("Type of licensing is not supported for used Org subject type");
             }
         }
     }
 
+    /**
+     * отримати текст з елемента
+
+     */
     public static String getValueFromText(WebDriver driver, By locator,  String startText,  String endText)
     {
         String fullText=driver.findElement(locator).getText();

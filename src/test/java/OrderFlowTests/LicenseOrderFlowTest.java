@@ -13,7 +13,9 @@ public class LicenseOrderFlowTest extends BaseTest
         authPage.getLoginPage();
         authPage.loginUsingFileKey();
         basePage.authCookie();
+        commonActionsAfterAuth.closeModalInfoForPaymentRequestRoleVpr();
         commonActionsAfterAuth.changeUserRole();
+        commonActionsAfterAuth.closeSignPrimaryDocModal();
         chooseTypeOfLicensingPage.stratNewReqest();
         step11Page.determinateTypeOfFillingDependendingOnSubjectTypeForStep1();
         step21Page.determinateTypeOfFillingDependendingOnSubjectTypeForStep2();

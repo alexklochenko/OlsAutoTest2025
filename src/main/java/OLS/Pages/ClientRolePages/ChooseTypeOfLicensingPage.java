@@ -2,7 +2,6 @@ package OLS.Pages.ClientRolePages;
 
 import OLS.Pages.BasePage.BasePageClass;
 import OLS.Pages.BasePage.WebElementHelper;
-import org.apache.commons.io.TaggedIOException;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -12,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import static OLS.Common.Config.LICENSE_ID_USING_IN_REQEST;
 import static OLS.Common.Config.ORG_SUBJECT_TYPE_FOR_REQEST;
 import static OLS.Pages.BasePage.WebElementHelper.checkDiactivateCheckbox;
+import static OLS.Common.CommonActions.logger;
 
 public class ChooseTypeOfLicensingPage
 {
@@ -94,62 +94,62 @@ public class ChooseTypeOfLicensingPage
             switch(LICENSE_ID_USING_IN_REQEST)
             {
                 case 1:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProFopIndividualBasic);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProFopIndividualBasic);
                     break;
 
                 case 2:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProExciseTaxReportingLegalEntities);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProExciseTaxReportingLegalEntities);
                     break;
 
                 case 3:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProVATAccountingLegalEntities);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProVATAccountingLegalEntities);
                     break;
 
                 case 4:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProBankReporting);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProBankReporting);
                     break;
 
                 case 5:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProNBUReportingModule);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListReporting,YoArtZvitProNBUReportingModule);
                     break;
 
                 case 6:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListSoftwareRRO,YoArtZvitProRROModule);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListSoftwareRRO,YoArtZvitProRROModule);
                     break;
 
                 case 7:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListTerminalVersion,YoArtZvitProTerminalLegalEntities);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListTerminalVersion,YoArtZvitProTerminalLegalEntities);
                     break;
 
                 case 8:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocModule);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocModule);
                     break;
                 case 9:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocTransaction1);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocTransaction1);
                     break;
 
                 case 10:
-                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,ArtOfficeModule1C);
+                    choseTypeOfReqestAtGetToStep1(ArtOfficeReqestList,ArtOfficeModule1C);
                     break;
 
                 case 11:
-                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,ArtOfficeWidgetModule);
+                    choseTypeOfReqestAtGetToStep1(ArtOfficeReqestList,ArtOfficeWidgetModule);
                     break;
 
                 case 12:
-                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,MyArtDocumentCreationSigning1Transaction);
+                    choseTypeOfReqestAtGetToStep1(ArtOfficeReqestList,MyArtDocumentCreationSigning1Transaction);
                     break;
 
                 case 13:
-                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,MyArtOfficeConnectorEDOVchasno);
+                    choseTypeOfReqestAtGetToStep1(ArtOfficeReqestList,MyArtOfficeConnectorEDOVchasno);
                     break;
 
                 case 14:
-                    choseTypeOfReqestAntGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBasic);
+                    choseTypeOfReqestAtGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBasic);
                     break;
 
                 case 15:
-                    choseTypeOfReqestAntGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBatchSign);
+                    choseTypeOfReqestAtGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBatchSign);
                     break;
 
                 default :
@@ -162,49 +162,49 @@ public class ChooseTypeOfLicensingPage
             switch(LICENSE_ID_USING_IN_REQEST)
             {
                 case 16:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitProFopIndividualBasic);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitProFopIndividualBasic);
                     break;
                 case 17:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitLiteFopWithoutEmployees);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitLiteFopWithoutEmployees);
                     break;
                 case 18:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,FopRightToSwitchToIndividualBasicLicense);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListReporting,FopRightToSwitchToIndividualBasicLicense);
                     break;
                 case 19:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitProModuleRro);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitProModuleRro);
                     break;
                 case 20:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitProTerminal);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListReporting,FopArtZvitProTerminal);
                     break;
                 case 8:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocModule);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocModule);
                     break;
                 case 9:
-                    choseTypeOfReqestAntGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocTransaction1);
+                    choseTypeOfReqestAtGetToStep1(AzReqestList, AzReqestListAdditionalServices,ArtZvitProPrimaryDocTransaction1);
                     break;
 
                 case 10:
-                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,ArtOfficeModule1C);
+                    choseTypeOfReqestAtGetToStep1(ArtOfficeReqestList,ArtOfficeModule1C);
                     break;
 
                 case 11:
-                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,ArtOfficeWidgetModule);
+                    choseTypeOfReqestAtGetToStep1(ArtOfficeReqestList,ArtOfficeWidgetModule);
                     break;
 
                 case 12:
-                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,MyArtDocumentCreationSigning1Transaction);
+                    choseTypeOfReqestAtGetToStep1(ArtOfficeReqestList,MyArtDocumentCreationSigning1Transaction);
                     break;
 
                 case 13:
-                    choseTypeOfReqestAntGetToStep1(ArtOfficeReqestList,MyArtOfficeConnectorEDOVchasno);
+                    choseTypeOfReqestAtGetToStep1(ArtOfficeReqestList,MyArtOfficeConnectorEDOVchasno);
                     break;
 
                 case 14:
-                    choseTypeOfReqestAntGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBasic);
+                    choseTypeOfReqestAtGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBasic);
                     break;
 
                 case 15:
-                    choseTypeOfReqestAntGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBatchSign);
+                    choseTypeOfReqestAtGetToStep1(ArtCryptoReqestList,ArtCryptoPlusBatchSign);
                     break;
 
                 default :
@@ -226,13 +226,13 @@ public class ChooseTypeOfLicensingPage
         }
         catch(TimeoutException e)
         {
-            System.out.println("Кліент не привязаний до жодного ВПР");
+            logger.info("Кліент не привязаний до жодного ВПР");
         }
     }
 
 
 
-    private void choseTypeOfReqestAntGetToStep1(By ReqestList, By ReqestListGroupeOfLicense, By TypeOfLicense )
+    private void choseTypeOfReqestAtGetToStep1(By ReqestList, By ReqestListGroupeOfLicense, By TypeOfLicense )
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestListGroupeOfLicense).click();
@@ -240,9 +240,10 @@ public class ChooseTypeOfLicensingPage
         checkInfoAboutChangeVPR();
         String checkText=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1).getText();
         Assertions.assertEquals("Крок 1: Внесіть відомості про послуги", checkText);
+        logger.info("----Start of 1-t Step----");
     }
 
-    private void choseTypeOfReqestAntGetToStep1(By ReqestList, By TypeOfLicense )
+    private void choseTypeOfReqestAtGetToStep1(By ReqestList, By TypeOfLicense )
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();
         WebElementHelper.WaitUntilElementWillBeClickable10(driver, TypeOfLicense).click();
