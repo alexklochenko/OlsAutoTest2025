@@ -11,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.TestInstance;
 import org.openqa.selenium.WebDriver;
 import OLS.Common.*;
+import org.openqa.selenium.interactions.Actions;
 
 import static OLS.Common.Config.NEED_TO_CLOSE_BROWSER_AFTER_TEST;
 
@@ -18,11 +19,12 @@ import static OLS.Common.Config.NEED_TO_CLOSE_BROWSER_AFTER_TEST;
 public class BaseTest
 {
     WebDriver driver=CommonActions.createDriver();
-    public BasePageClass basePage=new BasePageClass(driver);
+    Actions action=new Actions(driver);
+    public BasePageClass basePage=new BasePageClass(driver,action);
     public AuthPage authPage=new AuthPage(driver);
     public HomePageClass homePage =new HomePageClass(driver);
-    public Step11PageClass step11Page = new Step11PageClass(driver);
-    public Step21PageClass step21Page = new Step21PageClass(driver);
+    public Step11PageClass step11Page = new Step11PageClass(driver,action);
+    public Step21PageClass step21Page = new Step21PageClass(driver,action);
     public CommonActionsAfterAuth commonActionsAfterAuth=new CommonActionsAfterAuth(driver);
     public ChooseTypeOfLicensingPage chooseTypeOfLicensingPage=new ChooseTypeOfLicensingPage(driver);
 

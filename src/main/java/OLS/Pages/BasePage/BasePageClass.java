@@ -3,22 +3,33 @@ package OLS.Pages.BasePage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
 
 import static OLS.Common.CommonActions.isElementInArray;
 import static OLS.Common.CommonActions.logger;
 import static OLS.Common.Config.*;
+import static OLS.Pages.BasePage.TestContext.authCookieValue;
 
 
 public class BasePageClass extends WebElementHelper
 {
     WebDriver driver;
-    public static String authCookieValue=null;
+    Actions action;
+
     public BasePageClass(WebDriver driver)
     {
         this.driver=driver;
     }
+
+    public BasePageClass(WebDriver driver, Actions action)
+    {
+        this.driver=driver;
+        this.action=action;
+    }
+
 
 
     static By closeCookiesButton=By.cssSelector("div.popup__btns>button.popup__btn");
@@ -62,7 +73,7 @@ public class BasePageClass extends WebElementHelper
     {
         Cookie authCookie=driver.manage().getCookieNamed(KEY_NAME_OF_AUTH_COOKIE);
         authCookieValue=authCookie.getValue();
-        System.out.println(authCookieValue);
+        logger.info("Авторизаційні кукі - "+authCookieValue);
     }
 
 
@@ -102,7 +113,7 @@ public class BasePageClass extends WebElementHelper
 
 
     /**
-     * Перевірка відповідності типу лыцензії до типу субекта
+     * Перевірка відповідності типу ліцензії до типу субекта
      */
     public static void checkLicensingForOrgSubjectType()
     {
@@ -135,6 +146,12 @@ public class BasePageClass extends WebElementHelper
         int endIndex=fullText.indexOf(endText, startIndex);
         String ValueFromText=fullText.substring(startIndex, endIndex).trim();
         return ValueFromText;
+    }
+
+    public static String getTextFromElement (WebDriver driver, By locator)
+    {
+        WebElement element = driver.findElement(locator);
+        return element.getText();
     }
 
 

@@ -7,7 +7,7 @@ public class Config
 /**
 * Назва авторизаційного кукі
 */
-public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
+    public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
 
 
 /**
@@ -15,20 +15,20 @@ public static final String KEY_NAME_OF_AUTH_COOKIE="__AUTH_COOKIE_OLS";
 *     CHROME_DRIVER=1;
 *     MOZILLA_DRIVER=2;
 */
-protected static final int DRIVER_INDEX=1;
+    protected static final int DRIVER_INDEX=1;
 
 
 /**
 *Змінюючи параметр MAIN_URL можна виконувати тести для тест/реліз та прод оточення
 */
-public static final String MAIN_URL="https://ols-test.am-soft.ua/ols.test/";
+    public static final String MAIN_URL="https://ols-test.am-soft.ua/ols.test/";
 
 
 
 /**
 * Закривати браузер після виконання всіх тестів
 */
-public static final boolean NEED_TO_CLOSE_BROWSER_AFTER_TEST=false;
+        public static final boolean NEED_TO_CLOSE_BROWSER_AFTER_TEST=false;
 
 
 
@@ -38,23 +38,43 @@ public static final boolean NEED_TO_CLOSE_BROWSER_AFTER_TEST=false;
 * 2 - Фізична особа
 * 3 - Фізична особа підриємець
 */
-public static final int ORG_SUBJECT_TYPE_FOR_REQEST=2;
+        public static final int ORG_SUBJECT_TYPE_FOR_REQEST=1;
 
+
+
+        /**
+         * Дані про ключ та сертифікат користувача, контекст якого викорисовується при авторизації
+         */
+        public static final String PSSS_TO_KEY="1qaz2wsx";
+        public static final String WAY_TO_PASS="C:\\Users\\o_klochenko\\Documents\\test\\KEYS _test\\Для тестового КНЕДП\\ДСНС\\Для ДСНС_2024_2025\\ТОВ Дванадцять\\Директор Іван Васильович\\Key-6.dat";
+        public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
+        public static final String TEST_ORG_EDRPOU="22443355";
+        public static final String TEST_ORG_IBAN="UA123456780000000000000000000";
+        public static final String TEST_ORG_BOSS_JOB_TITLE="Директор";
+        public static final String TEST_ORG_BOSS_DRFO="1212121201";
+        public static final String TEST_ORG_BOSS_PIB="Директор Іван Васильович";
+        public static final String TEST_ORG_IPN="Директор Іван Васильович";
+        public static final String TEST_ORG_EMAIL="SELENIUM_TEST@TEST.UA";
+        public static final String TEST_ORG_PHONE_NUMBER="991234567";
 
 
 /**
-* Дані про ключ та сертифікат користувача, контекст якого викорисовується при авторизації
-*/
-public static final String PSSS_TO_KEY="1qaz2wsx";
-public static final String WAY_TO_PASS="C:\\Users\\o_klochenko\\Documents\\test\\KEYS _test\\Для тестового КНЕДП\\ДСНС\\Для ДСНС_2024_2025\\ТОВ Дванадцять\\Директор Іван Васильович\\Key-6.dat";
-public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
-public static final String TEST_ORG_EDRPOU="22443355";
-
-
-
+ * Система опадаткування
+ * 	value="0" "Юридична особа – платники на ЄП, неплатники ПДВ"
+ * 	value="1" "Юридична особа – платники на ЄП, платники ПДВ"
+ * 	value="2" "Юридична особа – платники на загальній системі оподаткування, неплатники ПДВ"
+ * 	value="3" "Юридична особа – платники на загальній системі оподаткування, платники ПДВ"
+ * 	value="4" "Юридична особа – платники фіксованого сільськогосподарського податку, неплатники ПДВ"
+ * 	value="5" "Юридична особа – платники фіксованого сільськогосподарського податку, платники ПДВ"
+ * 	value="6" "Юридична особа – Громадські та неприбуткові організації. Неплатники ПДВ"
+ * 	value="7" "Юридична особа – Громадські та неприбуткові організації. Платники ПДВ"
+ * 	value="8" "Юридична особа - платник податку на виведений капітал, неплатник ПДВ"
+ * 	value="9" "Юридична особа - платник податку на виведений капітал, платник ПДВ"
+ */
+        public static final int ID_OF_TAX_SYST=1;
 
 /**
-* Вибір ідентифікатору потрібного КНЕДП
+ * Вибір ідентифікатору потрібного КНЕДП
 * <option data-index-id="30">Адміністратор ІТС ЦЗО (CA TEST)</option>
 * <option data-index-id="0">КНЕДП ДПС України</option>
 * <option data-index-id="2">КНЕДП "MASTERKEY" ТОВ "АРТ-МАСТЕР"</option>
@@ -81,7 +101,7 @@ public static final String TEST_ORG_EDRPOU="22443355";
 * <option data-index-id="26">КНЕДП monobank | Universal Bank</option>
 * <option data-index-id="13">Інший КНЕДП</option>
 */
-public static final int ID_OF_KNDP=0;
+        public static final int ID_OF_KNDP=30;
 
 /**
 * Вибір ліцензії для замовлення (ЮО)
@@ -110,21 +130,21 @@ public static final int ID_OF_KNDP=0;
 * 19 - Ліцензія комп’ютерної програми «Арт-Звіт Pro» «Модуль РРО» на 1 рік
 * 20 - Ліцензія комп'ютерної програми "Арт-Звіт Pro" "Термінальна" для ФОП на 1 рік
 */
-public static final int LICENSE_ID_USING_IN_REQEST=16;
-public static final String PRICE_OF_CHOOSEN_LICENSE="626.4";
+        public static final int LICENSE_ID_USING_IN_REQEST=1;
+        public static final String PRICE_OF_CHOOSEN_LICENSE="2028";
 
 /**
 * Дані про замовлення в якому є потреба визначення кількості транзакцій
 */
-public static final int COUNT_FOR_TRNSACTIONS_IN_REQEST=100;
-public static final double COST_ONE_TRANSACTION_IN_MAO=5.40;
-public static final double COST_ONE_TRANSACTION_IN_AZ=2.70;
+        public static final int COUNT_FOR_TRNSACTIONS_IN_REQEST=100;
+        public static final double COST_ONE_TRANSACTION_IN_MAO=5.40;
+        public static final double COST_ONE_TRANSACTION_IN_AZ=2.70;
 
 /**
 * Додаткові налаштування
 */
-public static final int[]   LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-public static final int[]   LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20,8,9,10,11,12,13,14,15};
+        public static final int[]   LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+        public static final int[]   LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20,8,9,10,11,12,13,14,15};
 
 
 }

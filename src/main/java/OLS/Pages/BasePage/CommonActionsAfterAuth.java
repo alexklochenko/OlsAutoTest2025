@@ -9,13 +9,13 @@ import org.openqa.selenium.WebElement;
 import static OLS.Pages.BasePage.WebElementHelper.*;
 import static OLS.Common.CommonActions.logger;
 
-public class CommonActionsAfterAuth
+public class CommonActionsAfterAuth extends BasePageClass
 {
     WebDriver driver;
 
     public CommonActionsAfterAuth (WebDriver driver)
     {
-        this.driver=driver;
+        super(driver);
     }
 
      By clickOnDropDownList=By.cssSelector("li.dropdown.ng-scope");
@@ -36,11 +36,11 @@ public class CommonActionsAfterAuth
     {
         try
         {
-            WebElement element= WaitUntilElementWillBePresentOnPage10(driver, clickOnDropDownList);
+            WebElement element= WaitUntilElementWillBePresentOnPage5(driver, clickOnDropDownList);
             element.click();
-            WaitUntilElementWillBeClickableOnPage(driver, chooseClientRoleFromDropDownList);
+            WaitUntilElementWillBeClickableOnPage5(driver, chooseClientRoleFromDropDownList);
             FindAndClickByLocator(driver, chooseClientRoleFromDropDownList);
-            WaitUntilElementWillBePresentOnPage10(driver, ShoppingCartButton);
+            WaitUntilElementWillBePresentOnPage2(driver, ShoppingCartButton);
         }
         catch(TimeoutException e)
         {
@@ -58,13 +58,13 @@ public class CommonActionsAfterAuth
         boolean isModalPresent=false;
         try
         {
-            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, WarningModatToSignPrimaryDoc);
+            WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, WarningModatToSignPrimaryDoc);
             WebElementHelper.FindAndClickByLocator(driver,RefusalAtWarningModatToSignPrimaryDoc );
             isModalPresent=true;
         }
         catch(TimeoutException e)
         {
-            logger.info("The modal window for signing primary documents is missing.");
+            logger.warn("The modal window for signing primary documents is missing.");
         }
         return isModalPresent;
     }
@@ -79,7 +79,7 @@ public class CommonActionsAfterAuth
             WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, WarningModatToPresentRequestWithPayment);
             WebElement element=driver.findElement(TextAtWarningModatRequestWithPayment);
             Assertions.assertTrue(element.isDisplayed());
-            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver,XButtonAtWarningModatRequestWithPayment).click();
+            WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver,XButtonAtWarningModatRequestWithPayment).click();
         }
         catch(TimeoutException e)
         {

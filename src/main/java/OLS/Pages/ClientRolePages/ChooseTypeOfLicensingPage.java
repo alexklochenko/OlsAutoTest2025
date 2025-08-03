@@ -13,15 +13,15 @@ import static OLS.Common.Config.ORG_SUBJECT_TYPE_FOR_REQEST;
 import static OLS.Pages.BasePage.WebElementHelper.checkDiactivateCheckbox;
 import static OLS.Common.CommonActions.logger;
 
-public class ChooseTypeOfLicensingPage
+public class ChooseTypeOfLicensingPage extends BasePageClass
 {
     WebDriver driver;
 
     public ChooseTypeOfLicensingPage(WebDriver driver)
     {
-        this.driver=driver;
+        super(driver);
     }
-    public static String VPRName;
+
     /**
      * Типи замовлення
      */

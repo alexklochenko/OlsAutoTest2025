@@ -6,8 +6,10 @@ import OLS.Pages.BasePage.WebElementHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.AssertionsKt;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,12 +20,13 @@ import static OLS.Pages.BasePage.BasePageClass.getValueFromText;
 import static OLS.Pages.BasePage.TestContext.priceOfLicOnInReqest;
 import static OLS.Pages.BasePage.WebElementHelper.gatTextFromElement;
 
-public class Step11PageClass
+public class Step11PageClass extends BasePageClass
 {
     WebDriver driver;
-    public Step11PageClass(WebDriver driver)
+    Actions action;
+    public Step11PageClass(WebDriver driver, Actions action)
     {
-        this.driver=driver;
+        super(driver, action);
     }
 
     /**
@@ -51,66 +54,93 @@ public class Step11PageClass
 
     public void determinateTypeOfFillingDependendingOnSubjectTypeForStep1 ()
     {
+        try
+        {
+            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1);
+        }
+        catch(TimeoutException e)
+        {
+            logger.error("Контрольний елемент не відображається на сторінці Крок1");
+            throw new TimeoutException("Контрольний елемент не відображається на сторінці Крок1");
+        }
+
         switch (ORG_SUBJECT_TYPE_FOR_REQEST)
         {
             case 1:
                 String TypeOfSubjectName = "Юридична особа";
-                fillHeaderForYoReqest(TypeOfSubjectName);
+//                fillHeaderForYoReqest(TypeOfSubjectName);
+                fillHeaderForReqest( TypeOfSubjectName,orgNameInput, orgSubjectType, orgEdrpouYo);
                 fillFooterForRequest(LICENSE_ID_USING_IN_REQEST);
                 break;
             case 2:
                 TypeOfSubjectName = "Фізична особа";
-                fillHeaderForFoReqest(TypeOfSubjectName);
+//                fillHeaderForFoReqest(TypeOfSubjectName);
+                fillHeaderForReqest( TypeOfSubjectName,foNameInput, orgSubjectType, orgEdrpouFop);
                 fillFooterForRequest(LICENSE_ID_USING_IN_REQEST);
                 break;
 
             case 3:
                 TypeOfSubjectName = "Фізична особа-підприємець";
-                fillHeaderForFopReqest(TypeOfSubjectName);
+//                fillHeaderForFopReqest(TypeOfSubjectName);
+                fillHeaderForReqest( TypeOfSubjectName,orgNameInput, orgSubjectType, orgEdrpouFop);
                 fillFooterForRequest(LICENSE_ID_USING_IN_REQEST);
+
                 break;
 
             default :
-                logger.info("Wrong type of Org Subject in Config file");
+                logger.error("Wrong type of Org Subject in Config file");
                 throw new UnsupportedOperationException("Wrong type of Org Subject in Config file");
         }
     }
 
-    public void fillHeaderForYoReqest(String SubjectTypeName)
+    public void fillHeaderForReqest(String SubjectTypeName,
+                                    By orgNameInput,
+                                    By orgSubjectType,
+                                    By orgEdrpou)
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1);
         WebElement element=WebElementHelper.FindAndClickByLocator(driver,orgNameInput);
         element.clear();
         element.sendKeys(TEST_ORG_NAME);
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
         Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpouYo);
-        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpouYo));
+        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpou);
+        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpou));
     }
 
-    public void fillHeaderForFopReqest(String SubjectTypeName)
-    {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1);
-        WebElement element=WebElementHelper.FindAndClickByLocator(driver,orgNameInput);
-        element.clear();
-        element.sendKeys(TEST_ORG_NAME);
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
-        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpouFop);
-        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpouFop));
-    }
 
-    public void fillHeaderForFoReqest(String SubjectTypeName)
-    {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1);
-        WebElement element=WebElementHelper.FindAndClickByLocator(driver,foNameInput);
-        element.clear();
-        element.sendKeys(TEST_ORG_NAME);
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
-        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpouFop);
-        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpouFop));
-    }
+
+//    public void fillHeaderForYoReqest(String SubjectTypeName)
+//    {
+//        WebElement element=WebElementHelper.FindAndClickByLocator(driver,orgNameInput);
+//        element.clear();
+//        element.sendKeys(TEST_ORG_NAME);
+//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
+//        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
+//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpouYo);
+//        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpouYo));
+//    }
+//
+//    public void fillHeaderForFopReqest(String SubjectTypeName)
+//    {
+//        WebElement element=WebElementHelper.FindAndClickByLocator(driver,orgNameInput);
+//        element.clear();
+//        element.sendKeys(TEST_ORG_NAME);
+//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
+//        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
+//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpouFop);
+//        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpouFop));
+//    }
+//
+//    public void fillHeaderForFoReqest(String SubjectTypeName)
+//    {
+//        WebElement element=WebElementHelper.FindAndClickByLocator(driver,foNameInput);
+//        element.clear();
+//        element.sendKeys(TEST_ORG_NAME);
+//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
+//        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
+//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpouFop);
+//        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpouFop));
+//    }
 
     public void fillFooterForRequest  (int  licensingType)
     {
@@ -125,7 +155,7 @@ public class Step11PageClass
             String valueFromText=getValueFromText(driver, LicPriceAtFootor, "До сплати:", "грн");
             Assertions.assertEquals(PRICE_OF_CHOOSEN_LICENSE, valueFromText);
             priceOfLicOnInReqest=valueFromText;
-            System.out.println(valueFromText);
+            logger.info("Вартіст ліцензії, що вказана на кроці Степ_1 - "+valueFromText+" грн");
 
             element=driver.findElement(addNewLicButton);
             Assertions.assertTrue(element.isDisplayed());
@@ -143,7 +173,7 @@ public class Step11PageClass
                 totalStr = totalStr.replace(",", ".");
                 Assertions.assertEquals(totalStr, valueFromText);
                 priceOfLicOnInReqest=valueFromText;
-                System.out.println(priceOfLicOnInReqest);
+                logger.info("Вартіст ліцензії, що вказана на кроці Степ_1 - "+valueFromText+" грн");
             }
             if(LICENSE_ID_USING_IN_REQEST==9)
             {
@@ -152,7 +182,7 @@ public class Step11PageClass
                 totalStr = totalStr.replace(",", ".");
                 Assertions.assertEquals(totalStr, valueFromText);
                 priceOfLicOnInReqest=valueFromText;
-                System.out.println(priceOfLicOnInReqest);
+                logger.info("Вартіст ліцензії, що вказана на кроці Степ_1 - "+valueFromText+" грн");
             }
 
             element=driver.findElement(addNewLicButton);
