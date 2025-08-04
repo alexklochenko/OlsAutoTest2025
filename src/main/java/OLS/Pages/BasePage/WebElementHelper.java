@@ -99,6 +99,42 @@ public class WebElementHelper
         return element.getText();
     }
 
+    public static String getTextFromElementWithNbsp (WebDriver driver, By locator)
+    {
+        boolean check=false;
+        String texs=null;
+        do
+        {
+            WebElement element= WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, locator);
+            if(element.getText().equals(" "))
+            {
+                check=false;
+            }
+            else
+            {
+                texs=element.getText();
+                check=true;
+            }
+
+        }
+        while(!check);
+
+        return texs;
+    }
+
+    /**
+     * отримати текст з елемента
+
+     */
+    public static String getValueFromText(WebDriver driver, By locator,  String startText,  String endText)
+    {
+        String fullText=driver.findElement(locator).getText();
+        int startIndex=fullText.indexOf(startText)+startText.length();
+        int endIndex=fullText.indexOf(endText, startIndex);
+        String ValueFromText=fullText.substring(startIndex, endIndex).trim();
+        return ValueFromText;
+    }
+
     /**
      * SendKeys Method
      */
@@ -110,6 +146,14 @@ public class WebElementHelper
         element.click();
         element.clear();
         element.sendKeys(value);
+    }
+
+    /**
+     * Порівняння тексту з едемента з Еталоном
+     */
+    public static boolean checkTextEqualsToEtalon(WebDriver driver, By locator, String etalon)
+    {
+        return driver.findElement(locator).getText().equals(etalon);
     }
 
 

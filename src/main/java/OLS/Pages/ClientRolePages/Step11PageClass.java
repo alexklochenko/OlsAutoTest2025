@@ -1,6 +1,6 @@
 package OLS.Pages.ClientRolePages;
 
-import OLS.Pages.BasePage.BasePageClass;
+import OLS.Pages.BasePage.WebElementHelper;
 import OLS.Pages.BasePage.TestContext;
 import OLS.Pages.BasePage.WebElementHelper;
 import org.junit.jupiter.api.Assertions;
@@ -16,17 +16,18 @@ import java.time.format.DateTimeFormatter;
 
 import static OLS.Common.CommonActions.logger;
 import static OLS.Common.Config.*;
-import static OLS.Pages.BasePage.BasePageClass.getValueFromText;
+import static OLS.Pages.BasePage.WebElementHelper.getValueFromText;
 import static OLS.Pages.BasePage.TestContext.priceOfLicOnInReqest;
 import static OLS.Pages.BasePage.WebElementHelper.gatTextFromElement;
 
-public class Step11PageClass extends BasePageClass
+public class Step11PageClass
 {
     WebDriver driver;
     Actions action;
     public Step11PageClass(WebDriver driver, Actions action)
     {
-        super(driver, action);
+        this.driver=driver;
+        this.action=action;
     }
 
     /**
@@ -98,7 +99,7 @@ public class Step11PageClass extends BasePageClass
                                     By orgSubjectType,
                                     By orgEdrpou)
     {
-        WebElement element=WebElementHelper.FindAndClickByLocator(driver,orgNameInput);
+        WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver,orgNameInput);
         element.clear();
         element.sendKeys(TEST_ORG_NAME);
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);

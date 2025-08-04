@@ -46,16 +46,20 @@ public class Config
          * Дані про ключ та сертифікат користувача, контекст якого викорисовується при авторизації
          */
         public static final String PSSS_TO_KEY="1qaz2wsx";
-        public static final String WAY_TO_PASS="C:\\Users\\o_klochenko\\Documents\\test\\KEYS _test\\Для тестового КНЕДП\\ДСНС\\Для ДСНС_2024_2025\\ТОВ Дванадцять\\Директор Іван Васильович\\Key-6.dat";
+        public static final String WAY_TO_PASS="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\TEST_KEY\\Key-6.dat";
         public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
         public static final String TEST_ORG_EDRPOU="22443355";
+
         public static final String TEST_ORG_IBAN="UA123456780000000000000000000";
         public static final String TEST_ORG_BOSS_JOB_TITLE="Директор";
         public static final String TEST_ORG_BOSS_DRFO="1212121201";
         public static final String TEST_ORG_BOSS_PIB="Директор Іван Васильович";
-        public static final String TEST_ORG_IPN="Директор Іван Васильович";
+        public static final String TEST_ORG_IPN="224433551212";
         public static final String TEST_ORG_EMAIL="SELENIUM_TEST@TEST.UA";
         public static final String TEST_ORG_PHONE_NUMBER="991234567";
+        public static final String NUMBER_OF_SEPARATED_UNIY="1795";
+        public static final String EDRPOU_OF_MAIN_COMPANY="22443355";
+
 
 
 /**
@@ -72,6 +76,19 @@ public class Config
  * 	value="9" "Юридична особа - платник податку на виведений капітал, платник ПДВ"
  */
         public static final int ID_OF_TAX_SYST=1;
+
+
+/**
+ * Вид зайнатості (Крок 2)
+ * 	value="1" "Юридична особа"
+ * 	value="2" "Відокремлений підрозділ"
+ * 	value="3" "ФОП"
+ * 	value="4" "Нотаріус"
+ * 	value="5" "Арбітражний круючий"
+ * 	value="6" "Адвокат"
+ * 	value="7" "Приватний виконавець"
+ */
+        public static final int EMPLOYMENT_TYPE=2;
 
 /**
  * Вибір ідентифікатору потрібного КНЕДП
@@ -143,8 +160,10 @@ public class Config
 /**
 * Додаткові налаштування
 */
-        public static final int[]   LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
-        public static final int[]   LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20,8,9,10,11,12,13,14,15};
+        public static final int[] LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+        public static final int[] LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20,8,9,10,11,12,13,14,15};
+        public static final int[] ARRAY_OF_EMPLOYMENT_TYPE_FOR_YO =new int[]{1,2};
+        public static final int[] ARRAY_OF_EMPLOYMENT_TYPE_FOR_FOP =new int[]{3,4,5,6};
 
 
 }

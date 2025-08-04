@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 
 import static OLS.Common.CommonActions.isElementInArray;
@@ -121,6 +123,7 @@ public class BasePageClass extends WebElementHelper
         {
             if (!isElementInArray(LICENSE_IDS_FOR_YO_ONLY, LICENSE_ID_USING_IN_REQEST))
             {
+                logger.error("Type of licensing is not supported for used Org subject type");
                 throw new UnsupportedOperationException ("Type of licensing is not supported for used Org subject type");
             }
         }
@@ -136,23 +139,37 @@ public class BasePageClass extends WebElementHelper
     }
 
     /**
-     * отримати текст з елемента
-
+     * Перевірка відповідності виду зайнятості до типу субєкта
      */
-    public static String getValueFromText(WebDriver driver, By locator,  String startText,  String endText)
+    public static void checkEmploymentTypeToSubjectType()
     {
-        String fullText=driver.findElement(locator).getText();
-        int startIndex=fullText.indexOf(startText)+startText.length();
-        int endIndex=fullText.indexOf(endText, startIndex);
-        String ValueFromText=fullText.substring(startIndex, endIndex).trim();
-        return ValueFromText;
+        if (ORG_SUBJECT_TYPE_FOR_REQEST==1)
+        {
+            if(!isElementInArray(ARRAY_OF_EMPLOYMENT_TYPE_FOR_YO, EMPLOYMENT_TYPE))
+            {
+                logger.error("Employment type not supported for chosen type of org subject");
+                throw new UnsupportedOperationException("Employment type not supported for chosen type of subject");
+            }
+        }
+
+        if (ORG_SUBJECT_TYPE_FOR_REQEST==2 || ORG_SUBJECT_TYPE_FOR_REQEST==3)
+        {
+            if(!isElementInArray(ARRAY_OF_EMPLOYMENT_TYPE_FOR_FOP, EMPLOYMENT_TYPE))
+            {
+                logger.error("Employment type not supported for chosen type of org subject");
+                throw new UnsupportedOperationException("Employment type not supported for chosen type of subject");
+            }
+        }
     }
 
-    public static String getTextFromElement (WebDriver driver, By locator)
-    {
-        WebElement element = driver.findElement(locator);
-        return element.getText();
-    }
+
+
+
+
+
+
+
+
 
 
 

@@ -1,7 +1,6 @@
 package OLS.Pages.AuthPage;
 
 import OLS.Common.CommonActions;
-import OLS.Pages.BasePage.BasePageClass;
 import OLS.Pages.BasePage.WebElementHelper;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
@@ -13,6 +12,7 @@ import java.awt.*;
 
 import static OLS.Common.Config.*;
 import static OLS.Pages.BasePage.BasePageClass.getUrl;
+import static OLS.Pages.BasePage.BasePageClass.closeCookiesModal;
 import static OLS.Pages.BasePage.WindowsHelper.PressEsc;
 
 
@@ -43,7 +43,7 @@ public class AuthPage extends CommonActions
 
         try
         {
-            BasePageClass.closeCookiesModal(driver);
+            closeCookiesModal(driver);
         }
         catch(TimeoutException e)
         {
@@ -63,7 +63,7 @@ public class AuthPage extends CommonActions
         catch(TimeoutException  e)
         {
             e.getStackTrace();
-            return;
+
         }
 
     }
@@ -71,6 +71,8 @@ public class AuthPage extends CommonActions
     public void needToSaveLoginAndPassOnSession()
     {
         FindAndClickByLocator(driver, checkboxToSaveLogAndPass);
+        WebElement element= driver.findElement(checkboxCheck);
+        Assertions.assertTrue(element.isSelected());
 
     }
     public void loginUsingFileKey()
@@ -107,9 +109,7 @@ public class AuthPage extends CommonActions
         element.sendKeys(PSSS_TO_KEY);
 
         // активація чекбокса збереження пароля
-        FindAndClickByLocator(driver, checkboxToSaveLogAndPass);
-        element =driver.findElement(checkboxCheck);
-        Assertions.assertTrue(element.isSelected());
+        needToSaveLoginAndPassOnSession();
 
         // вхід у кабінет
         FindAndClickByLocator(driver, enterBuuton);

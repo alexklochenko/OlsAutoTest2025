@@ -6,16 +6,18 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.time.Duration;
+
 import static OLS.Pages.BasePage.WebElementHelper.*;
 import static OLS.Common.CommonActions.logger;
 
-public class CommonActionsAfterAuth extends BasePageClass
+public class CommonActionsAfterAuth
 {
     WebDriver driver;
 
     public CommonActionsAfterAuth (WebDriver driver)
     {
-        super(driver);
+        this.driver=driver;
     }
 
      By clickOnDropDownList=By.cssSelector("li.dropdown.ng-scope");
@@ -36,15 +38,13 @@ public class CommonActionsAfterAuth extends BasePageClass
     {
         try
         {
-            WebElement element= WaitUntilElementWillBePresentOnPage5(driver, clickOnDropDownList);
-            element.click();
+            WaitUntilElementWillBePresentOnPage10(driver, clickOnDropDownList).click();
             WaitUntilElementWillBeClickableOnPage5(driver, chooseClientRoleFromDropDownList);
             FindAndClickByLocator(driver, chooseClientRoleFromDropDownList);
             WaitUntilElementWillBePresentOnPage2(driver, ShoppingCartButton);
         }
         catch(TimeoutException e)
         {
-            e.getStackTrace();
             logger.warn("Role dropDown is not exist. Only one role at this cabinet");
         }
     }
@@ -76,13 +76,16 @@ public class CommonActionsAfterAuth extends BasePageClass
     {
         try
         {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
             WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, WarningModatToPresentRequestWithPayment);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
             WebElement element=driver.findElement(TextAtWarningModatRequestWithPayment);
             Assertions.assertTrue(element.isDisplayed());
             WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver,XButtonAtWarningModatRequestWithPayment).click();
         }
         catch(TimeoutException e)
         {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
             logger.info("There is no requests with payment at VPR cabinet");
         }
 

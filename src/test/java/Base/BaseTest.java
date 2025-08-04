@@ -20,13 +20,14 @@ public class BaseTest
 {
     WebDriver driver=CommonActions.createDriver();
     Actions action=new Actions(driver);
-    public BasePageClass basePage=new BasePageClass(driver,action);
+
     public AuthPage authPage=new AuthPage(driver);
-    public HomePageClass homePage =new HomePageClass(driver);
-    public Step11PageClass step11Page = new Step11PageClass(driver,action);
-    public Step21PageClass step21Page = new Step21PageClass(driver,action);
+    public BasePageClass basePage=new BasePageClass(driver,action);
     public CommonActionsAfterAuth commonActionsAfterAuth=new CommonActionsAfterAuth(driver);
     public ChooseTypeOfLicensingPage chooseTypeOfLicensingPage=new ChooseTypeOfLicensingPage(driver);
+    public Step11PageClass step11Page = new Step11PageClass(driver,action);
+    public Step21PageClass step21Page = new Step21PageClass(driver,action);
+    public HomePageClass homePage =new HomePageClass(driver);
 
 
     @AfterAll

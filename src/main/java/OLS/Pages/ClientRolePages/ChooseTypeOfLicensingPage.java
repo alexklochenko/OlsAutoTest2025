@@ -13,13 +13,13 @@ import static OLS.Common.Config.ORG_SUBJECT_TYPE_FOR_REQEST;
 import static OLS.Pages.BasePage.WebElementHelper.checkDiactivateCheckbox;
 import static OLS.Common.CommonActions.logger;
 
-public class ChooseTypeOfLicensingPage extends BasePageClass
+public class ChooseTypeOfLicensingPage
 {
     WebDriver driver;
 
     public ChooseTypeOfLicensingPage(WebDriver driver)
     {
-        super(driver);
+        this.driver=driver;
     }
 
     /**
