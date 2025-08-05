@@ -42,7 +42,7 @@ public class CommonActions extends WebElementHelper
                 Assertions.fail("Unsupported driver type: " + DRIVER_INDEX);
         }
 
-        driver.manage().window().setSize(new Dimension (1800, 950));
+        driver.manage().window().setSize(new Dimension (1920, 980));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         return driver;
     }

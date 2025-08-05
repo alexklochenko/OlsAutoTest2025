@@ -19,5 +19,6 @@ public class LicenseOrderFlowTest extends BaseTest
         chooseTypeOfLicensingPage.stratNewReqest();
         step11Page.determinateTypeOfFillingDependendingOnSubjectTypeForStep1();
         step21Page.determinateTypeOfFillingDependendingOnSubjectTypeForStep2();
+        step31Page.determinateTypeOfFillingDependendingOnSubjectTypeForStep3();
     }
 }

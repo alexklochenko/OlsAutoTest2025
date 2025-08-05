@@ -46,7 +46,8 @@ public class Config
          * Дані про ключ та сертифікат користувача, контекст якого викорисовується при авторизації
          */
         public static final String PSSS_TO_KEY="1qaz2wsx";
-        public static final String WAY_TO_PASS="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\TEST_KEY\\Key-6.dat";
+        public static final String WAY_TO_PASS="C:\\Users\\o_klochenko\\Documents\\test\\KEYS _test\\Для тестового КНЕДП\\ДСНС\\Для ДСНС_2024_2025\\ТОВ Дванадцять\\Директор Іван Васильович\\Key-6.dat";
+        //public static final String WAY_TO_PASS="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\TEST_KEY\\Key-6.dat";
         public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
         public static final String TEST_ORG_EDRPOU="22443355";
 
