@@ -75,7 +75,12 @@ public class Config
  * 	value="7" "Юридична особа – Громадські та неприбуткові організації. Платники ПДВ"
  * 	value="8" "Юридична особа - платник податку на виведений капітал, неплатник ПДВ"
  * 	value="9" "Юридична особа - платник податку на виведений капітал, платник ПДВ"
+ * 	value="10" "Фізична особа-підприємець на ЄП,неплатники ПДВ"
+ * 	value="11" "Фізична особа-підприємець на ЄП, платники ПДВ"
+ * 	value="12" "Фізична особа-підприємець на загальній системі оподаткування, неплатники ПДВ"
+ * 	value="13" "Фізична особа-підприємець на загальній системі оподаткування, платники ПДВ"
  */
+
         public static final int ID_OF_TAX_SYST=1;
 
 
@@ -165,6 +170,8 @@ public class Config
         public static final int[] LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20,8,9,10,11,12,13,14,15};
         public static final int[] ARRAY_OF_EMPLOYMENT_TYPE_FOR_YO =new int[]{1,2};
         public static final int[] ARRAY_OF_EMPLOYMENT_TYPE_FOR_FOP =new int[]{3,4,5,6};
+        public static final int[] ARRAY_OF_TAX_SYSTEM_FOR_FOP=new int[]{10, 11,12,13};
+        public static final int[] ARRAY_OF_TAX_SYSTEM_FOR_YO=new int[]{1,2,3,4,5,6,7,8,9};
 
 
 }

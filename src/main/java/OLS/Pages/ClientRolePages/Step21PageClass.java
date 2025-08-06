@@ -4,8 +4,7 @@ import OLS.Pages.BasePage.WebElementHelper;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 
-import static OLS.Common.CommonActions.createDriver;
-import static OLS.Common.CommonActions.logger;
+import static OLS.Common.CommonActions.*;
 import static OLS.Common.Config.*;
 import static OLS.Pages.BasePage.BasePageClass.checkEmploymentTypeToSubjectType;
 import static OLS.Pages.BasePage.TestContext.priceOfLicOnInReqest;
@@ -51,7 +50,8 @@ public class Step21PageClass
     By employmentTypeDropDownList=By.cssSelector("select#step2Model_OccupType");
     By numberOfEmploymentTypeSeparatUnit=By.cssSelector("input#step2Model_Filiya");
     By edrpouOfMainOrgCode=By.cssSelector("input#step2Model_Filiya");
-    By edrpouCodeHeader=By.cssSelector("div.row>div.col-xs-12.col-lg-6.left-column>div:nth-child(1) div.col-xs-12.col-sm-8.col-lg-8>label");
+    By edrpouCodeHeaderYo=By.cssSelector("div.row>div.col-xs-12.col-lg-6.left-column>div:nth-child(1) div.col-xs-12.col-sm-8.col-lg-8>label");
+    By edrpouCodeHeaderFop=By.cssSelector("div.row>div.col-xs-12.col-lg-6.left-column>div:nth-child(2) div.col-xs-12.col-sm-8.col-lg-8>label");
     By orgNameHeader=By.cssSelector("div.row>div.col-xs-12.col-lg-6.left-column>div:nth-child(4) div.col-xs-12.col-sm-8.col-lg-8>label");
 
 
@@ -60,11 +60,11 @@ public class Step21PageClass
      */
     By employmentTypeYo=By.cssSelector("select#step2Model_OccupType option[value='0']");
     By employmentTypeSeparatUnit=By.cssSelector("select#step2Model_OccupType option[value='1']");
-//    By employmentTypeFop=By.cssSelector();
-//    By employmentTypeNotary=By.cssSelector();
-//    By employmentTypeNotaryArbitrationManager=By.cssSelector();
-//    By employmentTypeNotaryLawer=By.cssSelector();
-//    By employmentTypePravateExecutor=By.cssSelector();
+    By employmentTypeFop=By.cssSelector("select#step2Model_OccupType option[value='0']");
+    By employmentTypeNotary=By.cssSelector("select#step2Model_OccupType option[value='1']");
+    By employmentTypeNotaryArbitrationManager=By.cssSelector("select#step2Model_OccupType option[value='2']");
+    By employmentTypeNotaryLawer=By.cssSelector("select#step2Model_OccupType option[value='3']");
+    By employmentTypePravateExecutor=By.cssSelector("select#step2Model_OccupType option[value='4]");
 
     public void determinateTypeOfFillingDependendingOnSubjectTypeForStep2 ()
     {
@@ -85,7 +85,8 @@ public class Step21PageClass
         switch(ORG_SUBJECT_TYPE_FOR_REQEST)
         {
             case 1:
-
+                fillCompanyInfoSectionForRequest (edrpouCodeHeaderYo,
+                        orgNameHeader);
                 fillTypeOfCompanyActivityForRequest (employmentTypeDropDownList,
                         employmentTypeYo,
                         employmentTypeSeparatUnit,
@@ -107,13 +108,39 @@ public class Step21PageClass
                         TEST_ORG_BOSS_PIB);
                 fillRequisitesInfoForRequest (ibanInput,
                         TEST_ORG_IBAN);
-                fillCompanyInfoSectionForRequest (edrpouCodeHeader,
+                fillCompanyInfoSectionForRequest (edrpouCodeHeaderYo,
                         orgNameHeader);
                 break;
 
             case 2:
 
             case 3:
+                fillCompanyInfoSectionForRequest (edrpouCodeHeaderFop,
+                        orgNameHeader);
+                fillTypeOfCompanyActivityForRequest (employmentTypeDropDownList,
+                        employmentTypeYo,
+                        employmentTypeSeparatUnit,
+                        numberOfEmploymentTypeSeparatUnit,
+                        edrpouOfMainOrgCode);
+                fillContactInfoForReqest(emailInput,
+                        TEST_ORG_EMAIL,
+                        phoneNumberInput,
+                        TEST_ORG_PHONE_NUMBER);
+                fillTaxSystemInfoForRequest(taxSystDropDownList,
+                        chooseTaxSystForRequest,
+                        inpInput,
+                        TEST_ORG_IPN);
+                fillManagerInfoForRequest(bossJobTitleInput,
+                        TEST_ORG_BOSS_JOB_TITLE,
+                        bossDrfoInput,
+                        TEST_ORG_BOSS_DRFO,
+                        bossPibInput,
+                        TEST_ORG_BOSS_PIB);
+                fillRequisitesInfoForRequest (ibanInput,
+                        TEST_ORG_IBAN);
+                fillCompanyInfoSectionForRequest (edrpouCodeHeaderFop,
+                        orgNameHeader);
+                break;
 
             default :
                 logger.error("Wrong type of Org Subject in Config file");
@@ -179,6 +206,15 @@ public class Step21PageClass
                 action.sendKeys(Keys.ENTER);
                 WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver,numberOfEmploymentTypeSeparatUnit).sendKeys(NUMBER_OF_SEPARATED_UNIY);
                 WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,edrpouOfMainOrgCode).sendKeys(EDRPOU_OF_MAIN_COMPANY);
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeSeparatUnit).click();
+                action.sendKeys(Keys.ENTER);
+                break;
+
         }
         logger.info("Значення виду зайнятості встановлено успішно");
     }
@@ -223,19 +259,27 @@ public class Step21PageClass
                                              By inpInput,
                                              String TEST_ORG_IPN)
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList).click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, chooseTaxSystForRequest).click();
-        action.sendKeys(Keys.ESCAPE).perform();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
-        action.moveToElement(driver.findElement(inpInput))
-                .click()
-                .keyDown(Keys.CONTROL)
-                .sendKeys("A")
-                .keyUp(Keys.CONTROL)
-                .sendKeys(Keys.DELETE)
-                .sendKeys(TEST_ORG_IPN)
-                .perform();
-        logger.info("Систему оподаткування успішно обрано");
+        if(ORG_SUBJECT_TYPE_FOR_REQEST==1)
+        {
+            if(isElementInArray(ARRAY_OF_TAX_SYSTEM_FOR_YO, ID_OF_TAX_SYST))
+            {
+                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList).click();
+                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, chooseTaxSystForRequest).click();
+                action.sendKeys(Keys.ESCAPE).perform();
+                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
+                action.moveToElement(driver.findElement(inpInput))
+                        .click()
+                        .keyDown(Keys.CONTROL)
+                        .sendKeys("A")
+                        .keyUp(Keys.CONTROL)
+                        .sendKeys(Keys.DELETE)
+                        .sendKeys(TEST_ORG_IPN)
+                        .perform();
+                logger.info("Систему оподаткування успішно обрано");
+            }
+
+        }
+
     }
 
     /**

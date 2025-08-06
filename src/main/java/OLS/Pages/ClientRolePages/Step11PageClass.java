@@ -108,41 +108,6 @@ public class Step11PageClass
         Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpou));
     }
 
-
-
-//    public void fillHeaderForYoReqest(String SubjectTypeName)
-//    {
-//        WebElement element=WebElementHelper.FindAndClickByLocator(driver,orgNameInput);
-//        element.clear();
-//        element.sendKeys(TEST_ORG_NAME);
-//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
-//        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
-//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpouYo);
-//        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpouYo));
-//    }
-//
-//    public void fillHeaderForFopReqest(String SubjectTypeName)
-//    {
-//        WebElement element=WebElementHelper.FindAndClickByLocator(driver,orgNameInput);
-//        element.clear();
-//        element.sendKeys(TEST_ORG_NAME);
-//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
-//        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
-//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpouFop);
-//        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpouFop));
-//    }
-//
-//    public void fillHeaderForFoReqest(String SubjectTypeName)
-//    {
-//        WebElement element=WebElementHelper.FindAndClickByLocator(driver,foNameInput);
-//        element.clear();
-//        element.sendKeys(TEST_ORG_NAME);
-//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
-//        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
-//        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpouFop);
-//        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpouFop));
-//    }
-
     public void fillFooterForRequest  (int  licensingType)
     {
         if (licensingType != 9 && licensingType != 12)
