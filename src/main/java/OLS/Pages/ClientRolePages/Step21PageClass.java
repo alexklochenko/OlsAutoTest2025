@@ -42,8 +42,6 @@ public class Step21PageClass
     By bossDrfoInput=By.cssSelector("input#step2Model_Head_DRFO");
     By bossPibInput=By.cssSelector("input#step2Model_Head_FIO");
     By taxSystDropDownList=By.cssSelector("select#step2Model_TaxSystem");
-    By chooseTaxSystForRequest=By.cssSelector("select#step2Model_TaxSystem option[value='"+ID_OF_TAX_SYST+"']");
-    //By chooseTaxSystForRequest=By.cssSelector("select#step2Model_TaxSystem option[value='1']");
     By inpInput=By.cssSelector("input#step2Model_IPN");
     By emailInput=By.cssSelector("input#step2Model_EMail");
     By phoneNumberInput=By.cssSelector("input#step2Model_Phone");
@@ -66,6 +64,27 @@ public class Step21PageClass
     By employmentTypeNotaryLawer=By.cssSelector("select#step2Model_OccupType option[value='3']");
     By employmentTypePravateExecutor=By.cssSelector("select#step2Model_OccupType option[value='4]");
 
+    /**
+     * Локатори для системи оподаткування
+     */
+    By TaxSystForRequestYo_0=By.cssSelector("select#step2Model_TaxSystem option[value='0']");
+    By TaxSystForRequestYo_1=By.cssSelector("select#step2Model_TaxSystem option[value='1']");
+    By TaxSystForRequestYo_2=By.cssSelector("select#step2Model_TaxSystem option[value='2']");
+    By TaxSystForRequestYo_3=By.cssSelector("select#step2Model_TaxSystem option[value='3']");
+    By TaxSystForRequestYo_4=By.cssSelector("select#step2Model_TaxSystem option[value='4']");
+    By TaxSystForRequestYo_5=By.cssSelector("select#step2Model_TaxSystem option[value='5']");
+    By TaxSystForRequestYo_6=By.cssSelector("select#step2Model_TaxSystem option[value='6']");
+    By TaxSystForRequestYo_7=By.cssSelector("select#step2Model_TaxSystem option[value='7']");
+    By TaxSystForRequestYo_8=By.cssSelector("select#step2Model_TaxSystem option[value='8']");
+    By TaxSystForRequestYo_9=By.cssSelector("select#step2Model_TaxSystem option[value='9']");
+    By TaxSystForRequestFop_0=By.cssSelector("select#step2Model_TaxSystem option[value='0']");
+    By TaxSystForRequestFop_1=By.cssSelector("select#step2Model_TaxSystem option[value='1']");
+    By TaxSystForRequestFop_2=By.cssSelector("select#step2Model_TaxSystem option[value='2']");
+    By TaxSystForRequestFop_3=By.cssSelector("select#step2Model_TaxSystem option[value='3']");
+
+
+
+
     public void determinateTypeOfFillingDependendingOnSubjectTypeForStep2 ()
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, goToStep2Button).click();
@@ -85,11 +104,7 @@ public class Step21PageClass
         switch(ORG_SUBJECT_TYPE_FOR_REQEST)
         {
             case 1:
-                fillCompanyInfoSectionForRequest (edrpouCodeHeaderYo,
-                        orgNameHeader);
                 fillTypeOfCompanyActivityForRequest (employmentTypeDropDownList,
-                        employmentTypeYo,
-                        employmentTypeSeparatUnit,
                         numberOfEmploymentTypeSeparatUnit,
                         edrpouOfMainOrgCode);
                 fillContactInfoForReqest(emailInput,
@@ -97,9 +112,7 @@ public class Step21PageClass
                         phoneNumberInput,
                         TEST_ORG_PHONE_NUMBER);
                 fillTaxSystemInfoForRequest(taxSystDropDownList,
-                        chooseTaxSystForRequest,
-                        inpInput,
-                        TEST_ORG_IPN);
+                        inpInput);
                 fillManagerInfoForRequest(bossJobTitleInput,
                         TEST_ORG_BOSS_JOB_TITLE,
                         bossDrfoInput,
@@ -115,11 +128,8 @@ public class Step21PageClass
             case 2:
 
             case 3:
-                fillCompanyInfoSectionForRequest (edrpouCodeHeaderFop,
-                        orgNameHeader);
+
                 fillTypeOfCompanyActivityForRequest (employmentTypeDropDownList,
-                        employmentTypeYo,
-                        employmentTypeSeparatUnit,
                         numberOfEmploymentTypeSeparatUnit,
                         edrpouOfMainOrgCode);
                 fillContactInfoForReqest(emailInput,
@@ -127,9 +137,7 @@ public class Step21PageClass
                         phoneNumberInput,
                         TEST_ORG_PHONE_NUMBER);
                 fillTaxSystemInfoForRequest(taxSystDropDownList,
-                        chooseTaxSystForRequest,
-                        inpInput,
-                        TEST_ORG_IPN);
+                        inpInput);
                 fillManagerInfoForRequest(bossJobTitleInput,
                         TEST_ORG_BOSS_JOB_TITLE,
                         bossDrfoInput,
@@ -157,12 +165,13 @@ public class Step21PageClass
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, priceAtHeaderOnStep2);
         String valueFromHeader=getTextFromElementWithNbsp (driver, priceAtHeaderOnStep2);
-        String numericValue = valueFromHeader.replaceAll("[^0-9]", "");
+        String numericValue = valueFromHeader.replaceAll("[^0-9.,]", "");
         logger.info("Вартість ліцензії, вказана на кроці Step_2 - "+numericValue+" грн");
         Assertions.assertEquals(priceOfLicOnInReqest,
                 numericValue,
                 "Вартість ліцензії на кроці 2 не відповідає очікуваному реазультату");
     }
+
 
     /**
      * Перевірка секції про організацію
@@ -170,9 +179,10 @@ public class Step21PageClass
     public void fillCompanyInfoSectionForRequest (By edrpouCodeHeader,
                                                   By orgNameHeader)
     {
+        WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, edrpouCodeHeader);
         if (
-        !checkTextEqualsToEtalon(driver, edrpouCodeHeader, TEST_ORG_EDRPOU) ||
-        !checkTextEqualsToEtalon(driver, orgNameHeader, TEST_ORG_NAME))
+                !checkTextEqualsToEtalon(driver, edrpouCodeHeader, TEST_ORG_EDRPOU) ||
+                        !checkTextEqualsToEtalon(driver, orgNameHeader, TEST_ORG_NAME))
         {
             logger.error("Код ЕДРПОУ/ Назва оранізації на кроці 2 не відповідають очікуваному результату");
             throw new UnsupportedOperationException("Код ЕДРПОУ/ Назва оранізації на кроці 2 не відповідають очікуваному результату");
@@ -183,12 +193,11 @@ public class Step21PageClass
         }
     }
 
+
     /**
      * Заповнення даних про Вид занятості
      */
     public void fillTypeOfCompanyActivityForRequest (By employmentTypeDropDownList,
-                                                     By employmentTypeYo,
-                                                     By employmentTypeSeparatUnit,
                                                      By numberOfEmploymentTypeSeparatUnit,
                                                      By edrpouOfMainOrgCode)
     {
@@ -206,18 +215,36 @@ public class Step21PageClass
                 action.sendKeys(Keys.ENTER);
                 WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver,numberOfEmploymentTypeSeparatUnit).sendKeys(NUMBER_OF_SEPARATED_UNIY);
                 WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,edrpouOfMainOrgCode).sendKeys(EDRPOU_OF_MAIN_COMPANY);
+                break;
             case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeSeparatUnit).click();
+                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeFop).click();
                 action.sendKeys(Keys.ENTER);
                 break;
+            case 4:
+                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeNotary).click();
+                action.sendKeys(Keys.ENTER);
+                break;
+            case 5:
+                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeNotaryArbitrationManager).click();
+                action.sendKeys(Keys.ENTER);
+                break;
+            case 6:
+                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeNotaryLawer).click();
+                action.sendKeys(Keys.ENTER);
+                break;
+            case 7:
+                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypePravateExecutor).click();
+                action.sendKeys(Keys.ENTER);
+                break;
+
+            default:
+                logger.error("Вид зайнятості вказано невірно. Відсутні співпадіння з довідником");
+                throw new UnsupportedOperationException("Вид зайнятості вказано невірно. Відсутні співпадіння з довідником");
 
         }
         logger.info("Значення виду зайнятості встановлено успішно");
     }
+
 
     /**
      * Заповнення секції телефона та адреса
@@ -255,32 +282,80 @@ public class Step21PageClass
      * Заповнення секції система оподаткування
      */
     public void fillTaxSystemInfoForRequest (By taxSystDropDownList,
-                                             By chooseTaxSystForRequest,
-                                             By inpInput,
-                                             String TEST_ORG_IPN)
+                                             By inpInput)
     {
-        if(ORG_SUBJECT_TYPE_FOR_REQEST==1)
+        switch (ORG_SUBJECT_TYPE_FOR_REQEST)
         {
-            if(isElementInArray(ARRAY_OF_TAX_SYSTEM_FOR_YO, ID_OF_TAX_SYST))
-            {
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList).click();
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, chooseTaxSystForRequest).click();
-                action.sendKeys(Keys.ESCAPE).perform();
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
-                action.moveToElement(driver.findElement(inpInput))
-                        .click()
-                        .keyDown(Keys.CONTROL)
-                        .sendKeys("A")
-                        .keyUp(Keys.CONTROL)
-                        .sendKeys(Keys.DELETE)
-                        .sendKeys(TEST_ORG_IPN)
-                        .perform();
-                logger.info("Систему оподаткування успішно обрано");
-            }
+            case 1:
+                if(isElementInArray(ARRAY_OF_TAX_SYSTEM_FOR_YO, ID_OF_TAX_SYST))
+                {
+                    WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList).click();
+                    WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, chooseTaxSystForRequest()).click();
+                    action.sendKeys(Keys.ENTER).perform();
+                    if (ID_OF_TAX_SYST==1 || ID_OF_TAX_SYST==3 || ID_OF_TAX_SYST==5 || ID_OF_TAX_SYST==7 || ID_OF_TAX_SYST==9)
+                    {
+                        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
+                        action.moveToElement(driver.findElement(inpInput))
+                                .click()
+                                .keyDown(Keys.CONTROL)
+                                .sendKeys("A")
+                                .keyUp(Keys.CONTROL)
+                                .sendKeys(Keys.DELETE)
+                                .sendKeys(TEST_ORG_IPN)
+                                .perform();
+                    }
+                    else
+                    {
+                        logger.info("Систему оподаткування успішно обрано");
+                    }
+                }
+                else
+                {
+                    logger.error("Обрана система оподаткування не відповідає значенню з довідника або не відповідає типу субєкту");
+                    throw new UnsupportedOperationException("Обрана система оподаткування не відповідає значенню з довідника або не відповідає типу субєкту");
+                }
+                break;
 
+            case 2:
+                break;
+
+            case 3:
+                if(isElementInArray(ARRAY_OF_TAX_SYSTEM_FOR_FOP, ID_OF_TAX_SYST))
+                {
+                    WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList).click();
+                    WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, chooseTaxSystForRequest()).click();
+                    action.sendKeys(Keys.ESCAPE).perform();
+                    if (ID_OF_TAX_SYST==11 || ID_OF_TAX_SYST==13)
+                    {
+                        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
+                        action.moveToElement(driver.findElement(inpInput))
+                                .click()
+                                .keyDown(Keys.CONTROL)
+                                .sendKeys("A")
+                                .keyUp(Keys.CONTROL)
+                                .sendKeys(Keys.DELETE)
+                                .sendKeys(TEST_ORG_IPN)
+                                .perform();
+                    }
+                    else
+                    {
+                        logger.info("Систему оподаткування успішно обрано");
+                    }
+                }
+                else
+                {
+                    logger.error("Обрана система оподаткування не відповідає значенню з довідника або не відповідає типу субєкту");
+                    throw new UnsupportedOperationException("Обрана система оподаткування не відповідає значенню з довідника або не відповідає типу субєкту");
+                }
+                break;
+
+            default:
+                logger.error("Тип субекта не відповідає значенню з довідника");
+                throw new UnsupportedOperationException("Тип субекта не відповідає значенню з довідника");
         }
-
     }
+
+
 
     /**
      * Заповнення секції про керівника
@@ -306,6 +381,50 @@ public class Step21PageClass
         ClearAndSeendKeys(driver,ibanInput, TEST_ORG_IBAN);
         logger.info("Дані про IBAN успішно збережено");
     }
+
+    /**
+     * Метод для компарації ід системи одподаткування по відношенню до локатора
+     */
+
+    private By chooseTaxSystForRequest()
+    {
+        switch(ID_OF_TAX_SYST)
+        {
+            case 0:
+                return TaxSystForRequestYo_0;
+            case 1:
+                return TaxSystForRequestYo_1;
+            case 2:
+                return TaxSystForRequestYo_2;
+            case 3:
+                return TaxSystForRequestYo_3;
+            case 4:
+                return TaxSystForRequestYo_4;
+            case 5:
+                return TaxSystForRequestYo_5;
+            case 6:
+                return TaxSystForRequestYo_6;
+            case 7:
+                return TaxSystForRequestYo_7;
+            case 8:
+                return TaxSystForRequestYo_8;
+            case 9:
+                return TaxSystForRequestYo_9;
+            case 10:
+                return TaxSystForRequestFop_0;
+            case 11:
+                return TaxSystForRequestFop_1;
+            case 12:
+                return TaxSystForRequestFop_2;
+            case 13:
+                return TaxSystForRequestFop_3;
+            default:
+                logger.error("Тип системи оподаткування не відповідає значенню з довідника");
+                throw new UnsupportedOperationException("Тип системи оподаткування не відповідає значенню з довідника");
+        }
+    }
+
+
 
 
 }

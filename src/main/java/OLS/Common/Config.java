@@ -38,7 +38,7 @@ public class Config
 * 2 - Фізична особа
 * 3 - Фізична особа підриємець
 */
-        public static final int ORG_SUBJECT_TYPE_FOR_REQEST=1;
+        public static final int ORG_SUBJECT_TYPE_FOR_REQEST=3;
 
 
 
@@ -46,20 +46,27 @@ public class Config
          * Дані про ключ та сертифікат користувача, контекст якого викорисовується при авторизації
          */
         public static final String PSSS_TO_KEY="1qaz2wsx";
-        public static final String WAY_TO_PASS="C:\\Users\\o_klochenko\\Documents\\test\\KEYS _test\\Для тестового КНЕДП\\ДСНС\\Для ДСНС_2024_2025\\ТОВ Дванадцять\\Директор Іван Васильович\\Key-6.dat";
         //public static final String WAY_TO_PASS="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\TEST_KEY\\Key-6.dat";
+        public static final String WAY_TO_PASS="C:\\Users\\o_klochenko\\Documents\\test\\KEYS _test\\Для тестового КНЕДП\\ДСНС\\Для ДСНС_2024_2025\\ТОВ Дванадцять\\Директор Іван Васильович\\Key-6.dat";
         public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
         public static final String TEST_ORG_EDRPOU="22443355";
+        public static final String TEST_ORG_BOSS_DRFO="1212121201";
+
 
         public static final String TEST_ORG_IBAN="UA123456780000000000000000000";
         public static final String TEST_ORG_BOSS_JOB_TITLE="Директор";
-        public static final String TEST_ORG_BOSS_DRFO="1212121201";
         public static final String TEST_ORG_BOSS_PIB="Директор Іван Васильович";
         public static final String TEST_ORG_IPN="224433551212";
         public static final String TEST_ORG_EMAIL="SELENIUM_TEST@TEST.UA";
         public static final String TEST_ORG_PHONE_NUMBER="991234567";
         public static final String NUMBER_OF_SEPARATED_UNIY="1795";
         public static final String EDRPOU_OF_MAIN_COMPANY="22443355";
+
+
+
+
+
+
 
 
 
@@ -81,7 +88,7 @@ public class Config
  * 	value="13" "Фізична особа-підприємець на загальній системі оподаткування, платники ПДВ"
  */
 
-        public static final int ID_OF_TAX_SYST=1;
+        public static final int ID_OF_TAX_SYST=11;
 
 
 /**
@@ -94,7 +101,7 @@ public class Config
  * 	value="6" "Адвокат"
  * 	value="7" "Приватний виконавець"
  */
-        public static final int EMPLOYMENT_TYPE=2;
+        public static final int EMPLOYMENT_TYPE=3;
 
 /**
  * Вибір ідентифікатору потрібного КНЕДП
@@ -124,7 +131,7 @@ public class Config
 * <option data-index-id="26">КНЕДП monobank | Universal Bank</option>
 * <option data-index-id="13">Інший КНЕДП</option>
 */
-        public static final int ID_OF_KNDP=30;
+        public static final int ID_OF_KNDP=2;
 
 /**
 * Вибір ліцензії для замовлення (ЮО)
@@ -153,8 +160,8 @@ public class Config
 * 19 - Ліцензія комп’ютерної програми «Арт-Звіт Pro» «Модуль РРО» на 1 рік
 * 20 - Ліцензія комп'ютерної програми "Арт-Звіт Pro" "Термінальна" для ФОП на 1 рік
 */
-        public static final int LICENSE_ID_USING_IN_REQEST=1;
-        public static final String PRICE_OF_CHOOSEN_LICENSE="2028";
+        public static final int LICENSE_ID_USING_IN_REQEST=16;
+        public static final String PRICE_OF_CHOOSEN_LICENSE="626.4";
 
 /**
 * Дані про замовлення в якому є потреба визначення кількості транзакцій
