@@ -11,6 +11,7 @@ import static OLS.Pages.BasePage.TestContext.priceOfLicOnInReqest;
 import static OLS.Pages.BasePage.WebElementHelper.*;
 
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 public class Step21PageClass
 {
@@ -21,6 +22,8 @@ public class Step21PageClass
         this.driver=driver;
         this.action=action;
     }
+
+    private Select select;
 
     /**
      * Кнопки навігації з кроку 1
@@ -63,26 +66,6 @@ public class Step21PageClass
     By employmentTypeNotaryArbitrationManager=By.cssSelector("select#step2Model_OccupType option[value='2']");
     By employmentTypeNotaryLawer=By.cssSelector("select#step2Model_OccupType option[value='3']");
     By employmentTypePravateExecutor=By.cssSelector("select#step2Model_OccupType option[value='4]");
-
-    /**
-     * Локатори для системи оподаткування
-     */
-    By TaxSystForRequestYo_0=By.cssSelector("select#step2Model_TaxSystem option[value='0']");
-    By TaxSystForRequestYo_1=By.cssSelector("select#step2Model_TaxSystem option[value='1']");
-    By TaxSystForRequestYo_2=By.cssSelector("select#step2Model_TaxSystem option[value='2']");
-    By TaxSystForRequestYo_3=By.cssSelector("select#step2Model_TaxSystem option[value='3']");
-    By TaxSystForRequestYo_4=By.cssSelector("select#step2Model_TaxSystem option[value='4']");
-    By TaxSystForRequestYo_5=By.cssSelector("select#step2Model_TaxSystem option[value='5']");
-    By TaxSystForRequestYo_6=By.cssSelector("select#step2Model_TaxSystem option[value='6']");
-    By TaxSystForRequestYo_7=By.cssSelector("select#step2Model_TaxSystem option[value='7']");
-    By TaxSystForRequestYo_8=By.cssSelector("select#step2Model_TaxSystem option[value='8']");
-    By TaxSystForRequestYo_9=By.cssSelector("select#step2Model_TaxSystem option[value='9']");
-    By TaxSystForRequestFop_0=By.cssSelector("select#step2Model_TaxSystem option[value='0']");
-    By TaxSystForRequestFop_1=By.cssSelector("select#step2Model_TaxSystem option[value='1']");
-    By TaxSystForRequestFop_2=By.cssSelector("select#step2Model_TaxSystem option[value='2']");
-    By TaxSystForRequestFop_3=By.cssSelector("select#step2Model_TaxSystem option[value='3']");
-
-
 
 
     public void determinateTypeOfFillingDependendingOnSubjectTypeForStep2 ()
@@ -202,39 +185,35 @@ public class Step21PageClass
                                                      By edrpouOfMainOrgCode)
     {
         checkEmploymentTypeToSubjectType();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver, employmentTypeDropDownList);
-        WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,employmentTypeDropDownList).click();
+        WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver, employmentTypeDropDownList);
+        select=new Select(element);
         switch(EMPLOYMENT_TYPE)
         {
             case 1:
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeYo).click();
-                action.sendKeys(Keys.ENTER);
+                select.selectByValue(chooseCompanyActivityForRequest());
                 break;
             case 2:
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeSeparatUnit).click();
-                action.sendKeys(Keys.ENTER);
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver,numberOfEmploymentTypeSeparatUnit).sendKeys(NUMBER_OF_SEPARATED_UNIY);
-                WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,edrpouOfMainOrgCode).sendKeys(EDRPOU_OF_MAIN_COMPANY);
+                select.selectByValue(chooseCompanyActivityForRequest());
+                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, numberOfEmploymentTypeSeparatUnit).sendKeys(NUMBER_OF_SEPARATED_UNIY);
+                WebElement element1 = WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, edrpouOfMainOrgCode);
+                element1.clear();
+                element1.sendKeys(NUMBER_OF_SEPARATED_UNIY);
                 break;
+
             case 3:
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeFop).click();
-                action.sendKeys(Keys.ENTER);
+                select.selectByValue(chooseCompanyActivityForRequest());
                 break;
             case 4:
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeNotary).click();
-                action.sendKeys(Keys.ENTER);
+                select.selectByValue(chooseCompanyActivityForRequest());
                 break;
             case 5:
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeNotaryArbitrationManager).click();
-                action.sendKeys(Keys.ENTER);
+                select.selectByValue(chooseCompanyActivityForRequest());
                 break;
             case 6:
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypeNotaryLawer).click();
-                action.sendKeys(Keys.ENTER);
+                select.selectByValue(chooseCompanyActivityForRequest());
                 break;
             case 7:
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, employmentTypePravateExecutor).click();
-                action.sendKeys(Keys.ENTER);
+                select.selectByValue(chooseCompanyActivityForRequest());
                 break;
 
             default:
@@ -289,9 +268,10 @@ public class Step21PageClass
             case 1:
                 if(isElementInArray(ARRAY_OF_TAX_SYSTEM_FOR_YO, ID_OF_TAX_SYST))
                 {
-                    WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList).click();
-                    WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, chooseTaxSystForRequest()).click();
-                    action.sendKeys(Keys.ENTER).perform();
+                    WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList);
+                    select=new Select((element));
+                    select.selectByValue(chooseTaxSystForRequest());
+
                     if (ID_OF_TAX_SYST==1 || ID_OF_TAX_SYST==3 || ID_OF_TAX_SYST==5 || ID_OF_TAX_SYST==7 || ID_OF_TAX_SYST==9)
                     {
                         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
@@ -322,9 +302,9 @@ public class Step21PageClass
             case 3:
                 if(isElementInArray(ARRAY_OF_TAX_SYSTEM_FOR_FOP, ID_OF_TAX_SYST))
                 {
-                    WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList).click();
-                    WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, chooseTaxSystForRequest()).click();
-                    action.sendKeys(Keys.ESCAPE).perform();
+                    WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList);
+                    select=new Select((element));
+                    select.selectByValue(chooseTaxSystForRequest());
                     if (ID_OF_TAX_SYST==11 || ID_OF_TAX_SYST==13)
                     {
                         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
@@ -383,41 +363,41 @@ public class Step21PageClass
     }
 
     /**
-     * Метод для компарації ід системи одподаткування по відношенню до локатора
+     * Метод для компарації ід системи одподаткування по відношенню до option Value
      */
 
-    private By chooseTaxSystForRequest()
+    private String chooseTaxSystForRequest()
     {
         switch(ID_OF_TAX_SYST)
         {
             case 0:
-                return TaxSystForRequestYo_0;
+                return "0";
             case 1:
-                return TaxSystForRequestYo_1;
+                return "1";
             case 2:
-                return TaxSystForRequestYo_2;
+                return "2";
             case 3:
-                return TaxSystForRequestYo_3;
+                return "3";
             case 4:
-                return TaxSystForRequestYo_4;
+                return "4";
             case 5:
-                return TaxSystForRequestYo_5;
+                return "5";
             case 6:
-                return TaxSystForRequestYo_6;
+                return "6";
             case 7:
-                return TaxSystForRequestYo_7;
+                return "7";
             case 8:
-                return TaxSystForRequestYo_8;
+                return "8";
             case 9:
-                return TaxSystForRequestYo_9;
+                return "9";
             case 10:
-                return TaxSystForRequestFop_0;
+                return "0";
             case 11:
-                return TaxSystForRequestFop_1;
+                return "1";
             case 12:
-                return TaxSystForRequestFop_2;
+                return "2";
             case 13:
-                return TaxSystForRequestFop_3;
+                return "3'";
             default:
                 logger.error("Тип системи оподаткування не відповідає значенню з довідника");
                 throw new UnsupportedOperationException("Тип системи оподаткування не відповідає значенню з довідника");
@@ -425,6 +405,34 @@ public class Step21PageClass
     }
 
 
+    /**
+     * Метод для компарації ід виду зайнЯтості по відношенню до option Value
+     */
+
+    private String chooseCompanyActivityForRequest()
+    {
+        switch(EMPLOYMENT_TYPE)
+        {
+            case 1:
+                return "0";
+            case 2:
+                return "1";
+            case 3:
+                return "0";
+            case 4:
+                return "1";
+            case 5:
+                return "2";
+            case 6:
+                return "3";
+            case 7:
+                return "4";
+
+            default:
+                logger.error("Тип системи оподаткування не відповідає значенню з довідника");
+                throw new UnsupportedOperationException("Тип системи оподаткування не відповідає значенню з довідника");
+        }
+    }
 
 
 }
