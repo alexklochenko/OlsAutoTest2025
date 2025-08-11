@@ -51,12 +51,13 @@ public class Config
         public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
         public static final String TEST_ORG_EDRPOU="22443355";
         public static final String TEST_ORG_BOSS_DRFO="1212121201";
+        public static final String TEST_ORG_IPN="224433551212";
 
 
         public static final String TEST_ORG_IBAN="UA123456780000000000000000000";
         public static final String TEST_ORG_BOSS_JOB_TITLE="Директор";
         public static final String TEST_ORG_BOSS_PIB="Директор Іван Васильович";
-        public static final String TEST_ORG_IPN="224433551212";
+
         public static final String TEST_ORG_EMAIL="SELENIUM_TEST@TEST.UA";
         public static final String TEST_ORG_PHONE_NUMBER="991234567";
         public static final String NUMBER_OF_SEPARATED_UNIY="1795";

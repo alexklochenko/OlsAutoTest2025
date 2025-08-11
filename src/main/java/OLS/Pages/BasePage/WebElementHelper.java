@@ -3,13 +3,10 @@ package OLS.Pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v137.domsnapshot.model.StringIndex;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-
-import static OLS.Common.Config.TEST_ORG_BOSS_JOB_TITLE;
 
 public class WebElementHelper
 {
@@ -34,10 +31,15 @@ public class WebElementHelper
         return element;
     }
 
-
     public static WebElement WaitUntilElementWillBePresentOnPage90(WebDriver driver, By locator)
     {
         WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(90))).until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return element;
+    }
+
+    public static WebElement WaitUntilElementWillBePresentOnPage1260(WebDriver driver, By locator)
+    {
+        WebElement element=(new WebDriverWait(driver, Duration.ofSeconds(1260))).until(ExpectedConditions.visibilityOfElementLocated(locator));
         return element;
     }
 
@@ -93,6 +95,10 @@ public class WebElementHelper
     }
 
 
+    /**
+     * Методи для отримання доп інформації
+     *
+     */
     public static String gatTextFromElement(WebDriver driver, By locator)
     {
         WebElement element=driver.findElement(locator);
@@ -151,7 +157,7 @@ public class WebElementHelper
     /**
      * Порівняння тексту з едемента з Еталоном
      */
-    public static boolean checkTextEqualsToEtalon(WebDriver driver, By locator, String etalon)
+    public static boolean compareTextAtElementWithEtalon(WebDriver driver, By locator, String etalon)
     {
         return driver.findElement(locator).getText().equals(etalon);
     }
