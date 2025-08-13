@@ -38,7 +38,7 @@ public class Config
 * 2 - Фізична особа
 * 3 - Фізична особа підриємець
 */
-        public static final int ORG_SUBJECT_TYPE_FOR_REQEST=3;
+        public static final int ORG_SUBJECT_TYPE_FOR_REQEST=1;
 
 
 
@@ -89,7 +89,7 @@ public class Config
  * 	value="13" "Фізична особа-підприємець на загальній системі оподаткування, платники ПДВ"
  */
 
-        public static final int ID_OF_TAX_SYST=11;
+        public static final int ID_OF_TAX_SYST=6;
 
 
 /**
@@ -102,7 +102,7 @@ public class Config
  * 	value="6" "Адвокат"
  * 	value="7" "Приватний виконавець"
  */
-        public static final int EMPLOYMENT_TYPE=3;
+        public static final int EMPLOYMENT_TYPE=2;
 
 /**
  * Вибір ідентифікатору потрібного КНЕДП
@@ -132,7 +132,7 @@ public class Config
 * <option data-index-id="26">КНЕДП monobank | Universal Bank</option>
 * <option data-index-id="13">Інший КНЕДП</option>
 */
-        public static final int ID_OF_KNDP=2;
+        public static final int ID_OF_KNDP=30;
 
 /**
 * Вибір ліцензії для замовлення (ЮО)
@@ -161,8 +161,8 @@ public class Config
 * 19 - Ліцензія комп’ютерної програми «Арт-Звіт Pro» «Модуль РРО» на 1 рік
 * 20 - Ліцензія комп'ютерної програми "Арт-Звіт Pro" "Термінальна" для ФОП на 1 рік
 */
-        public static final int LICENSE_ID_USING_IN_REQEST=16;
-        public static final String PRICE_OF_CHOOSEN_LICENSE="626.4";
+        public static final int LICENSE_ID_USING_IN_REQEST=4;
+        public static final String PRICE_OF_CHOOSEN_LICENSE="3060";
 
 /**
 * Дані про замовлення в якому є потреба визначення кількості транзакцій
