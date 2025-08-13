@@ -7,7 +7,7 @@ import org.openqa.selenium.*;
 import static OLS.Common.CommonActions.*;
 import static OLS.Common.Config.*;
 import static OLS.Pages.BasePage.BasePageClass.checkEmploymentTypeToSubjectType;
-import static OLS.Pages.BasePage.TestContext.priceOfLicOnInReqest;
+import static OLS.Pages.BasePage.TestContext.*;
 
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -55,17 +55,17 @@ public class Step21PageClass
     By orgNameHeader=By.cssSelector("div.row>div.col-xs-12.col-lg-6.left-column>div:nth-child(4) div.col-xs-12.col-sm-8.col-lg-8>label");
 
 
-//    /**
-//     * Види зайнятосты
-//     */
-//    By employmentTypeYo=By.cssSelector("select#step2Model_OccupType option[value='0']");
-//    By employmentTypeSeparatUnit=By.cssSelector("select#step2Model_OccupType option[value='1']");
-//    By employmentTypeFop=By.cssSelector("select#step2Model_OccupType option[value='0']");
-//    By employmentTypeNotary=By.cssSelector("select#step2Model_OccupType option[value='1']");
-//    By employmentTypeNotaryArbitrationManager=By.cssSelector("select#step2Model_OccupType option[value='2']");
-//    By employmentTypeNotaryLawer=By.cssSelector("select#step2Model_OccupType option[value='3']");
-//    By employmentTypePravateExecutor=By.cssSelector("select#step2Model_OccupType option[value='4]");
-
+    /**
+     * Елементи для заповнення секції адреса
+     */
+    By yoAdressSelectButton=By.cssSelector("a[data-ng-click='openLegalAddress()'] i.fa.fa-edit.fa-2x.text-muted");
+    By postAdressSelectButton=By.cssSelector("a[data-ng-click='openPostAdress()']");
+    By adressModalIndexInput=By.cssSelector("input#index");
+    By selectAdressByIndexButton=By.cssSelector("input#index~span[data-ng-click]");
+    By regionInput=By.cssSelector("button.btn.btn-default.form-control.ui-select-match span.ng-binding.ng-scope");
+    By AdressModalSaveButton=By.cssSelector("button[data-translate='order.common.SaveBtn']");
+    By yoAdressCheckElement=By.cssSelector("span.m-b-none.ng-binding.ng-scope[data-ng-if='step2Model.Addr.Full']");
+    By postAdressCheckElement=By.cssSelector("span.m-b-none.ng-binding.ng-scope[data-ng-if='step2Model.Post.Full']");
 
 
 
@@ -96,6 +96,20 @@ public class Step21PageClass
                         TEST_ORG_EMAIL,
                         phoneNumberInput,
                         TEST_ORG_PHONE_NUMBER);
+                fillYrAddressInfoForRequest(yoAdressSelectButton,
+                        adressModalIndexInput,
+                        selectAdressByIndexButton,
+                        regionInput,
+                        AdressModalSaveButton,
+                        yoAdressCheckElement);
+                fillPostAddressInfoForRequest(postAdressSelectButton,
+                        adressModalIndexInput,
+                        selectAdressByIndexButton,
+                        regionInput,
+                        AdressModalSaveButton,
+                        postAdressCheckElement);
+                checkYoAndPostAdress(yoAdressCheckElement,
+                        postAdressCheckElement);
                 fillTaxSystemInfoForRequest(taxSystDropDownList,
                         inpInput);
                 fillManagerInfoForRequest(bossJobTitleInput,
@@ -239,22 +253,62 @@ public class Step21PageClass
     }
 
     /**
-     * Заповнення секції адресса
+     * Заповнення секції Юридична адресса
      */
-    public void fillYrAddressInfoForRequest(String SubjectTypeName,
-                                         By orgNameInput,
-                                         By orgSubjectType,
-                                         By orgEdrpou)
+    public void fillYrAddressInfoForRequest(By yoAdressSelectButton,
+                                            By adressModalIndexInput,
+                                            By selectAdressByIndexButton,
+                                            By regionInput,
+                                            By AdressModalSaveButton,
+                                            By yoAdressCheckElement)
     {
+        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, yoAdressSelectButton).click();
+        WebElement element=WebElementHelper.WaitUntilElementWillBeClickable10(driver, adressModalIndexInput);
+        element.click();
+        element.clear();
+        element.sendKeys(YO_COMPANY_INDEX);
+        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, selectAdressByIndexButton).click();
+        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, regionInput);
+//        Assertions.assertEquals(YO_COMPANY_CITY, driver.findElement(regionInput).getText());
+        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, AdressModalSaveButton).click();
+        WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver,yoAdressCheckElement);
 
     }
-    public void fillPostAddressInfoForRequest(String SubjectTypeName,
-                                            By orgNameInput,
-                                            By orgSubjectType,
-                                            By orgEdrpou)
+
+    /**
+     * Заповнення секції Поштова адресса
+     */
+    public void fillPostAddressInfoForRequest(By postAdressSelectButton,
+                                              By adressModalIndexInput,
+                                              By selectAdressByIndexButton,
+                                              By regionInput,
+                                              By AdressModalSaveButton,
+                                              By postAdressCheckElement)
     {
+        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, postAdressSelectButton).click();
+        WebElement element=WebElementHelper.WaitUntilElementWillBeClickable10(driver, adressModalIndexInput);
+        element.click();
+        element.clear();
+        element.sendKeys(IndexForPostAdtessInput);
+        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, selectAdressByIndexButton).click();
+        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, regionInput);
+//        Assertions.assertEquals(YO_COMPANY_CITY, driver.findElement(regionInput).getText());
+        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, AdressModalSaveButton).click();
+        WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver,postAdressCheckElement);
 
     }
+
+    /**
+     * Перевірка результатів заповнення Юридичної та Поштової адреси
+     */
+    public  void checkYoAndPostAdress(By yoAdressCheckElement,
+                                      By postAdressCheckElement)
+    {
+        Assertions.assertEquals((YO_COMPANY_INDEX+", "+YO_COMPANY_CITY), driver.findElement(yoAdressCheckElement).getText());
+        Assertions.assertEquals(fullPoatAdress, driver.findElement(postAdressCheckElement).getText());
+        logger.info("Значення юридичної та поштової адреси відповідають введених даних");
+    }
+
 
     /**
      * Заповнення секції система оподаткування

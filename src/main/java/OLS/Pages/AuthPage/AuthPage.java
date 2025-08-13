@@ -98,8 +98,14 @@ public class AuthPage extends CommonActions
         try
         {
             OLS.Pages.BasePage.WindowsHelper.ChooseFileFromPC(WAY_TO_PASS);
+            Thread.sleep(3000);
+
         }
         catch(AWTException e)
+        {
+            e.getStackTrace();
+        }
+        catch(InterruptedException  e)
         {
             e.getStackTrace();
         }

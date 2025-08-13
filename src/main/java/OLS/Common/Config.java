@@ -62,7 +62,8 @@ public class Config
         public static final String TEST_ORG_PHONE_NUMBER="991234567";
         public static final String NUMBER_OF_SEPARATED_UNIY="1795";
         public static final String EDRPOU_OF_MAIN_COMPANY="22443355";
-
+        public static final String YO_COMPANY_INDEX="04111";
+        public static final String YO_COMPANY_CITY="м. Київ";
 
 
 
