@@ -53,6 +53,7 @@ public class Step21PageClass
     By edrpouCodeHeaderYo=By.cssSelector("div.row>div.col-xs-12.col-lg-6.left-column>div:nth-child(1) div.col-xs-12.col-sm-8.col-lg-8>label");
     By edrpouCodeHeaderFop=By.cssSelector("div.row>div.col-xs-12.col-lg-6.left-column>div:nth-child(2) div.col-xs-12.col-sm-8.col-lg-8>label");
     By orgNameHeader=By.cssSelector("div.row>div.col-xs-12.col-lg-6.left-column>div:nth-child(4) div.col-xs-12.col-sm-8.col-lg-8>label");
+    By foNameHeader=By.cssSelector("div.row>div.col-xs-12.col-lg-6.left-column>div:nth-child(3) div.col-xs-12.col-sm-8.col-lg-8>label");
 
 
     /**
@@ -125,6 +126,27 @@ public class Step21PageClass
                 break;
 
             case 2:
+                fillContactInfoForReqest(emailInput,
+                        TEST_ORG_EMAIL,
+                        phoneNumberInput,
+                        TEST_ORG_PHONE_NUMBER);
+                fillYrAddressInfoForRequest(yoAdressSelectButton,
+                        adressModalIndexInput,
+                        selectAdressByIndexButton,
+                        regionInput,
+                        AdressModalSaveButton,
+                        yoAdressCheckElement);
+                fillPostAddressInfoForRequest(postAdressSelectButton,
+                        adressModalIndexInput,
+                        selectAdressByIndexButton,
+                        regionInput,
+                        AdressModalSaveButton,
+                        postAdressCheckElement);
+                checkYoAndPostAdress(yoAdressCheckElement,
+                        postAdressCheckElement);
+                fillCompanyInfoSectionForRequest (edrpouCodeHeaderFop,
+                        foNameHeader);
+                break;
 
             case 3:
 
@@ -135,6 +157,20 @@ public class Step21PageClass
                         TEST_ORG_EMAIL,
                         phoneNumberInput,
                         TEST_ORG_PHONE_NUMBER);
+                fillYrAddressInfoForRequest(yoAdressSelectButton,
+                        adressModalIndexInput,
+                        selectAdressByIndexButton,
+                        regionInput,
+                        AdressModalSaveButton,
+                        yoAdressCheckElement);
+                fillPostAddressInfoForRequest(postAdressSelectButton,
+                        adressModalIndexInput,
+                        selectAdressByIndexButton,
+                        regionInput,
+                        AdressModalSaveButton,
+                        postAdressCheckElement);
+                checkYoAndPostAdress(yoAdressCheckElement,
+                        postAdressCheckElement);
                 fillTaxSystemInfoForRequest(taxSystDropDownList,
                         inpInput);
                 fillManagerInfoForRequest(bossJobTitleInput,
@@ -269,7 +305,6 @@ public class Step21PageClass
         element.sendKeys(YO_COMPANY_INDEX);
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, selectAdressByIndexButton).click();
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, regionInput);
-//        Assertions.assertEquals(YO_COMPANY_CITY, driver.findElement(regionInput).getText());
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, AdressModalSaveButton).click();
         WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver,yoAdressCheckElement);
 
@@ -292,7 +327,6 @@ public class Step21PageClass
         element.sendKeys(IndexForPostAdtessInput);
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, selectAdressByIndexButton).click();
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, regionInput);
-//        Assertions.assertEquals(YO_COMPANY_CITY, driver.findElement(regionInput).getText());
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, AdressModalSaveButton).click();
         WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver,postAdressCheckElement);
 
@@ -304,9 +338,17 @@ public class Step21PageClass
     public  void checkYoAndPostAdress(By yoAdressCheckElement,
                                       By postAdressCheckElement)
     {
-        Assertions.assertEquals((YO_COMPANY_INDEX+", "+YO_COMPANY_CITY), driver.findElement(yoAdressCheckElement).getText());
-        Assertions.assertEquals(fullPoatAdress, driver.findElement(postAdressCheckElement).getText());
-        logger.info("Значення юридичної та поштової адреси відповідають введених даних");
+        try
+        {
+            Thread.sleep(1000);
+            Assertions.assertEquals((YO_COMPANY_INDEX+", "+YO_COMPANY_CITY), driver.findElement(yoAdressCheckElement).getText());
+            Assertions.assertEquals(fullPoatAdress, driver.findElement(postAdressCheckElement).getText());
+            logger.info("Значення юридичної та поштової адреси відповідають введених даних");
+        }
+        catch( InterruptedException e)
+        {
+            e.getStackTrace();
+        }
     }
 
 
@@ -479,7 +521,6 @@ public class Step21PageClass
                 throw new UnsupportedOperationException("Тип виду зайнятості не відповідає значенню з довідника");
         }
     }
-
 
 
 }

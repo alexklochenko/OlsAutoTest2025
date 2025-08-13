@@ -90,7 +90,7 @@ public class Config
  * 	value="13" "Фізична особа-підприємець на загальній системі оподаткування, платники ПДВ"
  */
 
-        public static final int ID_OF_TAX_SYST=6;
+        public static final int ID_OF_TAX_SYST=1;
 
 
 /**
@@ -162,8 +162,8 @@ public class Config
 * 19 - Ліцензія комп’ютерної програми «Арт-Звіт Pro» «Модуль РРО» на 1 рік
 * 20 - Ліцензія комп'ютерної програми "Арт-Звіт Pro" "Термінальна" для ФОП на 1 рік
 */
-        public static final int LICENSE_ID_USING_IN_REQEST=4;
-        public static final String PRICE_OF_CHOOSEN_LICENSE="3060";
+        public static final int LICENSE_ID_USING_IN_REQEST=15;
+        public static final String PRICE_OF_CHOOSEN_LICENSE="360";
 
 /**
 * Дані про замовлення в якому є потреба визначення кількості транзакцій
@@ -178,7 +178,7 @@ public class Config
         public static final int[] LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
         public static final int[] LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20,8,9,10,11,12,13,14,15};
         public static final int[] ARRAY_OF_EMPLOYMENT_TYPE_FOR_YO =new int[]{1,2};
-        public static final int[] ARRAY_OF_EMPLOYMENT_TYPE_FOR_FOP =new int[]{3,4,5,6};
+        public static final int[] ARRAY_OF_EMPLOYMENT_TYPE_FOR_FOP =new int[]{3,4,5,6,7};
         public static final int[] ARRAY_OF_TAX_SYSTEM_FOR_FOP=new int[]{10, 11,12,13};
         public static final int[] ARRAY_OF_TAX_SYSTEM_FOR_YO=new int[]{1,2,3,4,5,6,7,8,9};
 
