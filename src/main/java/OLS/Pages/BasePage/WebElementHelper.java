@@ -62,6 +62,15 @@ public class WebElementHelper
         return element;
     }
 
+    public static void WaitUntilElementWillNotBePresentOnPage(WebDriver driver, By locator)
+    {
+        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+
+
+
     /**
      * Actions Methods
      */

@@ -8,6 +8,7 @@ import static OLS.Common.CommonActions.*;
 import static OLS.Common.Config.*;
 import static OLS.Pages.BasePage.BasePageClass.checkEmploymentTypeToSubjectType;
 import static OLS.Pages.BasePage.TestContext.*;
+import static OLS.Pages.BasePage.WebElementHelper.WaitUntilElementWillNotBePresentOnPage;
 
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -68,6 +69,12 @@ public class Step21PageClass
     By yoAdressCheckElement=By.cssSelector("span.m-b-none.ng-binding.ng-scope[data-ng-if='step2Model.Addr.Full']");
     By postAdressCheckElement=By.cssSelector("span.m-b-none.ng-binding.ng-scope[data-ng-if='step2Model.Post.Full']");
 
+    By streetInputAtAddresModal=By.cssSelector("input#street");
+    By houseNumberInputAtAddresModal= By.cssSelector("input#building");
+    By flatNumberInputAtAddresModal=By.cssSelector("input#flat");
+    By modaThatCoveredPostAdressSelectButton=By.cssSelector("div.odal.fade.ng-isolate-scope.ng-animate.in-remove.in-remove-active");
+
+
 
 
 
@@ -102,13 +109,20 @@ public class Step21PageClass
                         selectAdressByIndexButton,
                         regionInput,
                         AdressModalSaveButton,
-                        yoAdressCheckElement);
+                        yoAdressCheckElement,
+                        streetInputAtAddresModal,
+                        houseNumberInputAtAddresModal,
+                        flatNumberInputAtAddresModal);
                 fillPostAddressInfoForRequest(postAdressSelectButton,
                         adressModalIndexInput,
                         selectAdressByIndexButton,
                         regionInput,
                         AdressModalSaveButton,
-                        postAdressCheckElement);
+                        postAdressCheckElement,
+                        streetInputAtAddresModal,
+                        houseNumberInputAtAddresModal,
+                        flatNumberInputAtAddresModal,
+                        modaThatCoveredPostAdressSelectButton);
                 checkYoAndPostAdress(yoAdressCheckElement,
                         postAdressCheckElement);
                 fillTaxSystemInfoForRequest(taxSystDropDownList,
@@ -135,13 +149,20 @@ public class Step21PageClass
                         selectAdressByIndexButton,
                         regionInput,
                         AdressModalSaveButton,
-                        yoAdressCheckElement);
+                        yoAdressCheckElement,
+                        streetInputAtAddresModal,
+                        houseNumberInputAtAddresModal,
+                        flatNumberInputAtAddresModal);
                 fillPostAddressInfoForRequest(postAdressSelectButton,
                         adressModalIndexInput,
                         selectAdressByIndexButton,
                         regionInput,
                         AdressModalSaveButton,
-                        postAdressCheckElement);
+                        postAdressCheckElement,
+                        streetInputAtAddresModal,
+                        houseNumberInputAtAddresModal,
+                        flatNumberInputAtAddresModal,
+                        modaThatCoveredPostAdressSelectButton);
                 checkYoAndPostAdress(yoAdressCheckElement,
                         postAdressCheckElement);
                 fillCompanyInfoSectionForRequest (edrpouCodeHeaderFop,
@@ -162,13 +183,20 @@ public class Step21PageClass
                         selectAdressByIndexButton,
                         regionInput,
                         AdressModalSaveButton,
-                        yoAdressCheckElement);
+                        yoAdressCheckElement,
+                        streetInputAtAddresModal,
+                        houseNumberInputAtAddresModal,
+                        flatNumberInputAtAddresModal);
                 fillPostAddressInfoForRequest(postAdressSelectButton,
                         adressModalIndexInput,
                         selectAdressByIndexButton,
                         regionInput,
                         AdressModalSaveButton,
-                        postAdressCheckElement);
+                        postAdressCheckElement,
+                        streetInputAtAddresModal,
+                        houseNumberInputAtAddresModal,
+                        flatNumberInputAtAddresModal,
+                        modaThatCoveredPostAdressSelectButton);
                 checkYoAndPostAdress(yoAdressCheckElement,
                         postAdressCheckElement);
                 fillTaxSystemInfoForRequest(taxSystDropDownList,
@@ -206,6 +234,7 @@ public class Step21PageClass
                 numericValue,
                 "Вартість ліцензії на кроці 2 не відповідає очікуваному реазультату");
     }
+
 
 
     /**
@@ -296,12 +325,16 @@ public class Step21PageClass
                                             By selectAdressByIndexButton,
                                             By regionInput,
                                             By AdressModalSaveButton,
-                                            By yoAdressCheckElement)
+                                            By yoAdressCheckElement,
+                                            By streetInputAtAddresModal,
+                                            By houseNumberInputAtAddresModal,
+                                            By flatNumberInputAtAddresModal)
     {
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, yoAdressSelectButton).click();
         WebElement element=WebElementHelper.WaitUntilElementWillBeClickable10(driver, adressModalIndexInput);
         element.click();
         element.clear();
+        clearOldDataFromAdressModalOnStep2(streetInputAtAddresModal, houseNumberInputAtAddresModal, flatNumberInputAtAddresModal);
         element.sendKeys(YO_COMPANY_INDEX);
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, selectAdressByIndexButton).click();
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, regionInput);
@@ -318,12 +351,25 @@ public class Step21PageClass
                                               By selectAdressByIndexButton,
                                               By regionInput,
                                               By AdressModalSaveButton,
-                                              By postAdressCheckElement)
+                                              By postAdressCheckElement,
+                                              By streetInputAtAddresModal,
+                                              By houseNumberInputAtAddresModal,
+                                              By flatNumberInputAtAddresModal,
+                                              By modaThatCoveredPostAdressSelectButton)
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, postAdressSelectButton).click();
+      try
+      {
+          WaitUntilElementWillNotBePresentOnPage(driver, modaThatCoveredPostAdressSelectButton);
+      }
+      catch (TimeoutException e)
+      {
+          logger.error("Модальне вікно перекриває кнопку вибору Поштової адреси");
+      }
+        WebElementHelper.WaitUntilElementWillBeClickable10(driver, postAdressSelectButton).click();
         WebElement element=WebElementHelper.WaitUntilElementWillBeClickable10(driver, adressModalIndexInput);
         element.click();
         element.clear();
+        clearOldDataFromAdressModalOnStep2(streetInputAtAddresModal, houseNumberInputAtAddresModal, flatNumberInputAtAddresModal);
         element.sendKeys(IndexForPostAdtessInput);
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, selectAdressByIndexButton).click();
         WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, regionInput);
@@ -349,6 +395,31 @@ public class Step21PageClass
         {
             e.getStackTrace();
         }
+    }
+
+    public void clearOldDataFromAdressModalOnStep2( By streetInputAtAddresModal,
+                                                    By houseNumberInputAtAddresModal,
+                                                    By flatNumberInputAtAddresModal)
+    {
+        try
+            {
+                WebElement element=WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, streetInputAtAddresModal);
+                element.click();
+                element.clear();
+
+                element=WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, houseNumberInputAtAddresModal);
+                element.click();
+                element.clear();
+
+                element=WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, flatNumberInputAtAddresModal);
+                element.click();
+                element.clear();
+            }
+        catch(TimeoutException e)
+        {
+            logger.error("Помилка при заповнеені даних про адресу");
+        }
+
     }
 
 

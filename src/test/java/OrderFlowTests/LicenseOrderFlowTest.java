@@ -36,4 +36,13 @@ public class LicenseOrderFlowTest extends BaseTest
         step11Page.determinateTypeOfFillingDependendingOnSubjectTypeForStep1();
         step21Page.determinateTypeOfFillingDependendingOnSubjectTypeForStep2();
     }
+
+    @Test
+    public void creatAndFinishLicReqest_FromStep3()
+    {
+        step31Page.testForTest();
+        step31Page.determinateTypeOfFillingDependendingOnSubjectTypeForStep3();
+    }
+
+
 }

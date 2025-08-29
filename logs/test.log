@@ -150,3 +150,108 @@
 2025-08-08 09:15:36 INFO  OLS.Common.CommonActions - Вартість ліцензії, вказана на кроці Step_2 - 3060 грн
 2025-08-08 09:15:36 INFO  OLS.Common.CommonActions - ----End of 2-t Step----
 2025-08-08 09:15:36 INFO  OLS.Common.CommonActions - ----Start of 3-d Step----
+2025-08-24 00:56:55 INFO  OLS.Common.CommonActions - Авторизаційні кукі - 8D09318ADC2E86509BFC6C5D81EF4024BA22197CC51218890166B2EC7F6F0590424AC2799B5EF940C240FCAF69628EA35D80CCC2E8CF1FC2E25343772480678799C5B1446B50163035C2A908F516A2997CCEFC2DC79DE319E4A0DD2FE1368FD794285BBC1476456593146FD74557F47315F3F6BBCABB513C3460AA2166C9D87998FE583084EBDB87C8FAE30A886646394A2D61543C2F2DE2755EFC1982C43F7B52367F80D25A41CCE1C3B1980FE0A8186C5CB24DC7E128B27F3CC2AA455E0C5F05EF07F01F10EA272CD37D41A5506409E23F29C660E78B8F51B4E8AE9D7A1972
+2025-08-24 00:56:57 INFO  OLS.Common.CommonActions - There is no requests with payment at VPR cabinet
+2025-08-24 00:57:01 WARN  OLS.Common.CommonActions - Role dropDown is not exist. Only one role at this cabinet
+2025-08-24 00:57:11 INFO  OLS.Common.CommonActions - Вартіст ліцензії, що вказана на кроці Степ_1 - 360 грн
+2025-08-24 00:57:11 INFO  OLS.Common.CommonActions - ----End of 1-t Step----
+2025-08-24 00:57:11 INFO  OLS.Common.CommonActions - ----Start of 2-d Step----
+2025-08-24 00:57:16 INFO  OLS.Common.CommonActions - Значення виду зайнятості встановлено успішно
+2025-08-24 00:57:17 INFO  OLS.Common.CommonActions - Дані для параметрів телефону та поштової адреси успішно збережено
+2025-08-24 01:04:23 INFO  OLS.Common.CommonActions - Авторизаційні кукі - 4ECBFA5F93CCF3D80ECB6A34429D55164FAC394A019895A16C1650012D92BDD240C9AD81C40DFA6690699C4BE9D729E2BD5F53F19A4D385785824714F53254DE6D6CE8A2006E8A17C8F7D745FEF10A6A963C23AF220244FE383D5652CA23513FE837D871D0E8C2BC344CF936F546ACE6A61A9A7106FFF0B62F2FF5872EE79147A322F31D82BD945DBBC877419A87C8F582FD0182DCC48E02FCAD2D75C962FCE0EB9863823F5DFB7F5D0B0D172694368C1BFD1D71A891A6FCC134F359706095D064030090E447F45462746B646FFA4B95EDFEE0DD5B4556A0ECFB725124B78E16
+2025-08-24 01:04:25 INFO  OLS.Common.CommonActions - There is no requests with payment at VPR cabinet
+2025-08-24 01:04:33 INFO  OLS.Common.CommonActions - Вартіст ліцензії, що вказана на кроці Степ_1 - 360 грн
+2025-08-24 01:04:33 INFO  OLS.Common.CommonActions - ----End of 1-t Step----
+2025-08-24 01:04:33 INFO  OLS.Common.CommonActions - ----Start of 2-d Step----
+2025-08-24 01:04:34 INFO  OLS.Common.CommonActions - Значення виду зайнятості встановлено успішно
+2025-08-24 01:04:35 INFO  OLS.Common.CommonActions - Дані для параметрів телефону та поштової адреси успішно збережено
+2025-08-24 01:06:08 INFO  OLS.Common.CommonActions - Авторизаційні кукі - 30B65D3900B516224E4B4334032F8CF5875E704C0CCDE74F06674A1EEBF1DEDBF0D70D7831AA8FB66207890D8F6BA5066DF5B8D3A6CCD5DCBAF8452A12CAE406753B571D424A64B3A593B3C79AEDA734E7FFAB0700856D62ACC0DFC7C2992A39D328D9B1FAB384A0DC7002EBDE0CE75CEA8AF7D5E7374F2779EDDCB80FD44D5622C3D9FD9AC83154E4D5854A04BA0770EBC92B01399D8950EA2F2F0E19ABCC0CD31CD8930A32EE8A9BFFF040E3EFE298E46DCF02E73424AFC4394F6A9A93E39E4893C28AF83D8BF653AA8E1702510CE1FB1DE052F83E4AD1FE7D220C1882F106
+2025-08-24 01:06:10 INFO  OLS.Common.CommonActions - There is no requests with payment at VPR cabinet
+2025-08-24 01:06:18 INFO  OLS.Common.CommonActions - Вартіст ліцензії, що вказана на кроці Степ_1 - 360 грн
+2025-08-24 01:06:18 INFO  OLS.Common.CommonActions - ----End of 1-t Step----
+2025-08-24 01:06:18 INFO  OLS.Common.CommonActions - ----Start of 2-d Step----
+2025-08-24 01:06:19 INFO  OLS.Common.CommonActions - Значення виду зайнятості встановлено успішно
+2025-08-24 01:06:20 INFO  OLS.Common.CommonActions - Дані для параметрів телефону та поштової адреси успішно збережено
+2025-08-24 01:35:27 INFO  OLS.Common.CommonActions - Авторизаційні кукі - E7E49EFAB07DB0D0463E071DE63DB319944DD2DEEDB1341BE165ECC4005C9B315D3DED2B7DFB3417F6459F9B99C9BED597EBE23F2DD3CF28B7B9A7430046B2C3FCD6ED1BC15AA432B3820D55E62EAAF86DF609C9F6D0FB35958EE7051ACBAFB17F392678F8B8787654BCC716093DAD9EBFFFF553F0E18B01E2A819A39F84092CA9830513797E07B055CD43B3FAA03F084EEAFAAEEEEF611D398E772F1851F15EC137CFF8A025ECF899F61F9C2028E3442CC5D4E536EAB1A60EB2AF7AA69F625BB1713602DDA039F347611F99E4D12363CCEAD49E1EA2051D0EBA8F34DBF23DF7
+2025-08-24 01:35:29 INFO  OLS.Common.CommonActions - There is no requests with payment at VPR cabinet
+2025-08-24 01:35:43 INFO  OLS.Common.CommonActions - Вартіст ліцензії, що вказана на кроці Степ_1 - 360 грн
+2025-08-24 01:35:43 INFO  OLS.Common.CommonActions - ----End of 1-t Step----
+2025-08-24 01:35:43 INFO  OLS.Common.CommonActions - ----Start of 2-d Step----
+2025-08-24 01:35:45 INFO  OLS.Common.CommonActions - Значення виду зайнятості встановлено успішно
+2025-08-24 01:35:46 INFO  OLS.Common.CommonActions - Дані для параметрів телефону та поштової адреси успішно збережено
+2025-08-24 01:35:51 INFO  OLS.Common.CommonActions - Значення юридичної та поштової адреси відповідають введених даних
+2025-08-24 01:35:53 INFO  OLS.Common.CommonActions - Дані про керівника успішно збережено
+2025-08-24 01:35:54 INFO  OLS.Common.CommonActions - Дані про IBAN успішно збережено
+2025-08-24 01:35:54 INFO  OLS.Common.CommonActions - Код ЄДРПОУ та назва організації відповідають значенням, зазначеним у конфігурації
+2025-08-24 01:35:54 INFO  OLS.Common.CommonActions - Вартість ліцензії, вказана на кроці Step_2 - 360 грн
+2025-08-24 01:35:54 INFO  OLS.Common.CommonActions - ----End of 2-t Step----
+2025-08-24 01:35:54 INFO  OLS.Common.CommonActions - ----Start of 3-d Step----
+2025-08-24 01:36:05 INFO  OLS.Common.CommonActions - Контрольний елемент відображається на сторінці Крок3
+2025-08-24 01:44:24 INFO  OLS.Common.CommonActions - Авторизаційні кукі - 54A52375F53F4638EA1862B8C9BA688067FE4C558DB61D81AB21AEAB458C86D744E5362DAF37A7FFCC97A1FFEAD013F8B59D8F3DD9015C52DF46BACE199240AA4FEBCDCDA314D32EA00037FED41DA0B7AAA7E37197722B748D2298BA17C69D45A1EEDC4826FDC5F45BE513233617FB14897A45807874EA674654B2505F76600DEDFC761A3C32A6D4D888EBA16838659518548FD4DA3E719C8C965AF0788585758FAEE5B418875DE904187306ED99EB17ECD536D3BFEF0393D2EC4B50A9C5F080B41F7CA4A343BE9EB6B851320023D7A39920A5E19D24CD1FB3EB30DE4CC1C899
+2025-08-24 01:44:26 INFO  OLS.Common.CommonActions - There is no requests with payment at VPR cabinet
+2025-08-24 01:44:33 INFO  OLS.Common.CommonActions - Вартіст ліцензії, що вказана на кроці Степ_1 - 360 грн
+2025-08-24 01:44:33 INFO  OLS.Common.CommonActions - ----End of 1-t Step----
+2025-08-24 01:44:33 INFO  OLS.Common.CommonActions - ----Start of 2-d Step----
+2025-08-24 01:44:35 INFO  OLS.Common.CommonActions - Значення виду зайнятості встановлено успішно
+2025-08-24 01:44:35 INFO  OLS.Common.CommonActions - Дані для параметрів телефону та поштової адреси успішно збережено
+2025-08-24 01:44:40 INFO  OLS.Common.CommonActions - Значення юридичної та поштової адреси відповідають введених даних
+2025-08-24 01:44:41 INFO  OLS.Common.CommonActions - Дані про керівника успішно збережено
+2025-08-24 01:44:42 INFO  OLS.Common.CommonActions - Дані про IBAN успішно збережено
+2025-08-24 01:44:42 INFO  OLS.Common.CommonActions - Код ЄДРПОУ та назва організації відповідають значенням, зазначеним у конфігурації
+2025-08-24 01:44:42 INFO  OLS.Common.CommonActions - Вартість ліцензії, вказана на кроці Step_2 - 360 грн
+2025-08-24 01:44:42 INFO  OLS.Common.CommonActions - ----End of 2-t Step----
+2025-08-24 01:44:42 INFO  OLS.Common.CommonActions - ----Start of 3-d Step----
+2025-08-24 01:44:49 INFO  OLS.Common.CommonActions - Контрольний елемент відображається на сторінці Крок3
+2025-08-24 03:15:29 INFO  OLS.Common.CommonActions - Авторизаційні кукі - 488FD849DE049768648522A15A6BBC963177F264CBD7EE4712020FC6D3733A13A1EF177345708C8F53B71DEFC4648A17C366F145160C353AE8665326DED8BBB8071D8AA1C348DF0566931319A63BA129F2B101ADC89EA2C3817626B6B8C225B2AA4D35029AE3EAAA53D33793AD0A171F1B730D86435A10A76BEDA9004E7D2FB0A96016F85761E70C6388ADC33292EE6BA48E1C73BCC4AFEEFE79C655AAF87FEED37D0F75AC188C33BCFF54AAF935AFB9CA55FB0419452FEEA3CD10A06893A9BF80D26AA2920A40D86DE762084BB5820F338428A3CCD0F240AACCD2132FE4D05E
+2025-08-24 03:15:32 INFO  OLS.Common.CommonActions - There is no requests with payment at VPR cabinet
+2025-08-24 03:15:43 INFO  OLS.Common.CommonActions - Вартіст ліцензії, що вказана на кроці Степ_1 - 360 грн
+2025-08-24 03:15:43 INFO  OLS.Common.CommonActions - ----End of 1-t Step----
+2025-08-24 03:15:43 INFO  OLS.Common.CommonActions - ----Start of 2-d Step----
+2025-08-24 03:15:45 INFO  OLS.Common.CommonActions - Значення виду зайнятості встановлено успішно
+2025-08-24 03:15:46 INFO  OLS.Common.CommonActions - Дані для параметрів телефону та поштової адреси успішно збережено
+2025-08-24 03:15:51 INFO  OLS.Common.CommonActions - Значення юридичної та поштової адреси відповідають введених даних
+2025-08-24 03:15:52 INFO  OLS.Common.CommonActions - Дані про керівника успішно збережено
+2025-08-24 03:15:53 INFO  OLS.Common.CommonActions - Дані про IBAN успішно збережено
+2025-08-24 03:15:53 INFO  OLS.Common.CommonActions - Код ЄДРПОУ та назва організації відповідають значенням, зазначеним у конфігурації
+2025-08-24 03:15:53 INFO  OLS.Common.CommonActions - Вартість ліцензії, вказана на кроці Step_2 - 360 грн
+2025-08-24 03:15:53 INFO  OLS.Common.CommonActions - ----End of 2-t Step----
+2025-08-24 03:15:53 INFO  OLS.Common.CommonActions - ----Start of 3-d Step----
+2025-08-24 03:16:01 INFO  OLS.Common.CommonActions - Контрольний елемент відображається на сторінці Крок3
+2025-08-24 03:41:19 INFO  OLS.Common.CommonActions - Ціна в замовленні, що вказана на кроці 3360 грн
+2025-08-24 03:43:18 INFO  OLS.Common.CommonActions - Ціна в замовленні, що вказана на кроці 3360 грн
+2025-08-24 03:44:06 INFO  OLS.Common.CommonActions - Ціна в замовленні, що вказана на кроці 3 - 360 грн
+2025-08-24 03:47:48 INFO  OLS.Common.CommonActions - Ціна в замовленні, що вказана на кроці 3 - 360 грн
+2025-08-26 23:55:17 INFO  OLS.Common.CommonActions - Авторизаційні кукі - 43BCA688CA6C7AC5B87FE43EA9B1E72A47757FD2DEEAB7520970638DAC7A6D71BCE3A51E09BAE8E8751EF878F53D0CF56425F2FE4A212F43FC24B2283440482AB45C00884C2D07C385DA6D642BA2861D04504CB8B5FE00C96DC65324C3EBF1804A23008813B7AE146DE3B5C4F67BCABB52534C1FE6A5F6B152B924185FDBFAF367AF9A347CD1869464AEF4E2EE66066681509CCE2005E68266A85CBC9C59C6BEB0289590C59AAFD7DE1EA1DBDF55F046C41E04BFAA5353EDE2D93EC1B926E4EB81958D0CD17796157E2EBFDB59B6E831B4689B401685DD3025EC25B15F1B046B
+2025-08-26 23:55:21 INFO  OLS.Common.CommonActions - There is no requests with payment at VPR cabinet
+2025-08-26 23:55:40 INFO  OLS.Common.CommonActions - Вартіст ліцензії, що вказана на кроці Степ_1 - 360 грн
+2025-08-26 23:55:40 INFO  OLS.Common.CommonActions - ----End of 1-t Step----
+2025-08-26 23:55:40 INFO  OLS.Common.CommonActions - ----Start of 2-d Step----
+2025-08-26 23:55:46 INFO  OLS.Common.CommonActions - Значення виду зайнятості встановлено успішно
+2025-08-26 23:55:47 INFO  OLS.Common.CommonActions - Дані для параметрів телефону та поштової адреси успішно збережено
+2025-08-27 00:19:06 INFO  OLS.Common.CommonActions - Авторизаційні кукі - 42FC6FB3359210C4D89A4AA995B9440365EE2F2F8FE3C8A3A6B51DDF49F3E68AB6A24F7A9BA71E0DD4763EA60D55FC062949F382174AF3816F1DA6F0EA8137BAF75EFB7B661B548398F91B51597D9877FF5869413D930A77C87C25ED48F063BEC73F26038D625B1D2D8DE843D9C87A3A95A3446B18C359F2F4CBFD1877C5DBD390F71DA187CEDF52FCDC58AF111941DFF0A55F8EF89ED856B6DBD1CD83A1125391B5967FD59AEC39A502DC54FECC2F33CADEE3EB9A5F79ADE2233955DBB376CE050763B90FE0ED5CFBA0174FA794BF424052F617A2CA6CD9598F51A02698F23D
+2025-08-27 00:19:08 INFO  OLS.Common.CommonActions - There is no requests with payment at VPR cabinet
+2025-08-27 00:19:19 INFO  OLS.Common.CommonActions - Вартіст ліцензії, що вказана на кроці Степ_1 - 360 грн
+2025-08-27 00:19:19 INFO  OLS.Common.CommonActions - ----End of 1-t Step----
+2025-08-27 00:19:19 INFO  OLS.Common.CommonActions - ----Start of 2-d Step----
+2025-08-27 00:19:21 INFO  OLS.Common.CommonActions - Значення виду зайнятості встановлено успішно
+2025-08-27 00:19:22 INFO  OLS.Common.CommonActions - Дані для параметрів телефону та поштової адреси успішно збережено
+2025-08-27 00:19:56 INFO  OLS.Common.CommonActions - Значення юридичної та поштової адреси відповідають введених даних
+2025-08-27 00:19:58 INFO  OLS.Common.CommonActions - Дані про керівника успішно збережено
+2025-08-27 00:19:58 INFO  OLS.Common.CommonActions - Дані про IBAN успішно збережено
+2025-08-27 00:19:59 INFO  OLS.Common.CommonActions - Код ЄДРПОУ та назва організації відповідають значенням, зазначеним у конфігурації
+2025-08-27 00:19:59 INFO  OLS.Common.CommonActions - Вартість ліцензії, вказана на кроці Step_2 - 360 грн
+2025-08-27 00:24:13 INFO  OLS.Common.CommonActions - Авторизаційні кукі - 6152C744752A38D26E425B025082EEACA0803C724CF8380B79C6F11997C416EDFDB4BA55B711D83448D31E24129CAB4B5E0CD5E2D7EE50AA343836FFAD70049DCC3D2FB7A7FC67D74D72A979B1CB731200F442D43D90945CDACA6441937F7E398CF8DEA474639F0DD7B613891CC5DBE588BF5811E6AF8DD15FD90EC81CB2A32B907FE1A10704C26C24D2BB403E716B575C0994AC89DFD81CE7800C1FBEFA8BD5A58CA3A259C9D1F1BD951724F3C9A400C7719D633CE401955A7538BBE35535EB2F1EBA7D45103F1D338DE59630112DE82EEAC7682ABDA88FE7832A8BAF7896AC
+2025-08-27 00:24:15 INFO  OLS.Common.CommonActions - There is no requests with payment at VPR cabinet
+2025-08-27 00:24:23 INFO  OLS.Common.CommonActions - Вартіст ліцензії, що вказана на кроці Степ_1 - 360 грн
+2025-08-27 00:24:23 INFO  OLS.Common.CommonActions - ----End of 1-t Step----
+2025-08-27 00:24:23 INFO  OLS.Common.CommonActions - ----Start of 2-d Step----
+2025-08-27 00:24:24 INFO  OLS.Common.CommonActions - Значення виду зайнятості встановлено успішно
+2025-08-27 00:24:25 INFO  OLS.Common.CommonActions - Дані для параметрів телефону та поштової адреси успішно збережено
+2025-08-27 00:24:59 INFO  OLS.Common.CommonActions - Значення юридичної та поштової адреси відповідають введених даних
+2025-08-27 00:25:01 INFO  OLS.Common.CommonActions - Дані про керівника успішно збережено
+2025-08-27 00:25:01 INFO  OLS.Common.CommonActions - Дані про IBAN успішно збережено
+2025-08-27 00:25:01 INFO  OLS.Common.CommonActions - Код ЄДРПОУ та назва організації відповідають значенням, зазначеним у конфігурації
+2025-08-27 00:25:01 INFO  OLS.Common.CommonActions - Вартість ліцензії, вказана на кроці Step_2 - 360 грн
+2025-08-27 00:25:02 INFO  OLS.Common.CommonActions - ----End of 2-t Step----
+2025-08-27 00:25:02 INFO  OLS.Common.CommonActions - ----Start of 3-d Step----
+2025-08-27 00:25:09 INFO  OLS.Common.CommonActions - Контрольний елемент відображається на сторінці Крок3
