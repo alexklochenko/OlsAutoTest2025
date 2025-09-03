@@ -1,4 +1,4 @@
-package OLS.Pages.BasePage;
+package OLS.Common;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class WebElementHelper
+public class ElementHelper
 {
 
     /**
@@ -108,7 +108,7 @@ public class WebElementHelper
      * Методи для отримання доп інформації
      *
      */
-    public static String gatTextFromElement(WebDriver driver, By locator)
+    public static String getTextFromElement(WebDriver driver, By locator)
     {
         WebElement element=driver.findElement(locator);
         return element.getText();
@@ -120,7 +120,7 @@ public class WebElementHelper
         String texs=null;
         do
         {
-            WebElement element= WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, locator);
+            WebElement element= ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, locator);
             if(element.getText().equals(" "))
             {
                 check=false;
@@ -156,7 +156,7 @@ public class WebElementHelper
 
     public static void ClearAndSeendKeys(WebDriver driver, By locator, String value)
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, locator);
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, locator);
         WebElement element= driver.findElement(locator);
         element.click();
         element.clear();

@@ -2,7 +2,7 @@ package Base;
 
 import OLS.Pages.AuthPage.AuthPage;
 import OLS.Pages.BasePage.BasePageClass;
-import OLS.Pages.BasePage.CommonActionsAfterAuth;
+import OLS.Common.UserActions;
 import OLS.Pages.ClientRolePages.ChooseTypeOfLicensingPage;
 import OLS.Pages.ClientRolePages.Step21PageClass;
 import OLS.Pages.ClientRolePages.Step31PageClass;
@@ -20,13 +20,13 @@ import static OLS.Common.Config.NEED_TO_CLOSE_BROWSER_AFTER_TEST;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BaseTest
 {
-    WebDriver driver=CommonActions.createDriver();
+    WebDriver driver= DriverHelper.createDriver();
     Actions action=new Actions(driver);
     Select select;
 
     public AuthPage authPage=new AuthPage(driver);
     public BasePageClass basePage=new BasePageClass(driver,action);
-    public CommonActionsAfterAuth commonActionsAfterAuth=new CommonActionsAfterAuth(driver);
+    public UserActions commonActionsAfterAuth=new UserActions(driver);
     public ChooseTypeOfLicensingPage chooseTypeOfLicensingPage=new ChooseTypeOfLicensingPage(driver);
     public Step11PageClass step11Page = new Step11PageClass(driver,action);
     public Step21PageClass step21Page = new Step21PageClass(driver,action);

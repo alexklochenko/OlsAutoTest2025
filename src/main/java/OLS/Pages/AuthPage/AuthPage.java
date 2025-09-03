@@ -1,7 +1,8 @@
 package OLS.Pages.AuthPage;
 
-import OLS.Common.CommonActions;
-import OLS.Pages.BasePage.WebElementHelper;
+import OLS.Common.DriverHelper;
+import OLS.Common.ElementHelper;
+import OLS.Common.WindowsHelper;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -13,10 +14,10 @@ import java.awt.*;
 import static OLS.Common.Config.*;
 import static OLS.Pages.BasePage.BasePageClass.getUrl;
 import static OLS.Pages.BasePage.BasePageClass.closeCookiesModal;
-import static OLS.Pages.BasePage.WindowsHelper.PressEsc;
+import static OLS.Common.WindowsHelper.PressEsc;
 
 
-public class AuthPage extends CommonActions
+public class AuthPage extends DriverHelper
 {
     WebDriver driver;
     public AuthPage (WebDriver driver)
@@ -77,7 +78,7 @@ public class AuthPage extends CommonActions
     }
     public void loginUsingFileKey()
     {
-        WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,enterBuuton);
+        ElementHelper.WaitUntilElementWillBeClickableOnPage(driver,enterBuuton);
 
 
         FindAndClickByLocator(driver, chooseKNDPDropDownList);
@@ -93,11 +94,11 @@ public class AuthPage extends CommonActions
         }
 
         // вибір файлового ключа на ПК
-        WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver,chooseFileButton);
+        WebElement element= ElementHelper.WaitUntilElementWillBePresentOnPage10(driver,chooseFileButton);
         element.click();
         try
         {
-            OLS.Pages.BasePage.WindowsHelper.ChooseFileFromPC(WAY_TO_PASS);
+            WindowsHelper.ChooseFileFromPC(PSSS_TO_KEY);
             Thread.sleep(3000);
 
         }
@@ -111,8 +112,8 @@ public class AuthPage extends CommonActions
         }
 
         // введення пароля
-        element=WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
-        element.sendKeys(PSSS_TO_KEY);
+        element= ElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
+        element.sendKeys(WAY_TO_PASS);
 
         // активація чекбокса збереження пароля
         needToSaveLoginAndPassOnSession();
@@ -121,8 +122,8 @@ public class AuthPage extends CommonActions
         FindAndClickByLocator(driver, enterBuuton);
 
         // перевірка успішної авторизації
-        WebElementHelper.WaitUntilElementWillBePresentOnPage90(driver, orgNameAtSideBar);
-        Assertions.assertEquals(TEST_ORG_NAME,gatTextFromElement(driver,orgNameAtSideBar));
+        ElementHelper.WaitUntilElementWillBePresentOnPage90(driver, orgNameAtSideBar);
+        Assertions.assertEquals(TEST_ORG_NAME, getTextFromElement(driver,orgNameAtSideBar));
     }
 
 

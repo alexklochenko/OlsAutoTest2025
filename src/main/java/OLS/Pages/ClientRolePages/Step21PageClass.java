@@ -1,14 +1,14 @@
 package OLS.Pages.ClientRolePages;
 
-import OLS.Pages.BasePage.WebElementHelper;
+import OLS.Common.ElementHelper;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 
-import static OLS.Common.CommonActions.*;
+import static OLS.Common.DriverHelper.*;
 import static OLS.Common.Config.*;
 import static OLS.Pages.BasePage.BasePageClass.checkEmploymentTypeToSubjectType;
-import static OLS.Pages.BasePage.TestContext.*;
-import static OLS.Pages.BasePage.WebElementHelper.WaitUntilElementWillNotBePresentOnPage;
+import static OLS.Common.TestData.*;
+import static OLS.Common.ElementHelper.WaitUntilElementWillNotBePresentOnPage;
 
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -80,13 +80,13 @@ public class Step21PageClass
 
     public void determinateTypeOfFillingDependendingOnSubjectTypeForStep2 ()
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, goToStep2Button).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, goToStep2Button).click();
         logger.info("----End of 1-t Step----");
         logger.info("----Start of 2-d Step----");
 
         try
         {
-            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep2);
+            ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep2);
         }
         catch(TimeoutException e)
         {
@@ -226,7 +226,7 @@ public class Step21PageClass
      */
     public void chechPriceOnStep2()
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, priceAtHeaderOnStep2);
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, priceAtHeaderOnStep2);
         String valueFromHeader=getTextFromElementWithNbsp (driver, priceAtHeaderOnStep2);
         String numericValue = valueFromHeader.replaceAll("[^0-9.,]", "");
         logger.info("Вартість ліцензії, вказана на кроці Step_2 - "+numericValue+" грн");
@@ -243,7 +243,7 @@ public class Step21PageClass
     public void fillCompanyInfoSectionForRequest (By edrpouCodeHeader,
                                                   By orgNameHeader)
     {
-        WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, edrpouCodeHeader);
+        ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, edrpouCodeHeader);
         if (
                 !compareTextAtElementWithEtalon(driver, edrpouCodeHeader, TEST_ORG_EDRPOU) ||
                         !compareTextAtElementWithEtalon(driver, orgNameHeader, TEST_ORG_NAME))
@@ -266,7 +266,7 @@ public class Step21PageClass
                                                      By edrpouOfMainOrgCode)
     {
         checkEmploymentTypeToSubjectType();
-        WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver, employmentTypeDropDownList);
+        WebElement element= ElementHelper.WaitUntilElementWillBePresentOnPage5(driver, employmentTypeDropDownList);
         select=new Select(element);
         switch(EMPLOYMENT_TYPE)
         {
@@ -275,8 +275,8 @@ public class Step21PageClass
                 break;
             case 2:
                 select.selectByValue(chooseCompActivityForRequest());
-                WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver,numberOfEmploymentTypeSeparatUnit).sendKeys(NUMBER_OF_SEPARATED_UNIY);
-                WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver,edrpouOfMainOrgCode).sendKeys(EDRPOU_OF_MAIN_COMPANY);
+                ElementHelper.WaitUntilElementWillBePresentOnPage2(driver,numberOfEmploymentTypeSeparatUnit).sendKeys(NUMBER_OF_SEPARATED_UNIY);
+                ElementHelper.WaitUntilElementWillBeClickableOnPage(driver,edrpouOfMainOrgCode).sendKeys(EDRPOU_OF_MAIN_COMPANY);
                 break;
             case 3:
                 select.selectByValue(chooseCompActivityForRequest());
@@ -311,7 +311,7 @@ public class Step21PageClass
                                          By phoneNumberInput,
                                          String TEST_ORG_PHONE_NUMBER)
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, emailInput);
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, emailInput);
         ClearAndSeendKeys(driver, emailInput, TEST_ORG_EMAIL);
         ClearAndSeendKeys(driver, phoneNumberInput, TEST_ORG_PHONE_NUMBER);
         logger.info("Дані для параметрів телефону та поштової адреси успішно збережено");
@@ -330,16 +330,16 @@ public class Step21PageClass
                                             By houseNumberInputAtAddresModal,
                                             By flatNumberInputAtAddresModal)
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, yoAdressSelectButton).click();
-        WebElement element=WebElementHelper.WaitUntilElementWillBeClickable10(driver, adressModalIndexInput);
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, yoAdressSelectButton).click();
+        WebElement element= ElementHelper.WaitUntilElementWillBeClickable10(driver, adressModalIndexInput);
         element.click();
         element.clear();
         clearOldDataFromAdressModalOnStep2(streetInputAtAddresModal, houseNumberInputAtAddresModal, flatNumberInputAtAddresModal);
         element.sendKeys(YO_COMPANY_INDEX);
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, selectAdressByIndexButton).click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, regionInput);
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, AdressModalSaveButton).click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver,yoAdressCheckElement);
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, selectAdressByIndexButton).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, regionInput);
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, AdressModalSaveButton).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage5(driver,yoAdressCheckElement);
 
     }
 
@@ -365,16 +365,16 @@ public class Step21PageClass
       {
           logger.error("Модальне вікно перекриває кнопку вибору Поштової адреси");
       }
-        WebElementHelper.WaitUntilElementWillBeClickable10(driver, postAdressSelectButton).click();
-        WebElement element=WebElementHelper.WaitUntilElementWillBeClickable10(driver, adressModalIndexInput);
+        ElementHelper.WaitUntilElementWillBeClickable10(driver, postAdressSelectButton).click();
+        WebElement element= ElementHelper.WaitUntilElementWillBeClickable10(driver, adressModalIndexInput);
         element.click();
         element.clear();
         clearOldDataFromAdressModalOnStep2(streetInputAtAddresModal, houseNumberInputAtAddresModal, flatNumberInputAtAddresModal);
         element.sendKeys(IndexForPostAdtessInput);
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, selectAdressByIndexButton).click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, regionInput);
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, AdressModalSaveButton).click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver,postAdressCheckElement);
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, selectAdressByIndexButton).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, regionInput);
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, AdressModalSaveButton).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage5(driver,postAdressCheckElement);
 
     }
 
@@ -403,15 +403,15 @@ public class Step21PageClass
     {
         try
             {
-                WebElement element=WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, streetInputAtAddresModal);
+                WebElement element= ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, streetInputAtAddresModal);
                 element.click();
                 element.clear();
 
-                element=WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, houseNumberInputAtAddresModal);
+                element= ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, houseNumberInputAtAddresModal);
                 element.click();
                 element.clear();
 
-                element=WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, flatNumberInputAtAddresModal);
+                element= ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, flatNumberInputAtAddresModal);
                 element.click();
                 element.clear();
             }
@@ -434,11 +434,11 @@ public class Step21PageClass
             case 1:
                 if(isElementInArray(ARRAY_OF_TAX_SYSTEM_FOR_YO, ID_OF_TAX_SYST))
                 {
-                    select=new Select(WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList));
+                    select=new Select(ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList));
                     select.selectByValue(chooseTaxSystForRequest());
                     if (ID_OF_TAX_SYST==1 || ID_OF_TAX_SYST==3 || ID_OF_TAX_SYST==5 || ID_OF_TAX_SYST==7 || ID_OF_TAX_SYST==9)
                     {
-                        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
+                        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
                         action.moveToElement(driver.findElement(inpInput))
                                 .click()
                                 .keyDown(Keys.CONTROL)
@@ -466,11 +466,11 @@ public class Step21PageClass
             case 3:
                 if(isElementInArray(ARRAY_OF_TAX_SYSTEM_FOR_FOP, ID_OF_TAX_SYST))
                 {
-                    select=new Select(WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList));
+                    select=new Select(ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, taxSystDropDownList));
                     select.selectByValue(chooseTaxSystForRequest());
                     if (ID_OF_TAX_SYST==11 || ID_OF_TAX_SYST==13)
                     {
-                        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
+                        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inpInput);
                         action.moveToElement(driver.findElement(inpInput))
                                 .click()
                                 .keyDown(Keys.CONTROL)

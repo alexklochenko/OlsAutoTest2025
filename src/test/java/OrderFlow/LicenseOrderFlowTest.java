@@ -1,4 +1,4 @@
-package OrderFlowTests;
+package OrderFlow;
 
 import Base.BaseTest;
 import org.junit.jupiter.api.Test;

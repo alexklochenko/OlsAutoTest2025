@@ -1,22 +1,17 @@
 package OLS.Pages.BasePage;
 
+import OLS.Common.ElementHelper;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.ArrayList;
-
-import static OLS.Common.CommonActions.isElementInArray;
-import static OLS.Common.CommonActions.logger;
+import static OLS.Common.DriverHelper.isElementInArray;
+import static OLS.Common.DriverHelper.logger;
 import static OLS.Common.Config.*;
-import static OLS.Pages.BasePage.TestContext.authCookieValue;
+import static OLS.Common.TestData.authCookieValue;
 
 
-public class BasePageClass extends WebElementHelper
+public class BasePageClass extends ElementHelper
 {
     WebDriver driver;
     Actions action;
@@ -90,25 +85,25 @@ public class BasePageClass extends WebElementHelper
         driver.manage().addCookie(new Cookie(KEY_NAME_OF_AUTH_COOKIE,authCookieValue));
         driver.get("https://olstest.am-soft.ua/ols.test/home/order#/app/step41/view/207528/0");
 
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, payByMonoButton)
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, payByMonoButton)
                 .click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, cardNumberOnMonoPage)
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, cardNumberOnMonoPage)
                 .sendKeys("4111 1111 1111 1111");
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, expirationDateOnMonoPage)
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, expirationDateOnMonoPage)
                 .sendKeys("12/2030");
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, cvvOnMonoPage)
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, cvvOnMonoPage)
                 .sendKeys("123");
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, enterOnMonoPage)
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, enterOnMonoPage)
                 .click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, confirmOnMonoPage)
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, confirmOnMonoPage)
                 .click();
 
         WebElement element=driver.findElement(receiptButtonOnMonoPage);
 
         Assertions.assertTrue(element.isDisplayed());
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver,BackToSiteButtonOnMonoPage ).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver,BackToSiteButtonOnMonoPage ).click();
 
-        element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver,checkTextAfterPayment);
+        element= ElementHelper.WaitUntilElementWillBePresentOnPage10(driver,checkTextAfterPayment);
         Assertions.assertEquals("Крок 4: Замовлення очікує обробки Реєстратором", element.getText());
 
     }

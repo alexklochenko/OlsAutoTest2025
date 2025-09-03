@@ -1,6 +1,6 @@
-package OLS.Pages.BasePage;
+package OLS.Common;
 
-public class TestContext
+public class TestData
 {
     public static String priceOfLicOnInReqest;
     public static String authCookieValue=null;

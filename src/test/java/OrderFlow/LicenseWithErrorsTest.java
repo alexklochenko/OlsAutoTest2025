@@ -1,4 +1,4 @@
-package OrderFlowTests;
+package OrderFlow;
 
 public class LicenseWithErrorsTest {
 }

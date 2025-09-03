@@ -1,4 +1,4 @@
-package OLS.Pages.BasePage;
+package OLS.Common;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;

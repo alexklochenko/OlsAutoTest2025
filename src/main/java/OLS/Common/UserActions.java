@@ -1,22 +1,21 @@
-package OLS.Pages.BasePage;
+package OLS.Common;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 
 import java.awt.*;
 import java.time.Duration;
 
-import static OLS.Pages.BasePage.WebElementHelper.*;
-import static OLS.Common.CommonActions.logger;
-import static OLS.Pages.BasePage.WindowsHelper.ChooseFileFromPC;
+import static OLS.Common.ElementHelper.*;
+import static OLS.Common.DriverHelper.logger;
+import static OLS.Common.WindowsHelper.ChooseFileFromPC;
 
-public class CommonActionsAfterAuth
+public class UserActions
 {
     WebDriver driver;
 
-    public CommonActionsAfterAuth (WebDriver driver)
+    public UserActions(WebDriver driver)
     {
         this.driver=driver;
     }
@@ -59,8 +58,8 @@ public class CommonActionsAfterAuth
         boolean isModalPresent=false;
         try
         {
-            WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, WarningModatToSignPrimaryDoc);
-            WebElementHelper.FindAndClickByLocator(driver,RefusalAtWarningModatToSignPrimaryDoc );
+            ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, WarningModatToSignPrimaryDoc);
+            ElementHelper.FindAndClickByLocator(driver,RefusalAtWarningModatToSignPrimaryDoc );
             isModalPresent=true;
         }
         catch(TimeoutException e)
@@ -78,11 +77,11 @@ public class CommonActionsAfterAuth
         try
         {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
-            WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, WarningModatToPresentRequestWithPayment);
+            ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, WarningModatToPresentRequestWithPayment);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
             WebElement element=driver.findElement(TextAtWarningModatRequestWithPayment);
             Assertions.assertTrue(element.isDisplayed());
-            WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver,XButtonAtWarningModatRequestWithPayment).click();
+            ElementHelper.WaitUntilElementWillBePresentOnPage2(driver,XButtonAtWarningModatRequestWithPayment).click();
         }
         catch(TimeoutException e)
         {
@@ -96,16 +95,17 @@ public class CommonActionsAfterAuth
      * Підписання документа. Точкове
      */
 
-    public void singlDocSign (By signButton,
-                               By typeOfKnedpButton,
-                               By ChooseTypeOfKnedp,
-                               String  pathToKeyFile,
-                               By inputPassToKey,
-                               String  passToKey)
+    public static void singlDocSign (WebDriver driver,
+                                     By signButton,
+                                     By typeOfKnedpButton,
+                                     By ChooseTypeOfKnedp,
+                                     String  pathToKeyFile,
+                                     By inputPassToKey,
+                                     String  passToKey)
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, signButton);
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver,typeOfKnedpButton). click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver,ChooseTypeOfKnedp). click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, signButton);
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver,typeOfKnedpButton). click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver,ChooseTypeOfKnedp). click();
 
         Actions actions=new Actions(driver);
         actions.sendKeys(Keys.ENTER).perform();
@@ -119,8 +119,8 @@ public class CommonActionsAfterAuth
             logger.error("Помилка. Ключ відсутній у зазначеній директорії");
         }
 
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inputPassToKey).sendKeys(passToKey);
-        WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, signButton).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inputPassToKey).sendKeys(passToKey);
+        ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, signButton).click();
     }
 
 }

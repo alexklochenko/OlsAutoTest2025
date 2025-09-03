@@ -1,10 +1,7 @@
 package OLS.Pages.ClientRolePages;
 
-import OLS.Pages.BasePage.WebElementHelper;
-import OLS.Pages.BasePage.TestContext;
-import OLS.Pages.BasePage.WebElementHelper;
+import OLS.Common.ElementHelper;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.AssertionsKt;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -14,11 +11,11 @@ import org.openqa.selenium.interactions.Actions;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static OLS.Common.CommonActions.logger;
+import static OLS.Common.DriverHelper.logger;
 import static OLS.Common.Config.*;
-import static OLS.Pages.BasePage.WebElementHelper.getValueFromText;
-import static OLS.Pages.BasePage.TestContext.priceOfLicOnInReqest;
-import static OLS.Pages.BasePage.WebElementHelper.gatTextFromElement;
+import static OLS.Common.ElementHelper.getValueFromText;
+import static OLS.Common.TestData.priceOfLicOnInReqest;
+import static OLS.Common.ElementHelper.getTextFromElement;
 
 public class Step11PageClass
 {
@@ -57,7 +54,7 @@ public class Step11PageClass
     {
         try
         {
-            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1);
+            ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1);
         }
         catch(TimeoutException e)
         {
@@ -99,20 +96,20 @@ public class Step11PageClass
                                     By orgSubjectType,
                                     By orgEdrpou)
     {
-        WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage5(driver,orgNameInput);
+        WebElement element= ElementHelper.WaitUntilElementWillBePresentOnPage5(driver,orgNameInput);
         element.clear();
         element.sendKeys(TEST_ORG_NAME);
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
-        Assertions.assertEquals(SubjectTypeName, gatTextFromElement(driver,orgSubjectType));
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpou);
-        Assertions.assertEquals(TEST_ORG_EDRPOU, gatTextFromElement(driver,orgEdrpou));
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgSubjectType);
+        Assertions.assertEquals(SubjectTypeName, getTextFromElement(driver,orgSubjectType));
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, orgEdrpou);
+        Assertions.assertEquals(TEST_ORG_EDRPOU, getTextFromElement(driver,orgEdrpou));
     }
 
     public void fillFooterForRequest  (int  licensingType)
     {
         if (licensingType != 9 && licensingType != 12)
         {
-            WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, licDateStartInput);
+            WebElement element= ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, licDateStartInput);
             element.clear();
 
             String currentDate=LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
@@ -128,7 +125,7 @@ public class Step11PageClass
         }
         else
         {
-            WebElement element=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, licTransactionCountStartInput);
+            WebElement element= ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, licTransactionCountStartInput);
             element.clear();
             element.sendKeys(String.valueOf(COUNT_FOR_TRNSACTIONS_IN_REQEST));
 

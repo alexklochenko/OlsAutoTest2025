@@ -1,4 +1,4 @@
-package AuthPageTests;
+package AuthPage;
 
 import org.junit.jupiter.api.Test;
 import Base.BaseTest;

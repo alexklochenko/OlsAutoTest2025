@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.junit.jupiter.api.Assertions;
 
 import static OLS.Common.Config.MAIN_URL;
-import static OLS.Pages.BasePage.WebElementHelper.WaitUntilElementWillBePresentOnPage10;
+import static OLS.Common.ElementHelper.WaitUntilElementWillBePresentOnPage10;
 
 public class SalesPageClass
 {

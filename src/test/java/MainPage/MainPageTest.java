@@ -1,4 +1,4 @@
-package MainPageTest;
+package MainPage;
 
 import Base.BaseTest;
 import org.junit.jupiter.api.Test;

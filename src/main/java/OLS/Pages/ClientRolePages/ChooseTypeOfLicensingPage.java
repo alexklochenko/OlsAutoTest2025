@@ -1,7 +1,7 @@
 package OLS.Pages.ClientRolePages;
 
 import OLS.Pages.BasePage.BasePageClass;
-import OLS.Pages.BasePage.WebElementHelper;
+import OLS.Common.ElementHelper;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -10,8 +10,8 @@ import org.openqa.selenium.WebElement;
 
 import static OLS.Common.Config.LICENSE_ID_USING_IN_REQEST;
 import static OLS.Common.Config.ORG_SUBJECT_TYPE_FOR_REQEST;
-import static OLS.Pages.BasePage.WebElementHelper.checkDiactivateCheckbox;
-import static OLS.Common.CommonActions.logger;
+import static OLS.Common.ElementHelper.checkDiactivateCheckbox;
+import static OLS.Common.DriverHelper.logger;
 
 public class ChooseTypeOfLicensingPage
 {
@@ -219,9 +219,9 @@ public class ChooseTypeOfLicensingPage
     {
         try
         {
-            WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, changeVPRModal);
+            ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, changeVPRModal);
             Assertions.assertTrue(checkDiactivateCheckbox(driver, checkBoxNeedToChangeVpr));
-            WebElement element=WebElementHelper.WaitUntilElementWillBeClickableOnPage(driver, continueAtСhangeVPRModal);
+            WebElement element= ElementHelper.WaitUntilElementWillBeClickableOnPage(driver, continueAtСhangeVPRModal);
             element.click();
         }
         catch(TimeoutException e)
@@ -234,21 +234,21 @@ public class ChooseTypeOfLicensingPage
 
     private void choseTypeOfReqestAtGetToStep1(By ReqestList, By ReqestListGroupeOfLicense, By TypeOfLicense )
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestListGroupeOfLicense).click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, TypeOfLicense).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestListGroupeOfLicense).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, TypeOfLicense).click();
         checkInfoAboutChangeVPR();
-        String checkText=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1).getText();
+        String checkText= ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1).getText();
         Assertions.assertEquals("Крок 1: Внесіть відомості про послуги", checkText);
         logger.info("----Start of 1-t Step----");
     }
 
     private void choseTypeOfReqestAtGetToStep1(By ReqestList, By TypeOfLicense )
     {
-        WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();
-        WebElementHelper.WaitUntilElementWillBeClickable10(driver, TypeOfLicense).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, ReqestList).click();
+        ElementHelper.WaitUntilElementWillBeClickable10(driver, TypeOfLicense).click();
         checkInfoAboutChangeVPR();
-        String checkText=WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1).getText();
+        String checkText= ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep1).getText();
         Assertions.assertEquals("Крок 1: Внесіть відомості про послуги", checkText);
     }
 

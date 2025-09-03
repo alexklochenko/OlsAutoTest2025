@@ -1,16 +1,16 @@
 package OLS.Pages.ClientRolePages;
 
-import OLS.Pages.BasePage.WebElementHelper;
+import OLS.Common.ElementHelper;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
-import static OLS.Common.CommonActions.logger;
-import static OLS.Common.Config.MAIN_URL;
-import static OLS.Common.Config.PRICE_OF_CHOOSEN_LICENSE;
-import static OLS.Pages.BasePage.TestContext.authCookieValue;
-import static OLS.Pages.BasePage.WebElementHelper.compareTextAtElementWithEtalon;
-import static OLS.Pages.BasePage.WebElementHelper.gatTextFromElement;
+import static OLS.Common.Config.*;
+import static OLS.Common.DriverHelper.logger;
+import static OLS.Common.TestData.authCookieValue;
+import static OLS.Common.ElementHelper.compareTextAtElementWithEtalon;
+import static OLS.Common.ElementHelper.getTextFromElement;
+import static OLS.Common.UserActions.singlDocSign;
 
 public class Step31PageClass
 {
@@ -48,22 +48,29 @@ public class Step31PageClass
     By SignPrivsButtonAtViewModal=By.cssSelector("div.sign-box.sign-ns-r.view-cert-not-allowed span.btn.btn-sm.btn-success.btn-sign-doc.ng-scope");
     By signButtonAtSinglSignModal=By.cssSelector("button#btnSignData");
 
+    /**
+     * Підписаня документа
+     */
+    By signButton=By.cssSelector("button#btnSignData");
+    By typeOfKnedpButton=By.cssSelector("select#CAsServersSelect");
+    By ChooseTypeOfKnedp=By.cssSelector("select#CAsServersSelect option[data-index-id='"+ID_OF_KNDP+"']");
+    By inputPassToKey=By.cssSelector("input#PKeyPassword");
 
 
 
-    boolean tmp=false;
+
     public void determinateTypeOfFillingDependendingOnSubjectTypeForStep3 ()
     {
-
+        boolean tmp=false;
         if (tmp)
         {
-            WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, goToStep3Button).click();
+            ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, goToStep3Button).click();
             logger.info("----End of 2-t Step----");
             logger.info("----Start of 3-d Step----");
 
             try
             {
-                WebElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep3);
+                ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, textOnStep3);
                 if(compareTextAtElementWithEtalon(driver,textOnStep3, "Крок 3: Формування документів"))
                 {
                     logger.info("Контрольний елемент відображається на сторінці Крок3");
@@ -81,21 +88,22 @@ public class Step31PageClass
             }
         }
 
+        ElementHelper.WaitUntilElementWillBePresentOnPage1260(driver,PaymentAfterSignDocModal);
+        Assertions.assertEquals(getTextFromElement(driver, textAtSignDocModal), "Оплачуйте послугу після підписання електронних документів.");
 
-        WebElementHelper.WaitUntilElementWillBePresentOnPage1260(driver,PaymentAfterSignDocModal);
-        Assertions.assertEquals(gatTextFromElement(driver, textAtSignDocModal), "Оплачуйте послугу після підписання електронних документів.");
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, confirmButtonPaymentAfterSignDocModal).click();
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, singlSignPrivsButton). click();
+        ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, SignPrivsButtonAtViewModal).click();
+        ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver,signButtonAtSinglSignModal);
 
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, confirmButtonPaymentAfterSignDocModal).click();
-        WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, singlSignPrivsButton). click();
-        WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, SignPrivsButtonAtViewModal).click();
-        WebElementHelper.WaitUntilElementWillBeClickableOnPage5(driver,signButtonAtSinglSignModal);
+        singlDocSign (driver,
+                signButton,
+                typeOfKnedpButton,
+                ChooseTypeOfKnedp,
+                PSSS_TO_KEY,
+                inputPassToKey,
+                WAY_TO_PASS);
 
-//        singlDocSign (signButton,
-//                typeOfKnedpButton,
-//                ChooseTypeOfKnedp,
-//                pathToKeyFile,
-//                inputPassToKey,
-//                passToKey)
 
 
 
@@ -104,36 +112,26 @@ public class Step31PageClass
 
 
         chechPriceOnStep3();
-
-
-
-
     }
 
     public void chechPriceOnStep3()
     {
-        String priceVaueFromheader= WebElementHelper.WaitUntilElementWillBePresentOnPage2(driver, priceAtHeaderOnStep3).getText();
+        String priceVaueFromheader= ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, priceAtHeaderOnStep3).getText();
         logger.info("Ціна в замовленні, що вказана на кроці 3 - "+priceVaueFromheader);
         priceVaueFromheader=priceVaueFromheader.replace(" грн", "");
         Assertions.assertEquals((PRICE_OF_CHOOSEN_LICENSE),priceVaueFromheader, "Ціна у хедері не відповідає очікуваному результату" );
 
     }
 
-
-
-
-
-
     public void testForTest()
     {
-        authCookieValue="37715964D098507DF0AE412EFEAE83F0F6BC683CE530122432BE0BBB6169D586729E7F239C7DBFF6C9DBCA8D4101816390394B0E6EAB034B276E245E14C9B2A408A59E3A43E1F6563A65E1B033132231EAC3631762FB596214F0EEE4A53DBCFC1076F8120C117CCA10F44851EEDCA060E872D5978EB544B838F0AB83E11C1EDB4FBFC8412ED2D27380F213060C02383075659D3742F92A01BF39AE4D086E0741A7B4C95289A37C192EF3C86FC1C17232E45FBF1F4A742522C6DF6329D2D3501169CB50DB1D33F28389C5EC1D4E3330820EAAFF97ED4FA18E7FA89A78F4895E92";
+        authCookieValue="A12727473D31D141CCBB80524D01B5D4DD91642C26ABFEF73D77108B9044ECB30D934A3AD94BD753755E576D28C9FAE9F16093137E603A5AD0DBC5A2D9746882018C2E5BD9F137D8CF7E0F6B34A747A71084F1160BCFF07E8602C9EF13CB005C1B25CB75467CEDFC296EF63E87988C2BFC2703511F2028FFFB9FD5CAFE3061460620748BD292487773D1FA5FCD5BDCA0F789BF1603C9FBCA355371EEA99691AAFFA78F8E1A88D3BAD3B019EC412E4910BE913102C1C3D1FC987385822A8B84C07F1DF0AE483A8504E9854CD0EBB239328F1918AA56CE793333BA1C205E2F596C";
         driver.get(MAIN_URL);
         driver.manage().addCookie(new Cookie("__AUTH_COOKIE_OLS", authCookieValue));
         driver.manage().addCookie(new Cookie("CookiesAccepted", "true"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("localStorage.setItem('CookiesAccepted', 'true');");
-        driver.get("https://ols-test.am-soft.ua/ols.test/home/order#/app/step33/edit/207957/0");
-
+        driver.get("https://ols-test.am-soft.ua/ols.test/home/order#/app/step33/edit/208006/0");
     }
 
 
