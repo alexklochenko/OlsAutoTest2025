@@ -10,6 +10,7 @@ import java.time.Duration;
 import static OLS.Common.ElementHelper.*;
 import static OLS.Common.DriverHelper.logger;
 import static OLS.Common.WindowsHelper.ChooseFileFromPC;
+import static OLS.Common.WindowsHelper.PressEsc;
 
 public class UserActions
 {
@@ -99,20 +100,37 @@ public class UserActions
                                      By signButton,
                                      By typeOfKnedpButton,
                                      By ChooseTypeOfKnedp,
-                                     String  pathToKeyFile,
+                                     By chooseFileButton,
+                                     String pathToKeyFile,
                                      By inputPassToKey,
                                      String  passToKey)
     {
         ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, signButton);
-        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver,typeOfKnedpButton). click();
-        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver,ChooseTypeOfKnedp). click();
+        FindAndClickByLocator(driver, typeOfKnedpButton);
+        FindAndClickByLocator(driver, ChooseTypeOfKnedp);
+        try
+        {
+            PressEsc();
+        }
+        catch(AWTException e)
+        {
+            String errorMessage = "Error during choosing KNEDP from drop-down list";
+            throw new RuntimeException(errorMessage, e);
+        }
+
+
+
+
+
+
 
         Actions actions=new Actions(driver);
         actions.sendKeys(Keys.ENTER).perform();
 
+        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, chooseFileButton).click();
         try
         {
-            ChooseFileFromPC(pathToKeyFile);
+        ChooseFileFromPC(pathToKeyFile);
         }
         catch(AWTException e)
         {
@@ -122,5 +140,6 @@ public class UserActions
         ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, inputPassToKey).sendKeys(passToKey);
         ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, signButton).click();
     }
+
 
 }

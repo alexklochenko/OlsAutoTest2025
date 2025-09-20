@@ -33,7 +33,7 @@ public class DriverHelper extends ElementHelper
             case 1:
                 ChromeOptions options=new ChromeOptions();
                 options.addArguments("--incognito");
-                options.addArguments("user-data-dir=" + System.getProperty("user.dir") + "/tempProfile");
+//                options.addArguments("user-data-dir=" + System.getProperty("user.dir") + "/tempProfile");
                 options.addArguments("--disable-notifications");
                 options.addArguments("--disable-infobars");
                 options.addArguments("--disable-save-password-bubble");
@@ -60,19 +60,5 @@ public class DriverHelper extends ElementHelper
         return driver;
     }
 
-    /**
-     * Перевірка наявності елемента в масиві
-     */
-    public static boolean isElementInArray (int[] array, int id )
-    {
-        for(int i=0; i<array.length; i++)
-        {
-            if (array[i]==id)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 
 }

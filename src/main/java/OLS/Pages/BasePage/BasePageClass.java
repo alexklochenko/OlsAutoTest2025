@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
-import static OLS.Common.DriverHelper.isElementInArray;
+import static OLS.Common.AppUtils.isElementInArray;
 import static OLS.Common.DriverHelper.logger;
 import static OLS.Common.Config.*;
 import static OLS.Common.TestData.authCookieValue;

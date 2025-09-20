@@ -1,10 +1,12 @@
 package OLS.Pages.ClientRolePages;
 
 import OLS.Common.ElementHelper;
+import OLS.Common.UserActions;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
+import static OLS.Common.AppUtils.verifySlotIsSign;
 import static OLS.Common.Config.*;
 import static OLS.Common.DriverHelper.logger;
 import static OLS.Common.TestData.authCookieValue;
@@ -51,10 +53,18 @@ public class Step31PageClass
     /**
      * Підписаня документа
      */
-    By signButton=By.cssSelector("button#btnSignData");
+    By signSignButton=By.cssSelector("button#btnSignData");
     By typeOfKnedpButton=By.cssSelector("select#CAsServersSelect");
-    By ChooseTypeOfKnedp=By.cssSelector("select#CAsServersSelect option[data-index-id='"+ID_OF_KNDP+"']");
+    By ChooseTypeOfKnedp=By.cssSelector("select#CAsServersSelect>option[data-index-id='"+ID_OF_KNDP+"']");
+    By chooseFileButton=By.cssSelector("span.group-span-filestyle.input-group-btn");
     By inputPassToKey=By.cssSelector("input#PKeyPassword");
+    By needToSignWithStampModal=By.cssSelector("div.modal-content>div.modal-header.ng-scope");
+    By needToSignWithStampModalOkButton=By.cssSelector("button.btn.btn-danger.ng-binding");
+    By needToSignWithStampModalCancelButton=By.cssSelector("div.modal-footer.ng-scope>button.btn.btn-default.ng-binding");
+    By signStampButton=By.cssSelector("span.btn.btn-sm.btn-success.btn-sign-doc.ng-scope");
+    By headerOfSinedSSignSlot=By.cssSelector("div[data-ng-if='documentModel.State !== 1']>div:nth-of-type(2) span.btn.btn-sm.btn-success.btn-status.signed.ng-binding.ng-scope");
+    By headerOfSinedSStampSlot=By.cssSelector("div[data-ng-if='documentModel.State !== 1']>div:nth-of-type(3) span.btn.btn-sm.btn-success.btn-status.signed.ng-binding.ng-scope");
+
 
 
 
@@ -92,17 +102,63 @@ public class Step31PageClass
         Assertions.assertEquals(getTextFromElement(driver, textAtSignDocModal), "Оплачуйте послугу після підписання електронних документів.");
 
         ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, confirmButtonPaymentAfterSignDocModal).click();
-        ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, singlSignPrivsButton). click();
-        ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, SignPrivsButtonAtViewModal).click();
-        ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver,signButtonAtSinglSignModal);
 
-        singlDocSign (driver,
-                signButton,
-                typeOfKnedpButton,
-                ChooseTypeOfKnedp,
-                PSSS_TO_KEY,
-                inputPassToKey,
-                WAY_TO_PASS);
+            switch (SIGN_MODE)
+            {
+                case 1:
+                    ElementHelper.WaitUntilElementWillBePresentOnPage2(driver, singlSignPrivsButton). click();
+                    ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver, SignPrivsButtonAtViewModal).click();
+                    ElementHelper.WaitUntilElementWillBeClickableOnPage5(driver,signButtonAtSinglSignModal);
+
+                    singlDocSign (driver,
+                            signSignButton,
+                            typeOfKnedpButton,
+                            ChooseTypeOfKnedp,
+                            chooseFileButton,
+                            WAY_TO_SIGN_KEY,
+                            inputPassToKey,
+                            KEY_PASSWORD);
+
+                    verifySlotIsSign(driver,headerOfSinedSSignSlot,"Підписано");
+
+                    try
+                    {
+                        ElementHelper.WaitUntilElementWillBePresentOnPage90(driver,needToSignWithStampModal);
+                        if (NEED_TO_SIGN_WITH_STAMP)
+                        {
+                            ElementHelper.WaitUntilElementWillBeClickable10(driver, needToSignWithStampModalCancelButton).click();
+                            singlDocSign (driver,
+                                    signStampButton,
+                                    typeOfKnedpButton,
+                                    ChooseTypeOfKnedp,
+                                    chooseFileButton,
+                                    WAY_TO_STAMP_KEY,
+                                    inputPassToKey,
+                                    KEY_PASSWORD);
+
+                            verifySlotIsSign(driver,headerOfSinedSStampSlot,"Підписано");
+
+                        }
+                        else
+                        {
+                            ElementHelper.WaitUntilElementWillBePresentOnPage10(driver, needToSignWithStampModalOkButton).click();
+                        }
+                    }
+                    catch (TimeoutException e)
+                    {
+                        logger.info("Документ не потребує підписання печаткою");
+                    }
+                    break;
+
+                case 2:
+
+
+
+
+            }
+
+
+
 
 
 
@@ -113,6 +169,8 @@ public class Step31PageClass
 
         chechPriceOnStep3();
     }
+
+
 
     public void chechPriceOnStep3()
     {
@@ -125,13 +183,18 @@ public class Step31PageClass
 
     public void testForTest()
     {
-        authCookieValue="A12727473D31D141CCBB80524D01B5D4DD91642C26ABFEF73D77108B9044ECB30D934A3AD94BD753755E576D28C9FAE9F16093137E603A5AD0DBC5A2D9746882018C2E5BD9F137D8CF7E0F6B34A747A71084F1160BCFF07E8602C9EF13CB005C1B25CB75467CEDFC296EF63E87988C2BFC2703511F2028FFFB9FD5CAFE3061460620748BD292487773D1FA5FCD5BDCA0F789BF1603C9FBCA355371EEA99691AAFFA78F8E1A88D3BAD3B019EC412E4910BE913102C1C3D1FC987385822A8B84C07F1DF0AE483A8504E9854CD0EBB239328F1918AA56CE793333BA1C205E2F596C";
+        authCookieValue="D19079CD3EA4C551D8B5556113EAB389D12EA2E793ED17784DDBB05ABF0089EC0FB22DF1EB2AE4400E3CA84806F71CC3076E12D7B406378C81620464E376394F41CB80B2784CFB7990E1B844ABEEC9E372E91CC1C2F75350D5D80BD2F9EE1C4F1563F3AC3D7748F4342F327A71FB2F4FE0409F9D53D28DEFFA247DDBDE1760FD24D8B48B206392566C2AD2B62C5B877531416BB7EC73A607D7E27F449A4D266CC38E419ABE5024C979C596F7A4B0E51F623E907FA93F1BCF5DF5910C9DB07B00D06B970EA21E04F9494582D8CD801928402060B1CBF8E1697CC2A88E8F838A30";
         driver.get(MAIN_URL);
         driver.manage().addCookie(new Cookie("__AUTH_COOKIE_OLS", authCookieValue));
         driver.manage().addCookie(new Cookie("CookiesAccepted", "true"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("localStorage.setItem('CookiesAccepted', 'true');");
-        driver.get("https://ols-test.am-soft.ua/ols.test/home/order#/app/step33/edit/208006/0");
+        UserActions test=new UserActions(driver);
+
+        driver.get("https://ols-test.am-soft.ua/ols.test/home/order#/app/step33/edit/207975/0");
+        test.changeUserRole();
+        driver.get("https://ols-test.am-soft.ua/ols.test/home/order#/app/step33/edit/207976/0");
+        driver.navigate().refresh();
     }
 
 

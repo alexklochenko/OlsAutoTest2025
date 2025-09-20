@@ -1,7 +1,5 @@
 package OLS.Common;
 
-import org.openqa.selenium.By;
-
 public class Config
 {
 /**
@@ -51,8 +49,10 @@ public class Config
         /**
          * Дані про ключ та сертифікат користувача, контекст якого викорисовується при авторизації
          */
-        public static final String WAY_TO_PASS="1qaz2wsx";
-        public static final String PSSS_TO_KEY="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\Key-6.dat";
+        public static final String KEY_PASSWORD ="1qaz2wsx";
+        public static final String WAY_TO_SIGN_KEY ="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\Key-6.dat";
+        public static final String WAY_TO_STAMP_KEY="C:\\Users\\oleks\\OneDrive\\Документи\\Tools_setup\\IDEA_Projects\\OlsAutoTest2025\\src\\main\\resources\\Key-6_stamp.dat";
+
 //        public static final String WAY_TO_PASS="C:\\Users\\o_klochenko\\Documents\\test\\KEYS _test\\Для тестового КНЕДП\\ДСНС\\Для ДСНС_2024_2025\\ТОВ Дванадцять\\Директор Іван Васильович\\Key-6.dat";
         public static final String TEST_ORG_NAME="ТОВ \"Дванадцять\"";
         public static final String TEST_ORG_EDRPOU="22443355";
@@ -178,8 +178,22 @@ public class Config
         public static final double COST_ONE_TRANSACTION_IN_MAO=5.40;
         public static final double COST_ONE_TRANSACTION_IN_AZ=2.70;
 
+
 /**
-* Додаткові налаштування
+ * Режим підписання  жокументів
+ * 1 - Точково
+ * 2 - Массово
+ */
+        public static final int SIGN_MODE=1;
+
+
+/**
+ * Замовлення має бути підписане точково КЕМ Підпис та КЕП Печатки
+ */
+        public static final boolean NEED_TO_SIGN_WITH_STAMP=true;
+
+        /**
+         * Додаткові налаштування
 */
         public static final int[] LICENSE_IDS_FOR_YO_ONLY=new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
         public static final int[] LICENSE_IDS_FOR_FOP_FO_ONLY=new int[]{16,17,18,19,20,8,9,10,11,12,13,14,15};

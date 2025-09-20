@@ -6,6 +6,7 @@ import org.openqa.selenium.*;
 
 import static OLS.Common.DriverHelper.*;
 import static OLS.Common.Config.*;
+import static OLS.Common.AppUtils.isElementInArray;
 import static OLS.Pages.BasePage.BasePageClass.checkEmploymentTypeToSubjectType;
 import static OLS.Common.TestData.*;
 import static OLS.Common.ElementHelper.WaitUntilElementWillNotBePresentOnPage;

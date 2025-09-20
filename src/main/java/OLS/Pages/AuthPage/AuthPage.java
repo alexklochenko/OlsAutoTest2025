@@ -79,8 +79,6 @@ public class AuthPage extends DriverHelper
     public void loginUsingFileKey()
     {
         ElementHelper.WaitUntilElementWillBeClickableOnPage(driver,enterBuuton);
-
-
         FindAndClickByLocator(driver, chooseKNDPDropDownList);
         FindAndClickByLocator(driver, chooseKNDPFromList);
         try
@@ -98,7 +96,7 @@ public class AuthPage extends DriverHelper
         element.click();
         try
         {
-            WindowsHelper.ChooseFileFromPC(PSSS_TO_KEY);
+            WindowsHelper.ChooseFileFromPC(WAY_TO_SIGN_KEY);
             Thread.sleep(3000);
 
         }
@@ -113,7 +111,7 @@ public class AuthPage extends DriverHelper
 
         // введення пароля
         element= ElementHelper.WaitUntilElementWillBeClickableOnPage(driver,inputPassTpKey);
-        element.sendKeys(WAY_TO_PASS);
+        element.sendKeys(KEY_PASSWORD);
 
         // активація чекбокса збереження пароля
         needToSaveLoginAndPassOnSession();
